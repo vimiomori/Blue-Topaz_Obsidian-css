@@ -2811,6 +2811,7 @@ body.theme-dark {
   --text-accent-hover: var(--color-accent-2);
   --text-highlight: var(--text-normal);
   --background-modifier-box-shadow: rgba(228, 228, 228, 0.08);
+  --indentation-guide-color: var(--indigo-blue);
 
   --text-muted: var(--non-photo-blue);
   --text-fainted: var(--celeste);
@@ -19605,26 +19606,25 @@ body.colorful-ordered-list ol li::before,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line div.cm-fold-indicator ~ span.cm-formatting.cm-formatting-list-ol,
 body.colorful-ordered-list .cm-formatting.cm-formatting-list.cm-formatting-list-ol,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line span.cm-hmd-list-indent ~ span.cm-formatting.cm-formatting-list-ol {
-  color: var(--list-colorful-marker);
+  color: var(--list-colorful-marker-1);
 }
 
 body.colorful-ordered-list ol ol li::marker,
 body.colorful-ordered-list ul ol li::marker {
-  color: hsl(calc(var(--accent-h) + 45),var(--accent-s),var(--accent-l));
+  color: var(--list-colorful-marker-1);
 }
 body.colorful-ordered-list ol ol li::before,
 body.colorful-ordered-list ul ol li::before,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line div.cm-fold-indicator ~ span.cm-formatting.cm-formatting-list-ol,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line span.cm-hmd-list-indent ~ span.cm-formatting.cm-formatting-list-ol {
-  color: var(--list-colorful-marker);
-  filter: hue-rotate(45deg);
+  color: var(--list-colorful-marker-2);
 }
 
 body.colorful-ordered-list ol ol ol li::marker,
 body.colorful-ordered-list ol ul ol li::marker,
 body.colorful-ordered-list ul ul ol li::marker,
 body.colorful-ordered-list ul ol ol li::marker {
-  color: hsl(calc(var(--accent-h) + 90),var(--accent-s),calc(var(--accent-l)*0.95));
+  color: var(--list-colorful-marker-2);
 }
 body.colorful-ordered-list ol ol ol li::before,
 body.colorful-ordered-list ol ul ol li::before,
@@ -19632,8 +19632,7 @@ body.colorful-ordered-list ul ul ol li::before,
 body.colorful-ordered-list ul ol ol li::before,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line div.cm-fold-indicator ~ span.cm-formatting.cm-formatting-list-ol,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line span.cm-hmd-list-indent ~ span.cm-formatting.cm-formatting-list-ol {
-  color: var(--list-colorful-marker);
-  filter: hue-rotate(90deg);
+  color: var(--list-colorful-marker-3);
 }
 
 body.colorful-ordered-list ol ol ol ol li::marker,
@@ -19644,7 +19643,7 @@ body.colorful-ordered-list ol ul ul ol li::marker,
 body.colorful-ordered-list ul ol ul ol li::marker,
 body.colorful-ordered-list ul ul ol ol li::marker,
 body.colorful-ordered-list ul ul ul ol li::marker {
-  color: hsl(calc(var(--accent-h) + 135),var(--accent-s),calc(var(--accent-l)*0.95));
+  color: var(--list-colorful-marker-3);
 }
 body.colorful-ordered-list ol ol ol ol li::before,
 body.colorful-ordered-list ol ol ul ol li::before,
@@ -19656,8 +19655,7 @@ body.colorful-ordered-list ul ul ol ol li::before,
 body.colorful-ordered-list ul ul ul ol li::before,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line div.cm-fold-indicator ~ span.cm-formatting.cm-formatting-list-ol,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-4.cm-line span.cm-hmd-list-indent ~ span.cm-formatting.cm-formatting-list-ol {
-  color: var(--list-colorful-marker);
-  filter: hue-rotate(135deg);
+  color: var(--list-colorful-marker-4);
 }
 
 body.colorful-ordered-list ol ol ol ol ol li::marker,
@@ -19676,7 +19674,7 @@ body.colorful-ordered-list ul ol ul ul ol li::marker,
 body.colorful-ordered-list ul ul ol ul ol li::marker,
 body.colorful-ordered-list ul ul ul ol ol li::marker,
 body.colorful-ordered-list ul ul ul ul ol li::marker {
-  color: hsl(calc(var(--accent-h) + 180),var(--accent-s),calc(var(--accent-l)*0.95));
+  color: var(--list-colorful-marker-4);
 }
 body.colorful-ordered-list ol ol ol ol ol li::before,
 body.colorful-ordered-list ol ol ol ul ol li::before,
@@ -19696,8 +19694,7 @@ body.colorful-ordered-list ul ul ul ol ol li::before,
 body.colorful-ordered-list ul ul ul ul ol li::before,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line div.cm-fold-indicator ~ span.cm-formatting.cm-formatting-list-ol,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-5.cm-line span.cm-hmd-list-indent ~ span.cm-formatting.cm-formatting-list-ol {
-  color: var(--list-colorful-marker);
-  filter: hue-rotate(180deg);
+  color: var(--list-colorful-marker-5);
 }
 
 body.colorful-ordered-list ol ol ol ol ol ol li::marker,
@@ -19732,7 +19729,7 @@ body.colorful-ordered-list ul ul ol ul ul ol li::marker,
 body.colorful-ordered-list ul ul ul ol ul ol li::marker,
 body.colorful-ordered-list ul ul ul ul ol ol li::marker,
 body.colorful-ordered-list ul ul ul ul ul ol li::marker {
-  color: hsl(calc(var(--accent-h) + 225),var(--accent-s),calc(var(--accent-l)*0.95));
+  color: var(--list-colorful-marker-5);
 }
 
 body.colorful-ordered-list ol ol ol ol ol ol li::before,
@@ -19769,8 +19766,7 @@ body.colorful-ordered-list ul ul ul ul ol ol li::before,
 body.colorful-ordered-list ul ul ul ul ul ol li::before,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line div.cm-fold-indicator ~ span.cm-formatting.cm-formatting-list-ol,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-6.cm-line span.cm-hmd-list-indent ~ span.cm-formatting.cm-formatting-list-ol {
-  color: var(--list-colorful-marker);
-  filter: hue-rotate(225deg);
+  color: var(--list-colorful-marker-6);
 }
 
 body.colorful-ordered-list ol ol ol ol ol ol ol li::marker,
@@ -19837,7 +19833,7 @@ body.colorful-ordered-list ul ul ul ol ul ul ol li::marker,
 body.colorful-ordered-list ul ul ul ul ol ul ol li::marker,
 body.colorful-ordered-list ul ul ul ul ul ol ol li::marker,
 body.colorful-ordered-list ul ul ul ul ul ul ol li::marker {
-  color: hsl(calc(var(--accent-h) + 270), var(--accent-s), calc(var(--accent-l)*0.95));
+  color: var(--list-colorful-marker-6);
 }
 
 
@@ -19907,8 +19903,7 @@ body.colorful-ordered-list ul ul ul ul ul ol ol li::before,
 body.colorful-ordered-list ul ul ul ul ul ul ol li::before,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-7.cm-line div.cm-fold-indicator ~ span.cm-formatting.cm-formatting-list-ol,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-7.cm-line span.cm-hmd-list-indent ~ span.cm-formatting.cm-formatting-list-ol {
-  color: var(--list-colorful-marker);
-  filter: hue-rotate(270deg);
+  color: var(--list-colorful-marker-7);
 }
 
 body.colorful-ordered-list ol ol ol ol ol ol ol ol li::before,
@@ -20041,8 +20036,7 @@ body.colorful-ordered-list ul ul ul ul ul ul ol ol li::before,
 body.colorful-ordered-list ul ul ul ul ul ul ul ol li::before,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-8.cm-line div.cm-fold-indicator ~ span.cm-formatting.cm-formatting-list-ol,
 body.colorful-ordered-list .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-8.cm-line span.cm-hmd-list-indent ~ span.cm-formatting.cm-formatting-list-ol {
-  color: var(--list-colorful-marker);
-  filter: hue-rotate(340deg);
+  color: var(--list-colorful-marker-7);
 }
 
 body.colorful-ordered-list ol ol ol ol ol ol ol ol li::marker,
@@ -20173,7 +20167,7 @@ body.colorful-ordered-list ul ul ul ul ol ul ul ol li::marker,
 body.colorful-ordered-list ul ul ul ul ul ol ul ol li::marker,
 body.colorful-ordered-list ul ul ul ul ul ul ol ol li::marker,
 body.colorful-ordered-list ul ul ul ul ul ul ul ol li::marker {
-  color: hsl(calc(var(--accent-h) + 340),var(--accent-s),calc(var(--accent-l)*0.95));
+  color: var(--list-colorful-marker-8);
 }
 
 
