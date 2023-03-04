@@ -260,18 +260,20 @@ settings:
         value: folder-style-change-options-colorful
   -
     id: blockquote-style-change-options
-    title: Blockquote
-    title.zh: 引用框样式
+    title: Select Blockquote Style
     type: class-select
     allowEmpty: false
-    default: blockquote-style-default
+    default: blockquote-style-dolphin
     options:
-      -
-        label: Default
-        value: blockquote-style-default
+      - 
+        label: Dolphin
+        value: blockquote-style-dolphin
       -
         label: With quotation mark
         value: blockquote-style-quotation-mark
+      -
+        label: Basic
+        value: blockquote-style-default
       -
         label: Border left
         value: blockquote-style-border-left
@@ -2651,7 +2653,7 @@ body.theme-dark {
   --theme-color-translucent-001: hsla(var(--interactive-accent-hsl),0.01);
   --color-specification: #3ce252;
 
-  --background-blockquote: #9191911c;
+  --background-blockquote: #00779b39;
   --background-code: #1111118c;
   --background-code-2: #4c4c4cb0;
   --text-color-code: #d58000;
@@ -2906,9 +2908,6 @@ body.theme-dark {
   --tag3: var(--nord7-transparent);
   --tag4: var(--nord7-transparent);
   --tag5: var(--nord7-transparent);
-
-  --background-code: #3B42525c;
-  --background-blockquote: #3B42525c;
 
   --text-color-code: var(--nord8);
 
@@ -14933,12 +14932,11 @@ body.folder-style-change-options-colorful-order .nav-folder.mod-root>.nav-folder
 /*style settings blockquote quotation marks*/
 body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote:before,
 body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6 .cm-blockquote-border:before {
-
   border-left: none;
-
 }
+
 body.blockquote-style-quotation-mark :is(.markdown-preview-view,.markdown-rendered) blockquote {
-  color: var(--text-normal);
+  color: var(--electric-blue);
   box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.1);
 }
 
@@ -14990,6 +14988,7 @@ body.blockquote-style-quotation-mark
   position: absolute;
   margin-left: -0.8em;
 }
+
 body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote + .HyperMD-quote > .cm-formatting.cm-formatting-quote.cm-quote::before {
   display: none;
 }
@@ -14997,9 +14996,76 @@ body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-previ
   border: none;
 }
 
+/* blockquote-style-dolphin */
+body.blockquote-style-dolphin .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote:before,
+body.blockquote-style-dolphin .markdown-source-view.mod-cm6 .cm-blockquote-border:before {
+  border-left: none;
+}
+
+body.blockquote-style-dolphin :is(.markdown-preview-view,.markdown-rendered) blockquote {
+  color: var(--electric-blue);
+  box-shadow: 0 0.8rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+body.blockquote-style-dolphin :is(.markdown-preview-view,.markdown-rendered) blockquote {
+  padding-left: 35px;
+  padding-right: 10px;
+  margin-inline-start: 1%;
+  margin-inline-end: 1%;
+  border-left-width: 0px;
+}
+
+body.blockquote-style-dolphin :is(.markdown-preview-view,.markdown-rendered) blockquote p {
+  position: relative;
+  margin-left: 0.7em;
+  margin-right: 0;
+  font-size: var(--font-size-preview-blockquote);
+}
+
+body.blockquote-style-dolphin :is(.markdown-preview-view,.markdown-rendered) blockquote p:first-of-type::before {
+  content: '🐬';
+  font-size: 2em;
+  font-family: boxicons;
+  color: var(--text-folder-file-icon);
+  position: absolute;
+  top: -0.4em;
+  left: -1.2em;
+}
+
+/*style settings blockquote quotation marks for cm6 live preview*/
+body.blockquote-style-dolphin .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote {
+  padding-left: 2.3em !important;
+  border-left-width: 0px;
+}
+/* body.blockquote-style-dolphin .markdown-source-view.mod-cm6.is-live-preview
+.HyperMD-quote span.cm-quote:not(.cm-formatting){
+  display: inline;
+  position: relative;
+  padding-top: 5px;
+  font-size: var(--font-size-preview-blockquote);
+}  */
+
+body.blockquote-style-dolphin
+.markdown-source-view.mod-cm6.is-live-preview
+.HyperMD-quote:not(.cm-active) > .cm-formatting.cm-formatting-quote.cm-quote::before {
+  content: '🐬';
+  font-size: 1.3em;
+  font-family: boxicons;
+  color: var(--text-folder-file-icon);
+  position: absolute;
+  margin-left: -0.8em;
+}
+
+body.blockquote-style-dolphin .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote + .HyperMD-quote > .cm-formatting.cm-formatting-quote.cm-quote::before {
+  display: none;
+}
+body.blockquote-style-dolphin .markdown-source-view.mod-cm6.is-live-preview .cm-content div.HyperMD-quote .cm-blockquote-border {
+  border: none;
+}
+
 /*blockquote-style-border-left*/
 body.blockquote-style-border-left :is(.markdown-preview-view,.markdown-rendered) blockquote {
-  border-left: 3px solid var(--theme-color-translucent-04);
+  border-left: 3px solid var(--robin-egg);
   background-color: transparent;
   border-radius: 0;
 }
