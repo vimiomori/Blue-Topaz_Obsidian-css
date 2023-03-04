@@ -278,12 +278,6 @@ settings:
         label: Border left
         value: blockquote-style-border-left
   -
-    id: table-styles
-    title: Table Styles
-    type: heading
-    level: 3
-    collapsed: true
-  -
     id: enable-table-animation
     title: Enable Table Row Animation on Hover
     title.zh: 移除表格悬浮放大效果
@@ -6833,7 +6827,7 @@ body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tb
 /*table hover*/
 :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) td:hover,
 :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) thead tr > th:nth-child(2n+2):hover {
-  color: var(--midnight-green);
+  color: var(--vivid-sky-blue-2);
 }
 
 /*table raw hover*/
@@ -6937,7 +6931,8 @@ body.table-style-three .markdown-source-view table tbody>tr {
 
 :is(.markdown-preview-view,.markdown-rendered) th:hover,
 .markdown-source-view th:hover {
-  background-color: var(--table-hover-thead-color);
+  background-color: var(--table-thead-background-color);
+  color: var(--vivid-sky-blue-2);
 }
 
 /*Full-width table dvtable callout backlinks layout*/
