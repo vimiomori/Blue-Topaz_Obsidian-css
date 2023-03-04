@@ -1,6 +1,7 @@
 /* 
 TODO: Update the credits on the top of this file
 TODO: Convert to sass and modularize
+TODO: Fix height for first file/folder
 */
 
 /*蓝色托帕石，适合Obsidian v1.0.3。uid [20230102] flying fly flies制作。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
@@ -240,93 +241,7 @@ settings:
     default: true
   -
     id: rainbow-checkbox
-    title:  Enable rainbow outline checkbox
-    title.zh: 开启彩虹任务选择框
-    type: class-toggle
-    default: false
-  -
-    id: indentation-guides-lines-settings
-    title: 2.3.2.3 Color Settings of Default Relationship Lines
-    title.zh: 2.3.2.3 默认大纲线颜色设置
-    description: Settings for default "Indentation guides" Option
-    type: heading
-    level: 4
-    collapsed: true
-  -
-        id: indentation-guide-color
-        title: Inactive Line Color
-        type: variable-themed-color
-        format: rgb
-        opacity: true
-        default-light: 'rgba(0, 0, 0, 0.06)'
-        default-dark: 'rgba(255, 255, 255, 0.08)'
-  -
-        id: indentation-guide-color-active
-        title: Active Line Color
-        type: variable-themed-color
-        format: rgb
-        opacity: true
-        default-light: 'rgba(0, 0, 0, 0.14)'
-        default-dark: 'rgba(255, 255, 255, 0.17)'
-  -
-        id: indentation-guide-width
-        title: Line width
-        type: variable-number
-        default: 1
-        format: px
-  -
-    id: folder-style-change-options-folder
-    title: 2.3.3 Folder
-    title.zh: 2.3.3 文件夹
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: file-bg-shape-option
-    title: File Background Shape
-    title.zh: 文件背景形状
-    type: class-select
-    allowEmpty: false
-    default: file-shape-default
-    options:
-      -
-        label: Rectangle
-        value: file-shape-default
-      -
-        label: Rounded Rectangle
-        value: file-bg-rounded-rectangle
-      -
-        label: Pill
-        value: file-bg-pill
-  -
-    id: file-name-style-option
-    title: File Name Style
-    title.zh: 文件名样式
-    type: class-select
-    allowEmpty: false
-    default: file-name-non-wrapped
-    options:
-      -
-        label: Wrapped
-        value: file-name-wrapped
-      -
-        label: Non-wrapped
-        value: file-name-non-wrapped
-      -
-        label: File Name Scrolling When Hovering
-        value: file-name-animation
-  -
-    id: dark-background-file
-    title: Dark File Background
-    title.zh: 当前文件背景变深
-    type: class-toggle
-    default: false
-  -
-    id: unmuted-collapsed-folder
-    title: Unmute Collapsed Folder
-    title.zh: 未激活文件夹不再黯淡
-    description: To normalize opacity of collapsed folder
-    description.zh: 统一激活/未激活文件夹亮度
+    title:  Enable rainbow checkbox
     type: class-toggle
     default: false
   -
@@ -2897,6 +2812,8 @@ body.theme-dark {
   --internal-link-color: var(--text-accent);
   --external-link-color: var(--internal-link-color);
 
+  --nav-item-color-active: var(--electric-blue-3);
+
   /*mermaid*/
   --mermaid-active-task-color: #187ef1;
   --mermaid-seq-dia-color: #1371be;
@@ -5032,9 +4949,8 @@ input[type=checkbox]:checked {
 body:not(.unmute-checkbox-animation) .is-flashing input.task-list-item-checkbox[type=checkbox]:checked:hover,
 body:not(.unmute-checkbox-animation) input.task-list-item-checkbox[type=checkbox]:checked:hover {
   animation: tada 1s;
-  filter: hue-rotate(160deg);
+  filter: saturate(200%) opacity(110%);
 }
-
 
 /* SVG Plane-right; bujo: task-migrated/waiting */
 input[data-task=">"]:checked,
@@ -7493,44 +7409,8 @@ body.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight + .cm-em.cm-highli
   margin: 0;
 }
 
-body.dark-background-file .nav-file-title.is-active {
-  background-color: var(--theme-color);
-  color: var(--white);
-}
-
-/** file name**/
-
-body.file-name-animation .nav-file-title-content:not(.is-being-renamed):hover {
-  animation: filemove 1.5s 1 normal linear;
-}
-
-body.file-name-animation .nav-file-title-content:not(.is-being-renamed) {
-  min-width: 200px;
-  white-space: nowrap;
-}
-body.file-name-animation .nav-file {
-  display: table;
-}
-/** file folder name**/
-body.file-name-animation .obsidian-icon-folder-icon {
-  vertical-align: middle;
-  display: inline;
-}
-
-body.file-name-animation .nav-folder-title {
-  white-space: nowrap;
-}
-
 .nav-folder-title-content.is-being-renamed {
   white-space: break-spaces;
-}
-
-body.file-name-animation .nav-folder-title-content:not(.is-being-renamed) {
-  min-width: 200px;
-  white-space: nowrap;
-}
-body.file-name-animation .nav-folder-title-content:not(.is-being-renamed):hover {
-  animation: filemove 1.5s 1 normal linear;
 }
 
 @keyframes filemove {
@@ -7538,30 +7418,17 @@ body.file-name-animation .nav-folder-title-content:not(.is-being-renamed):hover 
   100% {transform: translate(calc(-100% + 200px), 0);}
 }
 
-body.file-bg-rounded-rectangle .nav-file-title.is-active,
-body.file-bg-rounded-rectangle .nav-folder-title.is-active,
-body:not(.is-grabbing).file-bg-rounded-rectangle .nav-file-title:hover,
-body:not(.is-grabbing).file-bg-rounded-rectangle .nav-folder-title:hover {
+.nav-file-title.is-active,
+.nav-folder-title.is-active,
+body:not(.is-grabbing) .nav-file-title:hover,
+body:not(.is-grabbing) .nav-folder-title:hover {
   border-radius: var(--radius-m);
-}
-
-body.file-bg-pill .nav-file-title.is-active,
-body.file-bg-pill .nav-folder-title.is-active,
-body:not(.is-grabbing).file-bg-pill .nav-file-title:hover,
-body:not(.is-grabbing).file-bg-pill .nav-folder-title:hover {
-  border-radius: 15px;
-}
-
-body.file-bg-pill .nav-folder.mod-root>.nav-folder-title {
-  margin-left: -2px;
+  margin: 2px 5px;
+  padding-left: 17px;
 }
 
 .item-list {
   padding: 0;
-}
-
-body.file-bg-pill .item-list {
-  padding: 0 4px 0 1px;
 }
 
 .item-list .nav-file-icon {
@@ -7569,8 +7436,8 @@ body.file-bg-pill .item-list {
 }
 
 .nav-file-title.is-active {
-  color: var(--accent-strong);
-  background-color: var(--theme-color-translucent-01);
+  color: var(--vanilla);
+  background-color: var(--blue-munsell);
 }
 
 body:not(.is-grabbing) .nav-folder-title:hover {
@@ -7589,7 +7456,7 @@ body:not(.is-grabbing) .nav-file-title.is-active:hover,
 body:not(.is-grabbing) .nav-file-title:hover,
 .nav-file:not(.is-active):hover .nav-file-title,
 .nav-folder:hover .nav-folder-content {
-  background-color: var(--theme-color-translucent-01);
+  background-color: var(--indigo-blue);
   font-weight: 500;
 }
 
@@ -7609,8 +7476,7 @@ body.is-grabbing .nav-file-title:hover {
 
 body.is-grabbing:not(.remove-file-icons):not(.folder-style-change-options-colorful) .nav-file-title.is-active[data-path$=".md"]>.nav-file-title-content::before,
 body:not(.remove-file-icons):not(.folder-style-change-options-colorful) .nav-file-title.is-active[data-path$=".md"]:hover>.nav-file-title-content::before {
-
-  filter: hue-rotate(160deg);
+  filter: brightness(200%);
 }
 
 .side-dock-plugin-panel-inner {
@@ -7655,7 +7521,6 @@ a.internal-link,
 .cm-s-obsidian span.cm-hmd-internal-link {
   color: var(--internal-link-color) !important;
 }
-
 /* internal link in highlight
 .cm-highlight.cm-hmd-internal-link,
 :is(.markdown-preview-view,.markdown-rendered) mark .internal-link:not(.is-unresolved) {
@@ -8100,13 +7965,12 @@ body:not(.obsidian-default-image) .markdown-source-view.mod-cm6 img:not([class*=
   cursor: help;
 }
 
-body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
-  display: none;
+body .nav-folder * {
+  transition: all .15s;
 }
 
-body.file-name-wrapped .nav-file-title-content,
-body.file-name-wrapped .nav-folder-title-content {
-  white-space: normal;
+body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
+  display: none;
 }
 
 .nav-file-title-content.is-being-renamed {
@@ -8218,8 +8082,15 @@ body.file-name-wrapped .nav-folder-title-content {
 /*---- nav arrows adjust location ----*/
 body:not(.default-icons) .nav-folder-collapse-indicator {
   position: absolute;
-  left: 6.5px;
-  top: 3px;
+  left: 2px;
+  top: 1px;
+  transition: transform 20ms linear 0s;
+}
+
+body:not(.default-icons) .nav-folder-collapse-indicator:hover {
+  position: absolute;
+  left: 2px;
+  top: 1px;
   transition: transform 20ms linear 0s;
 }
 
@@ -8245,8 +8116,8 @@ body:not(.default-icons) .nav-folder-collapse-indicator svg {
   width: 7px;
 }
 
-body:not(.unmuted-collapsed-folder):not(.is-grabbing) .nav-folder.is-collapsed .nav-folder-title-content:not(.is-being-renamed) {
-  opacity: 0.55;
+body:not(.is-grabbing) .nav-folder.is-collapsed .nav-folder-title-content:not(.is-being-renamed) {
+  color: var(--pacific-blue);
 }
 
 body:not(.default-icons) .nav-folder.is-collapsed .nav-folder-collapse-indicator::after {
@@ -14517,6 +14388,7 @@ body.folder-icons .nav-folder-children .nav-folder.is-collapsed .nav-folder-titl
   background-repeat: no-repeat;
   background-position: center center;
   background-color: var(--text-folder-file-icon);
+  padding-left: 17px;
   filter: hue-rotate(160deg);
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-8.586L9.707 3.293A.997.997 0 0 0 9 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path></svg>');
 }
@@ -14635,8 +14507,8 @@ body:not(.remove-file-icons) .nav-file-title[data-path$=".excalidraw.md"] .nav-f
   filter: hue-rotate(135deg);
 }
 
-body.dark-background-file:not(.remove-file-icons):not(.folder-style-change-options-colorful) .nav-file-title.is-active[data-path$=".md"]>.nav-file-title-content::before {
-  background-color: var(--white);
+body:not(.remove-file-icons):not(.folder-style-change-options-colorful) .nav-file-title.is-active[data-path$=".md"]>.nav-file-title-content::before {
+  background-color: var(--electric-blue-3);
 }
 body:not(.remove-file-icons) .nav-file-title.is-active[data-path$=".md"]>.nav-file-title-content::before {
   background-color: var(--text-folder-file-icon);
@@ -15739,10 +15611,6 @@ body:is(.folder-style-change-options-colorful,.folder-style-change-options-color
   height: 2px;
   width: 100%;
   background-image: linear-gradient(to right, var(--theme-color), transparent 90%);
-}
-
-body.unmuted-collapsed-folder.folder-style-change-options-colorful .nav-folder.is-collapsed {
-  opacity: 1;
 }
 
 /* 16 Top level Folders By Starting Digit (0-F)
