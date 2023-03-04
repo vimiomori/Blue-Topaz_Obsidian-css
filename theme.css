@@ -229,71 +229,10 @@ settings:
     type: class-toggle
     default: true
   -
-    id: list-ol-number-color
-    title: Number Color of Ordered List
-    title.zh: 有序列表数字颜色
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: list-ol-marker-1
-    title: List symbol (1st level)
-    title.zh: 有序列表第一层符号
-    description: 数字：decimal，小写字母：lower-latin，小写罗马数字：lower-roman
-    type: variable-text
-    default: decimal
-  -
-    id: list-ol-marker-2
-    title: List symbol (2nd level)
-    title.zh: 有序列表第二层符号
-    description: 数字：decimal，小写字母：lower-latin，小写罗马数字：lower-roman
-    type: variable-text
-    default: lower-latin
-  -
-    id: list-ol-marker-3
-    title: List symbol (3rd level)
-    title.zh: 有序列表第三层符号
-    description: 数字：decimal，小写字母：lower-latin，小写罗马数字：lower-roman
-    type: variable-text
-    default: lower-roman
-  -
-    id: list-ol-marker-4
-    title: List symbol (4th level)
-    title.zh: 有序列表第四层符号
-    description: 数字：decimal，小写字母：lower-latin，小写罗马数字：lower-roman
-    type: variable-text
-    default: decimal
-  -
-    id: list-style-change-options
-    title: List Style in reading view
-    title.zh: 阅读视图列表样式
-    type: class-select
-    allowEmpty: false
-    default: list-bracket-left
-    options:
-      -
-        label: Bracket 1
-        value: list-bracket-left
-      -
-        label: Bracket 2 (1.1.1)
-        value: list-bracket-left-two
-      -
-        label: Vertical line 1
-        value: list-vertical-line-one
-      -
-        label: Vertical line 2
-        value: list-vertical-line-two
-      -
-        label: Vertical line 3 (1.1.1)
-        value: list-vertical-line-three
-      -
-        label: Using Ob Settings
-        value: list-no-border
-      -
-        label: Rainbow Outline
-        value: rainbow-lines-reading
+    id: colorful-indentation-lines
+    title: Toggle colorful indentation lines
+    type: class-toggle
+    default: true
   -
     id: rainbow-lines-head
     title:  2.3.2.1 Rainbow Outline Style Settings
@@ -2533,7 +2472,7 @@ settings:
   --spring-green-2: #5fffb2ff;
   --spring-green-3: #aeffd8ff;
   /* yellows */
-  --jasmine: #f7e37eff;
+  --jasmine: #f7e37e;
   --vanilla: #fff1b5ff;
   --lemon-chiffon: #fff5cbff;
   --peach-yellow: #ffdd94ff;
@@ -2771,6 +2710,15 @@ body {
   --list-colorful-marker-6: var(--fairy-tale);
   --list-colorful-marker-7: var(--thistle);
   --list-colorful-marker-8: var(--vivid-sky-blue);
+
+  --rainbow-rgb-1: 0, 255, 255;   /* electric blue 3 */
+  --rainbow-rgb-2: 127, 255, 212; /* aquamarine */
+  --rainbow-rgb-3: 247, 227, 126; /* vanilla */
+  --rainbow-rgb-4: 255, 204, 171; /* apricot */
+  --rainbow-rgb-5: 255, 198, 198; /* tea rose */
+  --rainbow-rgb-6: 255, 203, 230; /* fairy tale */
+  --rainbow-rgb-7: 238, 212, 255; /* thistle */
+  --rainbow-rgb-8: 71, 210, 234;  /* vivid sky blue */
 
   --he-title-bar-active-bg: var(--theme-color-translucent-005);
   --he-title-bar-active-pinned-bg: var(--theme-color-translucent-005);
@@ -6579,17 +6527,6 @@ ul > li.is-collapsed::marker,
   color: var(--list-marker-color-collapsed);
 }
 
-
-/*list-no-border*/
-body.list-no-border ul>li:not(.task-list-item) {
-  border-left: none !important;
-}
-
-body.list-no-border ol>li {
-  border-left: none !important;
-}
-
-
 /********彩虹大纲线片段********/
 /* RAINBOW INDENT COLORS from https://gist.github.com/GitMurf/5122c0c8405ffa36a03049d9f4434bf4 */
 
@@ -6606,11 +6543,11 @@ body.list-no-border ol>li {
 }
 
 
-body.rainbow-lines-reading :is(ol,ul) :is(ol,ul) {
+body.colorful-indentation-lines :is(ol,ul) :is(ol,ul) {
   position: relative;
 }
 
-body.rainbow-lines-reading :is(ol,ul) :is(ol,ul)::before{
+body.colorful-indentation-lines :is(ol,ul) :is(ol,ul)::before{
   content: '';
   border-right: 1.5px solid var(--background-modifier-border);
   position: absolute;
@@ -6618,29 +6555,29 @@ body.rainbow-lines-reading :is(ol,ul) :is(ol,ul)::before{
   height: 100%;
 }
 
-body.rainbow-lines-reading .kanban :is(ol,ul) ul::before {
+body.colorful-indentation-lines .kanban :is(ol,ul) ul::before {
   display: none;
 }
 
-body.rainbow-lines-reading ul>li:not(.task-list-item) {
+body.colorful-indentation-lines ul>li:not(.task-list-item) {
   border-left: none !important;
 }
 
-body.rainbow-lines-reading ol>li {
+body.colorful-indentation-lines ol>li {
   border-left: none !important;
 }
 
-body.rainbow-lines-reading ol,
-body.rainbow-lines-reading ol ol,
-body.rainbow-lines-reading ol ol ol,
-body.rainbow-lines-reading ol ul ol,
-body.rainbow-lines-reading ol ol ol ol,
-body.rainbow-lines-reading ol ol ul ol,
-body.rainbow-lines-reading ol ul ol ol {
+body.colorful-indentation-lines ol,
+body.colorful-indentation-lines ol ol,
+body.colorful-indentation-lines ol ol ol,
+body.colorful-indentation-lines ol ul ol,
+body.colorful-indentation-lines ol ol ol ol,
+body.colorful-indentation-lines ol ol ul ol,
+body.colorful-indentation-lines ol ul ol ol {
   list-style: decimal;
 }
 
-body.rainbow-lines-reading ol>li::marker {
+body.colorful-indentation-lines ol>li::marker {
   font-weight: normal;
   color: var(--text-normal);
 }
@@ -6804,87 +6741,87 @@ body.rainbow-lines .CodeMirror-foldgutter-open.CodeMirror-guttermarker-subtle::a
 
 /*预览模式
 /*无序列表 任务框*/
-body.rainbow-lines-reading ul li .task-list-item-checkbox {
-  border-color: rgba(var(--accent-1-rgb),0.7);
+body.colorful-indentation-lines ul li .task-list-item-checkbox {
+  border-color: rgba(var(--rainbow-rgb-1),0.5);
 }
-body.rainbow-lines-reading ul ul li .task-list-item-checkbox {
-  border-color: rgba(var(--accent-2-rgb),0.7);
+body.colorful-indentation-lines ul ul li .task-list-item-checkbox {
+  border-color: rgba(var(--rainbow-rgb-2),0.5);
 }
-body.rainbow-lines-reading ul ul ul li .task-list-item-checkbox {
-  border-color: rgba(var(--accent-3-rgb),0.7);
+body.colorful-indentation-lines ul ul ul li .task-list-item-checkbox {
+  border-color: rgba(var(--rainbow-rgb-3),0.5);
 }
-body.rainbow-lines-reading ul ul ul ul li .task-list-item-checkbox {
-  border-color: rgba(var(--accent-4-rgb),0.7);
+body.colorful-indentation-lines ul ul ul ul li .task-list-item-checkbox {
+  border-color: rgba(var(--rainbow-rgb-4),0.5);
 }
-body.rainbow-lines-reading ul ul ul ul ul  li .task-list-item-checkbox {
-  border-color: rgba(var(--accent-5-rgb),0.7);
+body.colorful-indentation-lines ul ul ul ul ul  li .task-list-item-checkbox {
+  border-color: rgba(var(--rainbow-rgb-5),0.5);
 }
 body.rainbow-checkbox  ul ul ul ul ul ul li .task-list-item-checkbox {
-  border-color: rgba(var(--accent-6-rgb),0.7);
+  border-color: rgba(var(--rainbow-rgb-6),0.5);
 }
 body.rainbow-checkbox  ul ul ul ul ul ul ul li .task-list-item-checkbox {
-  border-color: rgba(var(--accent-7-rgb),0.7);
+  border-color: rgba(var(--rainbow-rgb-7),0.5);
 }
 body.rainbow-checkbox  ul ul ul ul ul ul ul ul li .task-list-item-checkbox {
-  border-color: rgba(var(--accent-7-rgb),0.7);
+  border-color: rgba(var(--rainbow-rgb-8),0.5);
 }
 
 /*无序列表 大纲线*/
-body.rainbow-lines-reading ul ul::before {
-  border-color: rgba(var(--accent-1-rgb),0.7) !important;
+body.colorful-indentation-lines ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-1),0.5);
 }
-body.rainbow-lines-reading li ul ul::before {
-  border-color: rgba(var(--accent-2-rgb),0.7) !important;
+body.colorful-indentation-lines li ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-2),0.5);
 }
-body.rainbow-lines-reading li ul ul ul::before {
-  border-color: rgba(var(--accent-3-rgb),0.7) !important;
+body.colorful-indentation-lines li ul ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-3),0.5);
 }
-body.rainbow-lines-reading li ul ul ul ul::before {
-  border-color: rgba(var(--accent-4-rgb),0.7) !important;
+body.colorful-indentation-lines li ul ul ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-4),0.5);
 }
-body.rainbow-lines-reading li ul ul ul ul ul::before {
-  border-color: rgba(var(--accent-5-rgb),0.7) !important;
+body.colorful-indentation-lines li ul ul ul ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-5),0.5);
 }
-body.rainbow-lines-reading li ul ul ul ul ul ul::before {
-  border-color: rgba(var(--accent-6-rgb),0.7) !important;
+body.colorful-indentation-lines li ul ul ul ul ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-6),0.5);
 }
-body.rainbow-lines-reading li ul ul ul ul ul ul ul::before {
-  border-color: rgba(var(--accent-7-rgb),0.7) !important;
+body.colorful-indentation-lines li ul ul ul ul ul ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-7),0.5);
 }
-body.rainbow-lines-reading li ul ul ul ul ul ul ul ul::before {
-  border-color: rgba(var(--accent-8-rgb),0.7) !important;
+body.colorful-indentation-lines li ul ul ul ul ul ul ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-8),0.5);
 }
-body.rainbow-lines-reading li ul ul ul ul ul ul ul ul ul::before {
-  border-color: rgba(var(--accent-1-rgb),0.7) !important;
+body.colorful-indentation-lines li ul ul ul ul ul ul ul ul ul::before {
+  border-color: rgba(var(--rainbow-rgb-1),0.5);
 }
 
 /*任务有序列表 大纲线*/
-body.rainbow-lines-reading ol ol::before {
-  border-color: rgba(var(--accent-1-rgb),0.7) !important;
+body.colorful-indentation-lines ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-1),0.5);
 }
-body.rainbow-lines-reading li ol ol::before {
-  border-color: rgba(var(--accent-2-rgb),0.7) !important;
+body.colorful-indentation-lines li ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-2),0.5);
 }
-body.rainbow-lines-reading li ol ol ol::before {
-  border-color: rgba(var(--accent-3-rgb),0.7) !important;
+body.colorful-indentation-lines li ol ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-3),0.5);
 }
-body.rainbow-lines-reading li ol ol ol ol::before {
-  border-color: rgba(var(--accent-4-rgb),0.7) !important;
+body.colorful-indentation-lines li ol ol ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-4),0.5);
 }
-body.rainbow-lines-reading li ol ol ol ol ol::before {
-  border-color: rgba(var(--accent-5-rgb),0.7) !important;
+body.colorful-indentation-lines li ol ol ol ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-5),0.5);
 }
-body.rainbow-lines-reading li ol ol ol ol ol ol::before {
-  border-color: rgba(var(--accent-6-rgb),0.7) !important;
+body.colorful-indentation-lines li ol ol ol ol ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-6),0.5);
 }
-body.rainbow-lines-reading li ol ol ol ol ol ol ol::before {
-  border-color: rgba(var(--accent-7-rgb),0.7) !important;
+body.colorful-indentation-lines li ol ol ol ol ol ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-7),0.5);
 }
-body.rainbow-lines-reading li ol ol ol ol ol ol ol ol::before {
-  border-color: rgba(var(--accent-8-rgb),0.7) !important;
+body.colorful-indentation-lines li ol ol ol ol ol ol ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-8),0.5);
 }
-body.rainbow-lines-reading li ol ol ol ol ol ol ol ol::before {
-  border-color: rgba(var(--accent-1-rgb),0.7) !important;
+body.colorful-indentation-lines li ol ol ol ol ol ol ol ol::before {
+  border-color: rgba(var(--rainbow-rgb-1),0.5);
 }
 
 /*任务有序列表 选择框*/
@@ -6939,28 +6876,28 @@ body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li li li
   border-color: rgba(var(--accent-8-rgb),0.7) !important;
 }
 
-body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-1-rgb));
 }
-body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-2-rgb));
 }
-body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-3-rgb));
 }
-body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-4-rgb));
 }
-body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-5-rgb));
 }
-body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-6-rgb));
 }
-body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-7-rgb));
 }
-body.rainbow-lines-reading :is(.markdown-preview-view,.markdown-rendered) li li li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li li li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-8-rgb));
 }
 
@@ -12085,8 +12022,8 @@ ul.dataview.dataview-ul.dataview-result-list-root-ul {
   border: 1px solid var(--embed-color);
 }
 
-body:is(.rainbow-lines-reading,.list-vertical-line-one,.list-vertical-line-two,.list-vertical-line-three) table.dataview.table-view-table :is(ol,ul) :is(ol,ul)::before,
-body:is(.rainbow-lines-reading,.list-vertical-line-one,.list-vertical-line-two,.list-vertical-line-three) .kanban-plugin__markdown-preview-view :is(ol,ul) :is(ol,ul)::before {
+body:is(.colorful-indentation-lines) table.dataview.table-view-table :is(ol,ul) :is(ol,ul)::before,
+body:is(.colorful-indentation-lines) .kanban-plugin__markdown-preview-view :is(ol,ul) :is(ol,ul)::before {
   border-left: none;
 }
 
