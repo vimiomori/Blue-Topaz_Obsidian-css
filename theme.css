@@ -245,21 +245,6 @@ settings:
     type: class-toggle
     default: false
   -
-    id: text-folder-file-icon
-    title: Color of File Icons
-    title.zh: 文件前图标颜色
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: folder-icons
-    title: Activate Folder Icons
-    title.zh: 激活文件夹图标
-    type: class-toggle
-    default: false
-  -
     id: remove-arrow
     title: Folder Icons w/o arrows (Collapse Indicator)
     title.zh: 文件夹图标开启后，移除箭头图标（折叠图标）
@@ -14340,44 +14325,6 @@ body:not(.remove-custom-svg-icons) .workspace-leaf-content[data-type="markdown"]
   margin-left: -12px;
 }
 
-
-body.folder-icons .nav-folder-children .nav-folder-title-content::before {
-  position: relative;
-  content: "";
-  display: inline-block;
-  opacity: 0.9;
-  top: 3px;
-  width: 0.95rem;
-  height: 0.95rem;
-  margin-right: 5px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: var(--text-folder-file-icon);
-  filter: hue-rotate(160deg);
-  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.165 19.551c.186.28.499.449.835.449h15c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 11h-1V8c0-1.103-.897-2-2-2h-6.655L8.789 4H4c-1.103 0-2 .897-2 2v13h.007a1 1 0 0 0 .158.551zM18 8v3H6c-.4 0-.762.238-.919.606L4 14.129V8h14z"></path></svg>');
-}
-body.folder-icons .nav-folder-children .nav-folder.is-collapsed .nav-folder-title-content::before {
-  position: relative;
-  content: "";
-  display: inline-block;
-  width: 0.95rem;
-  height: 0.95rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-color: var(--text-folder-file-icon);
-  padding-left: 17px;
-  filter: hue-rotate(160deg);
-  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-8.586L9.707 3.293A.997.997 0 0 0 9 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path></svg>');
-}
-
-body.folder-icons.remove-arrow:not(.default-icons) .nav-folder-collapse-indicator::after {
-  display: none;
-}
-body.folder-icons.remove-arrow:not(.default-icons) :is(.nav-folder-title,.nav-file-title) {
-  padding-left: 5px;
-}
 body [data-type="starred"] .nav-file-icon .svg-icon {
   padding: 4px 0 0;
 }
