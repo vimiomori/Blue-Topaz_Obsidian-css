@@ -279,17 +279,16 @@ settings:
         value: blockquote-style-border-left
   -
     id: table-styles
-    title: 2.3.8 Table
-    title.zh: 2.3.8 表格
+    title: Table Styles
     type: heading
     level: 3
     collapsed: true
   -
-    id: remove-table-transition
-    title: Remove Table Zoom Effect
+    id: enable-table-animation
+    title: Enable Table Row Animation on Hover
     title.zh: 移除表格悬浮放大效果
     type: class-toggle
-    default: false
+    default: true
   -
     id: table-format-options
     title: Table Format
@@ -2627,14 +2626,14 @@ body.theme-dark {
   --mermaid-seq-dia-color: #1371be;
 
   /*table*/
-  --table-background-color: #2f2f2f32;
-  --table-background-color-odd: #00000033;
-  --table-border-color: #4a4a4a;
-  --table-thead-background-color: var(--theme-color-translucent-01);
-  --table-hover-raw-color: #08569a21;
-  --table-hover-color: #1f65a221;
-  --table-hover-thead-color: #298c54c7;
-  --table-header-color: var(--text-normal);
+  --table-background-color: var(--indigo-blue);
+  --table-background-color-odd: var(--midnight-green);
+  --table-border-color: var(--celeste);
+  --table-thead-background-color: var(--cerulean);
+  --table-hover-raw-color: var(--prussian-blue);
+  --table-hover-color: var(--rich-black-2);
+  --table-hover-thead-color: var(--pacific-cyan);
+  --table-header-color: var(--vanilla);
 
   /*calendar*/
   --calendar-week-color: #a2df94;
@@ -2826,11 +2825,6 @@ body.theme-dark {
   --list-ol-number-color: var(--nord9);
   --list-ol-hover: var(--nord7);
 
-  --table-thead-background-color: var(--nord9-2);
-  --table-hover-raw-color: var(--nord9-2);
-  --table-hover-color: var(--nord9-2);
-  --table-hover-thead-color: var(--nord9-1);
-
   --checkbox-color-0: var(--interactive-accent);
 
   --text-search-highlight-bg: var(--nord9-1);
@@ -2925,70 +2919,6 @@ body.color-scheme-options-topaz-nord.theme-dark #calendar-container,
 body.style-options-for-calendar-plugin-style-one.color-scheme-options-topaz-nord.theme-dark #calendar-container {
   --color-tr: var(--nord0);
   --color-calendar-weekends: var(--nord11);
-}
-
-body.color-scheme-options-topaz-nord .theme-light,
-body.color-scheme-options-topaz-nord.theme-light {
-  --accent-h: 210;
-  --accent-s: 34%;
-  --accent-l: 63%;
-  --accent-em: var(--nord14-0);
-
-  --text-selection: var(--nord9-2);
-
-  --interactive-accent-rgb: 129, 161, 193;
-
-  --tag-text: #3a79dd;
-  --tag1: #005aec21;
-  --tag2: #005aec21;
-  --tag3: #005aec21;
-  --tag4: #005aec21;
-  --tag5: #005aec21;
-  --h1-color: var(--print-h1-color,var(--nord11));
-  --h2-color: var(--print-h2-color,var(--nord12));
-  --h3-color: var(--print-h3-color,var(--nord13-0));
-  --h4-color: var(--print-h4-color,var(--nord14-0));
-  --h5-color: var(--print-h5-color,var(--nord8-0));
-  --h6-color: var(--print-h6-color,var(--nord15));
-
-  --background-code: var(--nord6-2);
-  --background-blockquote: var(--nord6-2);
-
-  --text-highlight-bg: var(--nord13-1);
-  --mark-highlight-strong-em: var(--nord13-1);
-
-  --text-color-code: var(--nord8-0);
-
-  --strong-em-color-1: var(--accent-strong);
-  --strong-em-color-2: var(--accent-strong);
-  --strong-em-highlight-color: var(--accent-strong);
-
-  --embed-color: var(--nord6-2);
-
-  --list-ul-block-color: var(--nord12);
-  --list-ul-disc-color: var(--nord12);
-  --green-1: var(--nord14-0);
-  --list-ul-hover: var(--nord13-0);
-  --list-ol-block-color: var(--nord9);
-  --list-ol-number-color: var(--nord9);
-  --list-ol-hover: var(--nord7);
-
-  --table-thead-background-color: var(--nord9-2);
-  --table-hover-raw-color: var(--nord9-2);
-  --table-hover-color: var(--nord9-2);
-  --table-hover-thead-color: var(--nord9-1);
-
-  --checkbox-color-0: var(--interactive-accent);
-
-  --graph-text-color: var(--nord1);
-  --graph-tag: var(--nord7);
-  --graph-attach: var(--nord15);
-  --graph-circle: var(--nord9);
-  --graph-line: var(--nord3-1);
-  --graph-unresolved: var(--nord11);
-  --graph-arrow: var(--nord11);
-
-  --text-search-highlight-bg: var(--nord9-2);
 }
 
 /*===============================*/
@@ -6880,11 +6810,13 @@ body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tb
 :is(.markdown-preview-view,.markdown-rendered) table tbody>tr:nth-child(odd),
 .markdown-source-view table tbody>tr:nth-child(odd) {
   background-color: var(--table-background-color-odd);
+  color: var(--vanilla)
 }
 
 :is(.markdown-preview-view,.markdown-rendered) table tbody>tr,
 .markdown-source-view table tbody>tr {
   background-color: var(--table-background-color);
+  color: var(--jasmine)
 }
 
 :is(.markdown-preview-view,.markdown-rendered) :is(th,td) {
@@ -6901,7 +6833,7 @@ body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tb
 /*table hover*/
 :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) td:hover,
 :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) thead tr > th:nth-child(2n+2):hover {
-  background-color: var(--table-hover-color);
+  color: var(--midnight-green);
 }
 
 /*table raw hover*/
@@ -6913,14 +6845,14 @@ body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tb
   background-color: var(--table-hover-thead-color);
 }
 
-body:not(.remove-table-transition) :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) tbody tr:nth-child(odd):hover,
-body:not(.remove-table-transition) :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) tbody tr:hover{
+body.enable-table-animation :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) tbody tr:nth-child(odd):hover,
+body.enable-table-animation :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) tbody tr:hover{
   background: var(--table-hover-raw-color);
   transform: scale(1.02);
   transition: transform 0.1s cubic-bezier(0.11, 0.33, 0.23, 0.33);
 }
 
-body:not(.remove-table-transition) :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) tbody td:hover{
+body.enable-table-animation :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) tbody td:hover{
   background: var(--table-hover-color);
   transform: scale(1.02);
   transition: transform 0.1s cubic-bezier(0.22, 0.66, 0.46, 0.66);
