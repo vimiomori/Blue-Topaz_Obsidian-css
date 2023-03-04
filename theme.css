@@ -2811,6 +2811,7 @@ body.theme-dark {
   --text-accent-hover: var(--color-accent-2);
   --text-highlight: var(--text-normal);
   --background-modifier-box-shadow: rgba(228, 228, 228, 0.08);
+  --background-modifier-active-hover: var(--cerulean);
   --indentation-guide-color: var(--indigo-blue);
 
   --text-muted: var(--non-photo-blue);
