@@ -278,101 +278,6 @@ settings:
         label: Border left
         value: blockquote-style-border-left
   -
-    id: export-pdf-style-folder
-    title: 2.3.5 Exported PDF Style
-    title.zh: 2.3.5 导出PDF样式
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: hr-for-pagination
-    title: Use hr (---) for Paging
-    title.zh: 使用分隔符（---）分页
-    type: class-toggle
-    default: false
-  -
-    id: all-dark
-    title:  All dark (Experimental, may or may not be desirable)
-    description: Export PDF with dark mode color scheme
-    description.zh: 导出黑暗配色的PDF
-    type: class-toggle
-    default: false
-  -
-    id: show-url-after-link
-    title: Print URL After Links
-    title.zh: 显示地址超链接
-    type: class-toggle
-    default: false
-  -
-    id: print-strong-color
-    title: Strong Color
-    title.zh: 粗体颜色
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: print-em-color
-    title: Italic Type Color
-    title.zh: 斜体颜色
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: embed-folder
-    title: 2.3.6 Embeds
-    title.zh: 2.3.6 嵌入样式
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: adjustable-embed-content-height
-    title: To Fix Height of Embedded Content
-    title.zh: 固定嵌入页面高度
-    type: class-toggle
-    default: false
-  -
-    id: embed-content-height
-    title: Height of Embedded Content
-    title.zh: 嵌入页面高度
-    description: Switch on the above button to activate
-    type: variable-number
-    default: 600
-    format: px
-  -
-    id: naked-embed
-    title: Transparent Embedded background
-    title.zh: 嵌入背景透明
-    type: class-toggle
-    default: false
-  -
-    id: hide-embed-title
-    title: Hide Embedded Title
-    title.zh: 隐藏嵌入文档标题
-    type: class-toggle
-    default: false
-  -
-    id: hide-embed-banner
-    title: Hide Embedded banner
-    title.zh: 隐藏嵌入文档banner
-    type: class-toggle
-    default: false
-  -
-    id: embed-hd
-    title: Hide Embedded Headers
-    title.zh: 隐藏嵌入文档中的H1 H2 H3标题
-    type: class-toggle
-    default: false
-  -
-    id: embed-hover
-    title: Floating Effect of Embedded Note When Hovering
-    title.zh: 嵌入笔记浮动效果
-    type: class-toggle
-    default: false
-  -
     id: table-styles
     title: 2.3.8 Table
     title.zh: 2.3.8 表格
@@ -2394,7 +2299,6 @@ body {
   --letter-space-code: 0;
 
   --file-line-width: 45rem;
-  --embed-content-height: 600px;
 
   --font-weight-highlight-1: normal;
   --font-weight-highlight-2: normal;
@@ -2491,9 +2395,6 @@ body {
 
   --fancy-cursor-width: 2px;
   --cursor-color-temp: var(var(--text-normal));
-
-  --print-strong-color: ;
-  --print-em-color: var(--accent-em);
 
   --tag-border-width: 1px;
   --paragraph-spacing: 1;
@@ -7510,49 +7411,10 @@ code[class*="language-"] {
   padding: 1em 0.5em;
 }
 
-/*embedded*/
-body.naked-embed.theme-dark,
-body.naked-embed.theme-light {
-  --embed-color: transparent !important;
-}
-body.naked-embed .markdown-source-view.mod-cm6 .markdown-embed {
-  border: none;
-}
-body.hide-embed-title .markdown-embed-title{
-  display: none;
-}
-body.embed-hd .markdown-embed :is(.markdown-preview-view,.markdown-rendered) :is(h1,h2,h3,h4,h5,h6) {
-  display: none;
-}
-.hide-embed-banner .markdown-embed-content .obsidian-banner-wrapper
-{
-  display: none;
-}
-
-
 .popover.hover-popover :is(.markdown-preview-view,.markdown-rendered) .markdown-embed,
 .popover .markdown-preview-sizer:is(.markdown-preview-section,.markdown-rendered) {
   height: auto;
   min-height: min-content !important;
-}
-
-
-body.embed-hover.theme-light :is(.markdown-preview-view,.markdown-rendered) .internal-embed .markdown-embed:hover {
-  box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .25);
-  transition: all .2s ease-in-out;
-  transform: translate3d(0px, -3px, 0px);
-}
-body.embed-hover.theme-light .markdown-source-view .internal-embed .markdown-embed:hover {
-  background: var(--background-primary-alt);
-  color: var(--text-normal);
-  border-radius: 6px;
-  border-width: 1px;
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
-}
-
-body.embed-hover.theme-dark .internal-embed .markdown-embed:hover {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  transform: translate3d(0px, -3px, 0px);
 }
 
 body.hover-scrollbars .markdown-embed:not(.canvas-node-content),
@@ -7622,16 +7484,9 @@ body.hover-scrollbars .popover.hover-popover .markdown-embed .markdown-embed
   margin-bottom: 0.4em;
 }
 
-body:not(.adjustable-embed-content-height) :is(.markdown-preview-view,.markdown-rendered) .markdown-embed-content {
+body :is(.markdown-preview-view,.markdown-rendered) .markdown-embed-content {
   padding-right: 0;
   max-height: 100%;
-  max-width: 100%;
-  overflow: auto;
-}
-
-body.adjustable-embed-content-height :is(.markdown-preview-view,.markdown-rendered) .markdown-embed-content {
-  padding-right: 0;
-  max-height: var(--embed-content-height);
   max-width: 100%;
   overflow: auto;
 }
@@ -16444,41 +16299,8 @@ body.theme-dark .popover.hover-popover:not(.is-loaded) {
     page-break-inside: avoid;
   }
 
-  .print :not(font)>strong {
-    -webkit-print-color-adjust: exact;
-    color: var(--print-strong-color) !important;
-  }
-
-  .print :not(font):not(strong)>em {
-    color: var(--print-em-color) !important;
-  }
-
-  body.hr-for-pagination .markdown-rendered hr {
-    break-after: page;
-    visibility: hidden;
-  }
-
-  body.hr-for-pagination.fancy-hr-number .markdown-rendered hr:after {
-    break-after: page;
-    visibility: visible;
-  }
-
-  body.show-url-after-link a.external-link::after {
-    content: " (" attr(href) ") ";
-  }
-
   body.fancy-dolphin-hr .markdown-rendered hr {
     border-image-source: linear-gradient(to right, var(--background-primary) 0%, var(--hr-color-icon-1) 30%, var(--hr-color-icon-2) 46%, transparent 46%, transparent 54%, var(--hr-color-icon-3) 54%, var(--hr-color-icon-4) 70%, var(--background-primary) 100%);
-  }
-
-  body.all-dark .print :is(.markdown-preview-view,.markdown-rendered) {
-    background-color: var(--background-primary) !important;
-  }
-  body.all-dark .print :is(.markdown-preview-view,.markdown-rendered) mark {
-    color: var(--text-highlight) !important;
-  }
-  body.all-dark .print .markdown-preview-view {
-    color: var(--text-normal) !important;
   }
 
   .print .markdown-preview-view .callout.callout[data-callout="timeline"] >.callout-content {
