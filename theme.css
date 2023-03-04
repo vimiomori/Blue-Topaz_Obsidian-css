@@ -245,14 +245,6 @@ settings:
     type: class-toggle
     default: false
   -
-    id: remove-arrow
-    title: Folder Icons w/o arrows (Collapse Indicator)
-    title.zh: 文件夹图标开启后，移除箭头图标（折叠图标）
-    description: To be effective after toggling the option above
-    description.zh: 开启上面选项后起效
-    type: class-toggle
-    default: false
-  -
     id: folder-style-change-options-colorful-folder
     title: 2.3.3.1 Colorful Folder
     title.zh: 2.3.3.1 多彩文件夹
@@ -8075,7 +8067,7 @@ body.default-icons .nav-folder-collapse-indicator {
   margin-left: -9px;
 }
 
-body:not(.default-icons):not(.remove-arrow) .nav-folder-collapse-indicator::after {
+body:not(.default-icons) .nav-folder-collapse-indicator::after {
   position: absolute;
   content: "↓";
   top: 1px;
@@ -19987,9 +19979,6 @@ select:focus,
   box-shadow: none;
 }
 
-body.remove-arrow:not(.default-icons) :is(.nav-folder-title,.nav-file-title) {
-  padding-left: 0.5em;
-}
 .nav-folder.mod-root > .nav-folder-children > .nav-file .nav-file-title {
   padding-left: var(--size-2-3);
 }
