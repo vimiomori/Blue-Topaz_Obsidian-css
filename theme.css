@@ -25,26 +25,6 @@ settings:
     type: class-toggle
     default: false
   -
-    id: scrollbar-style-option
-    title: Scrollbar Style
-    title.zh: 滚动条样式
-    type: class-select
-    allowEmpty: false
-    default: default-scrollbar
-    options:
-      -
-        label: Default
-        value: default-scrollbar
-      -
-        label: Hovering (adapted from @subframe7536's css snippet)
-        value: hover-scrollbars
-      -
-        label: Remove Scrollbar
-        value: remove-scrollbars
-      -
-        label: Obsidian default
-        value: native-scrollbars
-  -
     id: enable-divider-lines
     title: Enable Divider Lines
     title.zh: 切换无分割线样式
@@ -2513,7 +2493,7 @@ body.theme-dark {
   --background-black-or-white-1: #353535;
   --background-modifier-border-1: #000000;
   --background-transparent-blue: #003e759a;
-  --scrollbar-thumb: var(--celeste);
+  --scrollbar-thumb: #00fbffc4;
   --scrollbar-thumb-active: var(--electric-blue);
   --gray-1: #5C6370;
   --gray-2: #abb2bf;
@@ -7344,8 +7324,8 @@ code[class*="language-"] {
   min-height: min-content !important;
 }
 
-body.hover-scrollbars .markdown-embed:not(.canvas-node-content),
-body.hover-scrollbars .popover.hover-popover .markdown-embed .markdown-embed
+body .markdown-embed:not(.canvas-node-content),
+body .popover.hover-popover .markdown-embed .markdown-embed
 {
   padding:  0 0 0 1em;
 }
@@ -9150,65 +9130,62 @@ g.stateGroup line,
 }
 
 /* scrollbar*/
-body:not(.native-scrollbars) ::-webkit-scrollbar-thumb {
+body ::-webkit-scrollbar-thumb {
   background-clip: padding-box;
   border: 3px solid transparent;
   border-width: 3px 2px 3px 3px;
+  border-radius: var(--radius-m);
   min-height: 65px;
   background-color: var(--scrollbar-thumb);
   border: 3.5px solid transparent !important;
 }
 
-body:not(.native-scrollbars) ::-webkit-scrollbar {
-  background-color: transparent;
+body ::-webkit-scrollbar {
+  background-color: transparent !important;
   width: 13px;
   height: 13px;
 }
 
-body:not(.native-scrollbars) textarea:hover::-webkit-scrollbar-thumb:active,
-body:not(.native-scrollbars) ::-webkit-scrollbar-thumb:hover {
+body textarea:hover::-webkit-scrollbar-thumb:active,
+body ::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-active);
 }
 
-body.remove-scrollbars ::-webkit-scrollbar-thumb {
-  display: none;
-}
-
 /*adapted from the CSS snippet created by @subframe7536 https://forum-zh.obsidian.md/t/topic/11164*/
-body.hover-scrollbars :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container,.workspace-leaf-content .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion,
+body :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container,.workspace-leaf-content .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion,
 .prompt-results, .markdown-embed-content, .community-modal-search-results-wrapper,.community-modal-info,.tag-container)::-webkit-scrollbar-thumb {
   box-shadow: inset 0 0 0 10px !important;
   background-color: transparent !important;
 }
 
-body.hover-scrollbars .community-modal-info div[class^='community-modal-info-']
+body .community-modal-info div[class^='community-modal-info-']
 {
   color:var(--text-normal);
 }
-body.hover-scrollbars .canvas-node-content  .markdown-preview-view
+body .canvas-node-content  .markdown-preview-view
 {
   overflow-y: auto!important;
 }
-body.hover-scrollbars :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .markdown-embed-content, .community-modal-search-results-wrapper,.community-modal-info,.tag-container) {
+body :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .markdown-embed-content, .community-modal-search-results-wrapper,.community-modal-info,.tag-container) {
   color: transparent;
   transition: color var(--anim-duration-fast) var(--anim-motion-smooth);
   overflow-y: overlay;
 }
-body.hover-scrollbars :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .markdown-embed-content, .community-modal-search-results-wrapper,.community-modal-info,.tag-container):hover {
+body :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .markdown-embed-content, .community-modal-search-results-wrapper,.community-modal-info,.tag-container):hover {
   color: var(--scrollbar-thumb);
 }
-body.hover-scrollbars :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .community-modal-search-results-wrapper,.tag-container) > :not(h1, h2, h3, h4, h5, h6) {
+body :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .community-modal-search-results-wrapper,.tag-container) > :not(h1, h2, h3, h4, h5, h6) {
   color: var(--text-normal);
 }
 
-body.hover-scrollbars :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .markdown-embed-content, .community-modal-search-results-wrapper,.community-modal-info,.tag-container)::-webkit-scrollbar-thumb:active {
+body :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .markdown-embed-content, .community-modal-search-results-wrapper,.community-modal-info,.tag-container)::-webkit-scrollbar-thumb:active {
   background-color: var(--scrollbar-thumb-active) !important;
 }
 
-body.hover-scrollbars .popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-preview-view {
+body .popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-preview-view {
   color: transparent !important;
 }
-body.hover-scrollbars .popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-preview-view:hover {
+body .popover.hover-popover > .markdown-embed > .markdown-embed-content > .markdown-preview-view:hover {
   color: var(--scrollbar-thumb) !important;
 }
 
