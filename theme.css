@@ -314,18 +314,6 @@ settings:
     type: class-toggle
     default: true
   -
-    id: remove-custom-svg-icons
-    title: Toggle Default Icons
-    title.zh: 还原默认图标
-    type: class-toggle
-    default: false
-  -
-    id: default-icons
-    title: Toggle Default Collapse Icons
-    title.zh: 还原折叠图标
-    type: class-toggle
-    default: false
-  -
     id: enable-icon-anima
     title: Enable clickable-icons' hovering animation
     title.zh: 开启按钮图标的鼠标悬浮动画效果
@@ -2924,11 +2912,11 @@ body.remove-shadow-p-kanban.theme-dark .kanban ul ul li:hover {
   text-indent: -1em;
 }
 
-body:not(.default-icons) .kanban li.task-list-item .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body .kanban li.task-list-item .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   margin-left: -0.2em;
 }
 
-body:not(.default-icons) .kanban li.task-list-item .task-list-item.is-collapsed .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body .kanban li.task-list-item .task-list-item.is-collapsed .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   transform: translateX(-0.9em) translateY(-1em) rotate(-90deg);
 }
 
@@ -4137,12 +4125,6 @@ span.cm-strong.cm-em.cm-highlight {
   -webkit-background-clip: initial;
   -webkit-text-fill-color: var(--strong-em-highlight-color);
   background-color: var(--text-highlight-bg);
-}
-
-
-
-body.default-icons .nav-folder.mod-root .nav-folder > .nav-folder-children {
-  margin: 0 0 0 16px;
 }
 
 .nav-folder.mod-root .nav-folder > .nav-folder-children {
@@ -7443,25 +7425,21 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 }
 
 /*---- nav arrows adjust location ----*/
-body:not(.default-icons) .nav-folder-collapse-indicator {
+body .nav-folder-collapse-indicator {
   position: absolute;
   left: 2px;
   top: 1px;
   transition: transform 20ms linear 0s;
 }
 
-body:not(.default-icons) .nav-folder-collapse-indicator:hover {
+body .nav-folder-collapse-indicator:hover {
   position: absolute;
   left: 2px;
   top: 1px;
   transition: transform 20ms linear 0s;
 }
 
-body.default-icons .nav-folder-collapse-indicator {
-  margin-left: -9px;
-}
-
-body:not(.default-icons) .nav-folder-collapse-indicator::after {
+body .nav-folder-collapse-indicator::after {
   position: absolute;
   content: "↓";
   top: 1px;
@@ -7472,7 +7450,7 @@ body:not(.default-icons) .nav-folder-collapse-indicator::after {
   transition: transform 10ms linear 0s;
 }
 
-body:not(.default-icons) .nav-folder-collapse-indicator svg {
+body .nav-folder-collapse-indicator svg {
   display: none;
   color: var(--accent-strong);
   height: 7px;
@@ -7483,20 +7461,20 @@ body:not(.is-grabbing) .nav-folder.is-collapsed .nav-folder-title-content:not(.i
   color: var(--pacific-blue);
 }
 
-body:not(.default-icons) .nav-folder.is-collapsed .nav-folder-collapse-indicator::after {
+body .nav-folder.is-collapsed .nav-folder-collapse-indicator::after {
   transform: rotate(-90deg);
   opacity: 0.55;
 }
 
 /*search icon 1*/
-body:not(.default-icons) .backlink-pane .search-result-container .collapse-icon {
+body .backlink-pane .search-result-container .collapse-icon {
   left: 0;
   top: 7px;
   margin-top: 0;
   transition: transform 20ms linear 0s;
 }
 
-body:not(.default-icons) .backlink-pane .search-result-container .collapse-icon::before {
+body .backlink-pane .search-result-container .collapse-icon::before {
   content: "↓";
   font-size: 14px;
   font-family: 'Inter';
@@ -7505,27 +7483,27 @@ body:not(.default-icons) .backlink-pane .search-result-container .collapse-icon:
   transition: transform 10ms linear 0s;
 }
 
-body:not(.default-icons) .backlink-pane .search-result-container .collapse-icon svg {
+body .backlink-pane .search-result-container .collapse-icon svg {
   display: none;
   color: var(--accent-strong);
   height: 7px;
   width: 7px;
 }
 
-body:not(.default-icons) .backlink-pane .search-result-container .tree-item.search-result.is-collapsed .collapse-icon::before {
+body .backlink-pane .search-result-container .tree-item.search-result.is-collapsed .collapse-icon::before {
   transform: rotate(-90deg);
   opacity: 0.5;
 }
 
 /* search panel icons */
-body:not(.default-icons) .workspace-leaf .search-result-container.mod-global-search .tree-item-self.search-result-file-title.is-clickable .collapse-icon {
+body .workspace-leaf .search-result-container.mod-global-search .tree-item-self.search-result-file-title.is-clickable .collapse-icon {
   left: 0;
   top: 7px;
   margin-top: 0;
   transition: transform 20ms linear 0s;
 }
 
-body:not(.default-icons) .workspace-leaf .search-result-container.mod-global-search .tree-item-self.search-result-file-title.is-clickable .collapse-icon::before {
+body .workspace-leaf .search-result-container.mod-global-search .tree-item-self.search-result-file-title.is-clickable .collapse-icon::before {
   content: "↓";
   font-size: 14px;
   margin-left: 0px;
@@ -7535,14 +7513,14 @@ body:not(.default-icons) .workspace-leaf .search-result-container.mod-global-sea
   transition: transform 10ms linear 0s;
 }
 
-body:not(.default-icons) .workspace-leaf .search-result-container.mod-global-search .tree-item-self.search-result-file-title.is-clickable .collapse-icon svg {
+body .workspace-leaf .search-result-container.mod-global-search .tree-item-self.search-result-file-title.is-clickable .collapse-icon svg {
   display: none;
   color: var(--accent-strong);
   height: 7px;
   width: 7px;
 }
 
-body:not(.default-icons) .workspace-leaf .search-result-container.mod-global-search .tree-item.search-result.is-collapsed .collapse-icon::before {
+body .workspace-leaf .search-result-container.mod-global-search .tree-item.search-result.is-collapsed .collapse-icon::before {
   transform: rotate(-90deg);
   opacity: 0.5;
 }
@@ -7555,19 +7533,19 @@ body:not(.default-icons) .workspace-leaf .search-result-container.mod-global-sea
   color: var(--text-faint);
 }
 
-body:not(.default-icons) div.heading-collapse-indicator.collapse-indicator {
+body div.heading-collapse-indicator.collapse-indicator {
   position: absolute;
   margin: 15px 0 0 -20px;
   padding: 0;
   transition: transform 20ms linear 0s;
 }
 
-body:not(.default-icons) :is(h1,h2) div.heading-collapse-indicator.collapse-indicator {
+body :is(h1,h2) div.heading-collapse-indicator.collapse-indicator {
   position: absolute;
   transition: transform 20ms linear 0s;
 }
 
-body:not(.default-icons) div.heading-collapse-indicator.collapse-indicator::before {
+body div.heading-collapse-indicator.collapse-indicator::before {
   content: "↓";
   position: absolute;
   font-size: 15px;
@@ -7578,25 +7556,25 @@ body:not(.default-icons) div.heading-collapse-indicator.collapse-indicator::befo
   opacity: 0;
 }
 
-body:not(.default-icons) .heading-collapse-indicator.collapse-indicator.collapse-icon svg {
+body .heading-collapse-indicator.collapse-indicator.collapse-icon svg {
   display: none;
 }
 
-body:not(.default-icons) div.is-collapsed div.heading-collapse-indicator.collapse-indicator {
+body div.is-collapsed div.heading-collapse-indicator.collapse-indicator {
   transform: translateX(7px) translateY(7px) rotate(-90deg);
 }
 
-body:not(.default-icons) div.is-collapsed div.heading-collapse-indicator.collapse-indicator::before,
-body:not(.default-icons) :is(h1,h2,h3,h4,h5,h6):hover div.heading-collapse-indicator.collapse-indicator::before {
+body div.is-collapsed div.heading-collapse-indicator.collapse-indicator::before,
+body :is(h1,h2,h3,h4,h5,h6):hover div.heading-collapse-indicator.collapse-indicator::before {
   opacity: 1;
 }
 
-body:not(.default-icons) .outline .tree-item .collapse-icon {
+body .outline .tree-item .collapse-icon {
   padding: 0;
   transition: transform 20ms linear 0s;
 }
 
-body:not(.default-icons) .outline .tree-item .collapse-icon::before {
+body .outline .tree-item .collapse-icon::before {
   content: "↓";
   font-size: 1em;
   font-weight: bold;
@@ -7605,14 +7583,14 @@ body:not(.default-icons) .outline .tree-item .collapse-icon::before {
   transition: transform 10ms linear 0s;
 }
 
-body:not(.default-icons) .outline .tree-item .collapse-icon svg {
+body .outline .tree-item .collapse-icon svg {
   display: none;
   color: var(--accent-strong);
   height: 7px;
   width: 7px;
 }
 
-body:not(.default-icons) .outline .tree-item.is-collapsed .collapse-icon::before {
+body .outline .tree-item.is-collapsed .collapse-icon::before {
   transform: rotate(-90deg);
   opacity: 0.5;
 }
@@ -7623,10 +7601,6 @@ body:not(.default-icons) .outline .tree-item.is-collapsed .collapse-icon::before
   border-left: 1px solid #94949433;
   border-radius: 0;
   transition: all 400ms ease-in-out;
-}
-
-body.default-icons .outline .tree-item-children {
-  margin-left: 12.5px;
 }
 
 .outline .tree-item-children:hover {
@@ -11647,15 +11621,15 @@ body:not(.top-bottom-style) .setting-item[data-id="background-titlebar-inner"]  
   margin-right: -25px;
 }
 
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl div.heading-collapse-indicator.collapse-indicator {
+body :is(.markdown-preview-view,.markdown-rendered).rtl div.heading-collapse-indicator.collapse-indicator {
   position: absolute;
   right: -33px;
   padding-left: 0;
   transition: transform 20ms linear 0s;
 }
 
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl h1 div.heading-collapse-indicator.collapse-indicator,
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl h2 div.heading-collapse-indicator.collapse-indicator {
+body :is(.markdown-preview-view,.markdown-rendered).rtl h1 div.heading-collapse-indicator.collapse-indicator,
+body :is(.markdown-preview-view,.markdown-rendered).rtl h2 div.heading-collapse-indicator.collapse-indicator {
   position: absolute;
   right: -32px;
   padding-left: 0;
@@ -11663,27 +11637,27 @@ body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl h2 d
   transition: transform 20ms linear 0s;
 }
 
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl div.is-collapsed h1 div.heading-collapse-indicator.collapse-indicator,
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl div.is-collapsed h2 div.heading-collapse-indicator.collapse-indicator {
+body :is(.markdown-preview-view,.markdown-rendered).rtl div.is-collapsed h1 div.heading-collapse-indicator.collapse-indicator,
+body :is(.markdown-preview-view,.markdown-rendered).rtl div.is-collapsed h2 div.heading-collapse-indicator.collapse-indicator {
   transform: translateX(-9px) translateY(18px) rotate(90deg);
   opacity: 0.5;
 }
 
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl div.is-collapsed div.heading-collapse-indicator.collapse-indicator {
+body :is(.markdown-preview-view,.markdown-rendered).rtl div.is-collapsed div.heading-collapse-indicator.collapse-indicator {
   transform: translateX(-2px) translateY(25px) rotate(90deg);
   opacity: 0.5;
 }
 
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body :is(.markdown-preview-view,.markdown-rendered).rtl .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   right: 0;
 }
 
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl div>ul>li>.list-collapse-indicator.collapse-indicator.collapse-icon::before,
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl div>ol>li>.list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body :is(.markdown-preview-view,.markdown-rendered).rtl div>ul>li>.list-collapse-indicator.collapse-indicator.collapse-icon::before,
+body :is(.markdown-preview-view,.markdown-rendered).rtl div>ol>li>.list-collapse-indicator.collapse-indicator.collapse-icon::before {
   margin-right: 48px;
 }
 
-body:not(.default-icons) :is(.markdown-preview-view,.markdown-rendered).rtl li.is-collapsed div.list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body :is(.markdown-preview-view,.markdown-rendered).rtl li.is-collapsed div.list-collapse-indicator.collapse-indicator.collapse-icon::before {
   transform: rotate(90deg);
 }
 
@@ -12735,18 +12709,18 @@ body span[alt*="+grid"] {
 }
 
 /*collapse allows*/
-body:not(.default-icons).is-mobile h1 div.heading-collapse-indicator.collapse-indicator,
-body:not(.default-icons).is-mobile h2 div.heading-collapse-indicator.collapse-indicator,
-body:not(.default-icons).is-mobile div.heading-collapse-indicator.collapse-indicator {
+body.is-mobile h1 div.heading-collapse-indicator.collapse-indicator,
+body.is-mobile h2 div.heading-collapse-indicator.collapse-indicator,
+body.is-mobile div.heading-collapse-indicator.collapse-indicator {
   padding-left: 2px;
 }
 
-body:not(.default-icons).is-mobile div.is-collapsed div.heading-collapse-indicator.collapse-indicator {
+body.is-mobile div.is-collapsed div.heading-collapse-indicator.collapse-indicator {
   transform: translateX(-11px) translateY(16px) rotate(-90deg);
 }
 
-body:not(.default-icons).is-mobile div.is-collapsed h1 div.heading-collapse-indicator.collapse-indicator,
-body:not(.default-icons).is-mobile div.is-collapsed h2 div.heading-collapse-indicator.collapse-indicator {
+body.is-mobile div.is-collapsed h1 div.heading-collapse-indicator.collapse-indicator,
+body.is-mobile div.is-collapsed h2 div.heading-collapse-indicator.collapse-indicator {
   transform: translateX(-2px) translateY(6px) rotate(-90deg);
 }
 
@@ -13149,7 +13123,7 @@ body.is-mobile .menu-item-title {
   margin-bottom: 2px;
 }
 
-body:not(.default-icons).is-mobile .nav-folder-collapse-indicator::after {
+body.is-mobile .nav-folder-collapse-indicator::after {
   margin-left: -0.1em;
 }
 
@@ -13202,7 +13176,7 @@ body:not(.default-icons).is-mobile .nav-folder-collapse-indicator::after {
     display: none;
   }
 
-  body:not(.default-icons).is-mobile .nav-folder-collapse-indicator::after {
+  body.is-mobile .nav-folder-collapse-indicator::after {
     top: 1px;
   }
 }
@@ -13694,7 +13668,7 @@ body.view-header {
   background-color: transparent;
 }
 
-body:not(.remove-custom-svg-icons) .workspace-leaf-content[data-type="markdown"] .view-header-icon:hover::before {
+body .workspace-leaf-content[data-type="markdown"] .view-header-icon:hover::before {
   content:"👆🏻";
   opacity: 0.6;
   margin-left: -12px;
@@ -13816,27 +13790,27 @@ body .nav-file-title.is-active[data-path$=".md"]>.nav-file-title-content::before
   opacity: 1;
 }
 
-body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-edit-3 > path,
-body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-book-open > path {
+body .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-edit-3 > path,
+body .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-book-open > path {
   display: none;
 }
 
-body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-edit-3,
-body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-book-open {
+body .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-edit-3,
+body .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-book-open {
   background-color: currentColor;
 }
 
-body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-action svg{
+body .workspace-leaf-content .view-action svg{
   width: 17px;
   height: 17px;
   background-repeat: no-repeat;
 }
 
-body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-edit-3 {
+body .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-edit-3 {
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>');
 }
 
-body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-book-open {
+body .workspace-leaf-content .view-header .view-actions svg.svg-icon.lucide-book-open {
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7 17.013 4.413-.015 9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583-1.597 1.582-1.586-1.585 1.594-1.58zM9 13.417l6.03-5.973 1.586 1.586-6.029 5.971L9 15.006v-1.589z"></path><path d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"></path></svg>');
   background-color: var(--theme-color);
 }
@@ -13905,13 +13879,13 @@ body.setting-default-frosted-glass [class="menu"] {
   border-left-color: var(--theme-color);
 }
 
-body:not(.default-icons) .nav-view-outer .tree-item-self.collapse-icon {
+body .nav-view-outer .tree-item-self.collapse-icon {
   left: 0px;
   top: 7px;
   margin-top: 0px;
 }
 
-body:not(.default-icons) .nav-view-outer .tree-item-self .tree-item-icon::before {
+body .nav-view-outer .tree-item-self .tree-item-icon::before {
   content: "↓";
   font-size: 14px;
   font-family: 'Inter';
@@ -13920,14 +13894,14 @@ body:not(.default-icons) .nav-view-outer .tree-item-self .tree-item-icon::before
   transition: transform 10ms linear 0s;
 }
 
-body:not(.default-icons) .nav-view-outer .tree-item-self .tree-item-icon svg {
+body .nav-view-outer .tree-item-self .tree-item-icon svg {
   display: none;
   color: var(--accent-strong);
   height: 7px;
   width: 7px;
 }
 
-body:not(.default-icons) .nav-view-outer .tree-item.is-collapsed .tree-item-icon.collapse-icon {
+body .nav-view-outer .tree-item.is-collapsed .tree-item-icon.collapse-icon {
   transform: translateX(0px) translateY(0px) rotate(-90deg);
   opacity: 0.5;
 }
@@ -16788,11 +16762,11 @@ body.remove-shadow-p-kanban.theme-dark .callout.callout[data-callout*="kanban"] 
   text-indent: -1em;
 }
 
-body:not(.default-icons) .callout.callout[data-callout*="kanban"] li.task-list-item .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body .callout.callout[data-callout*="kanban"] li.task-list-item .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   margin-left: -0.2em;
 }
 
-body:not(.default-icons) .callout.callout[data-callout*="kanban"] li.task-list-item .task-list-item.is-collapsed .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body .callout.callout[data-callout*="kanban"] li.task-list-item .task-list-item.is-collapsed .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   transform: translateX(-0.9em) translateY(-1em) rotate(-90deg);
 }
 
