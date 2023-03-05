@@ -264,58 +264,24 @@ settings:
     type: class-toggle
     default: true
   -
-    id: table-format-options
-    title: Table Format
-    title.zh: 表格格式
-    type: class-select
-    allowEmpty: false
-    default: default-table
-    options:
-      -
-        label: Defaut table
-        value: default-table
-      -
-        label: Wrapped table (break all)
-        value: wrapped-table
-      -
-        label: Non-wrapped table (limited cell width)
-        value: no-wrapped-table-cell
-      -
-        label: Non-wrapped table
-        value: no-wrapped-table
-  -
-    id: show-border-table
-    title: Show Borders
-    title.zh: 显示表格框线
-    type: class-toggle
-    default: false
-  -
-    id: full-width-table
-    title: Full-width table display
-    title.zh: md表格全宽显示
-    description: for Reading View, require Contextual Typography plugin
-    description.zh: 阅读模式下，实现效果需要安装Contextual Typography插件
-    type: class-toggle
-    default: false
-  -
     id: table-style-options
     title: Table Style
     title.zh: 表格样式
     type: class-select
     allowEmpty: false
-    default: table-style-default
+    default: table-style-one
     options:
       -
-        label: Default
+        label: Obsidian Default
         value: table-style-default
       -
-        label: Style I
+        label: Dark
         value: table-style-one
       -
-        label: Style II
+        label: Dark Accent
         value: table-style-two
       -
-        label: Style III
+        label: No Background
         value: table-style-three
   -
     id: codeblock-folder
@@ -2607,7 +2573,7 @@ body.theme-dark {
   --table-hover-raw-color: var(--prussian-blue);
   --table-hover-color: var(--rich-black-2);
   --table-hover-thead-color: var(--pacific-cyan);
-  --table-header-color: var(--vanilla);
+  --table-header-color: var(--vivid-sky-blue);
 
   /*calendar*/
   --calendar-week-color: #a2df94;
@@ -6701,63 +6667,12 @@ body .table-view-table>thead>tr>th {
   overflow: unset;
 }
 
-/*modified from https://codepen.io/brettdewoody/pen/oBjbbB */
-body.no-wrapped-table-cell table:not([class*="table-view-table"]),
-body.no-wrapped-dvtable-cell .dataview.table-view-table {
-  width: 100%;
-  table-layout: fixed;
-}
-
-body.no-wrapped-table-cell table:not([class*="table-view-table"]) :is(th,td),
-body.no-wrapped-dvtable-cell .dataview.table-view-table :is(th,td) {
-  white-space: nowrap;
-  overflow-x: auto;
-  text-overflow: ellipsis;
-}
-
-body.no-wrapped-table-cell table:not([class*="table-view-table"]) :is(th,td):hover,
-body.no-wrapped-dvtable-cell .dataview.table-view-table :is(th,td):hover {
-  text-overflow: clip;
-}
-/*modified from https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
-
 /****dataview table***/
 table.table-view-table > thead > tr > th {
   font-size: 0.9em;
 }
 table.table-view-table > tbody > tr > td {
   font-size: 0.85em;
-}
-
-body.wrapped-dvtable:not(.no-wrapped-dvtable-cell):not(.no-wrapped-dvtable) :is(.markdown-preview-view,.markdown-rendered) table.dataview.table-view-table>thead>tr,
-body.wrapped-dvtable:not(.no-wrapped-dvtable-cell):not(.no-wrapped-dvtable) :is(.markdown-preview-view,.markdown-rendered) .table.dataview.table-view-table>tbody>tr,
-body.wrapped-table:not(.no-wrapped-table-cell):not(.no-wrapped-table) :is(.markdown-preview-view,.markdown-rendered) table:not([class*="table-view-table"]) >thead>tr,
-body.wrapped-table:not(.no-wrapped-table-cell):not(.no-wrapped-table) :is(.markdown-preview-view,.markdown-rendered) table:not([class*="table-view-table"]) >tbody>tr {
-  white-space: pre-wrap;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-
-body.no-wrapped-dvtable .block-language-dataview,
-body.no-wrapped-table table:not([class*="table-view-table"]) {
-  width: 100%;
-  margin: 0;
-  overflow-x: auto;
-  white-space: nowrap;
-}
-body.no-wrapped-dvtable table.dataview th {
-  padding: 0 20px;
-  font-size: 1em;
-}
-
-body.no-wrapped-dvtable table.dataview tbody tr td:first-child {
-  font-size: 0.9em;
-}
-
-body.no-wrapped-dvtable table.dataview td:not(:first-child),
-body.no-wrapped-dvtable table.dataview tr > td:last-of-type {
-  font-size: 0.9em;
-  max-width: unset;
 }
 
 body.auto-serial-number-dvtable .markdown-source-view:not(.cards) .dataview.table-view-table {
@@ -6784,13 +6699,13 @@ body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tb
 :is(.markdown-preview-view,.markdown-rendered) table tbody>tr:nth-child(odd),
 .markdown-source-view table tbody>tr:nth-child(odd) {
   background-color: var(--table-background-color-odd);
-  color: var(--vanilla)
+  color: var(--electric-blue-2)
 }
 
 :is(.markdown-preview-view,.markdown-rendered) table tbody>tr,
 .markdown-source-view table tbody>tr {
   background-color: var(--table-background-color);
-  color: var(--jasmine)
+  color: var(--electric-blue-2)
 }
 
 :is(.markdown-preview-view,.markdown-rendered) :is(th,td) {
@@ -6830,10 +6745,6 @@ body.enable-table-animation :is(.markdown-preview-view,.markdown-rendered,.markd
   background: var(--table-hover-color);
   transform: scale(1.02);
   transition: transform 0.1s cubic-bezier(0.22, 0.66, 0.46, 0.66);
-}
-
-body.show-border-table :is(.markdown-preview-view,.markdown-rendered) :is(th,td) {
-  border: 1px solid var(--table-border-color);
 }
 
 :is(.markdown-preview-view,.markdown-rendered) table {
@@ -6894,7 +6805,7 @@ body.table-style-three :is(.markdown-preview-view,.markdown-rendered) table tbod
 body.table-style-three .markdown-source-view table tbody>tr:nth-child(odd),
 body.table-style-three :is(.markdown-preview-view,.markdown-rendered) table tbody>tr,
 body.table-style-three .markdown-source-view table tbody>tr {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 /*table hover*/
