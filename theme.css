@@ -284,100 +284,30 @@ settings:
         label: No Background
         value: table-style-three
   -
-    id: link-style
-    title: 2.3.11 Links
-    title.zh: 2.3.11 链接
-    type: heading
-    level: 3
-    collapsed: true
-  -
     id: link-underline-internal
-    title: Toggle Internal Link Underline
-    title.zh: 开启内部链接下划线（默认：无）
+    title: Underline Internal Links
     type: class-toggle
     default: false
   -
     id: link-underline-external
-    title: Disable External Link Underline
-    title.zh: 关闭外部链接下划线（默认：有）
+    title: Underline external Links
     type: class-toggle
-    default: false
+    default: true
   -
     id: link-underline-unresolved
-    title: Toggle Unresolved Link Underline
-    title.zh: 开启未创建链接下划线（默认：有）
+    title: Underline unresolved Links
     type: class-toggle
     default: false
   -
     id: colorful-link-animation
-    title: Toggle colorful link background (hovering)
-    title.zh: 开启彩色链接背景颜色 （鼠标悬浮时）
+    title: Enable colorful link on hover
     type: class-toggle
     default: false
   -
     id: remove-external-link-icon
-    title: Toggle Icon after External Link
-    title.zh: 去除外部链接后面的图标
+    title: Remove external link icon
     type: class-toggle
     default: false
-  -
-    id: default-unresolved-link
-    title: Toggle default unresolved link color
-    title.zh: 使用默认的未创建链接颜色
-    type: class-toggle
-    default: false
-  -
-    id: unresolved-link
-    title: Unresolved Link Color
-    title.zh: 未创建链接颜色
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: link-click
-    title: Cancel click the link to trigger auto-jump
-    title.zh: 取消编辑模式下点击链接自动跳转
-    type: class-toggle
-    default: false
-    description: You can click on the link by holding down the ctrl key to jump
-    description.zh: 可以通过按住ctrl键点击链接跳转
-  -
-    id: cursor-style-folder
-    title: 2.3.12 Cursor
-    title.zh: 2.3.12 输入光标
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: cursor-color
-    title: Cursor color
-    title.zh: 光标颜色
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: checkbox-style-folder
-    title: 2.3.13 Checkbox
-    title.zh: 2.3.13 勾选框
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: circular-checkbox
-    title: Circular Checkbox
-    title.zh: 圆形勾选框
-    type: class-toggle
-    default: false
-  -
-    id: checkbox-size
-    title: Checkbox Size
-    title.zh: 勾选框大小
-    type: variable-text
-    default: 1rem
   -
     id: unmute-checkbox-animation
     title: Deactivate Checkbox Animation
@@ -2209,10 +2139,9 @@ body {
   --text-highlight-bg-l-light: 80%;
   --text-highlight-bg-a-light: 0.847;
 
-  --cursor-color: var(var(--text-normal));
+  --cursor-color: var(--electric-blue-3);
 
-  --fancy-cursor-width: 2px;
-  --cursor-color-temp: var(var(--text-normal));
+  --cursor-color-temp: var(--electric-blue-3);
 
   --tag-border-width: 1px;
   --paragraph-spacing: 1;
@@ -2277,6 +2206,7 @@ body {
   --background-modifier-hover: var(--cerulean);
   --tab-outline-width: 1.5px;
   --tab-divider-color: var(--celeste-translucent);
+  --background-modifier-border-checkbox: var(--electric-blue-2);
 }
 
 body.theme-dark {
@@ -2290,7 +2220,7 @@ body.theme-dark {
   --text-accent: var(--color-accent);
   --text-accent-hover: var(--color-accent-2);
   --text-highlight: var(--text-normal);
-  --background-modifier-box-shadow: rgba(228, 228, 228, 0.08);
+  --background-modifier-box-shadow: rgba(172, 248, 242, 0.14);
   --background-modifier-active-hover: var(--cerulean);
   --indentation-guide-color: var(--indigo-blue);
   --indentation-guide-width: 2px;
@@ -2329,7 +2259,6 @@ body.theme-dark {
   --background-mobile-drawer-2: #1b1b1b69;
   --background-modifier-border-hr: #3f3f3f;
   --background-modifier-border-asymm: #343434;
-  --background-modifier-border-checkbox: #7b7b7b;
   --background-transparent-black-or-white-1: #1b1b1b9a;
   --background-transparent-black-or-white-2: #1e1e1ebd;
   --background-transparent-black-or-white-3: #2f2f2f6c;
@@ -2433,8 +2362,9 @@ body.theme-dark {
   --graph-circle-fill-highlight: var(--electric-blue-3);
   --graph-line-fill-highlight: var(--aquamarine);
 
-  --unresolved-link: var(--graph-unresolved);
-  --link-unresolved-decoration-color: var(--graph-unresolved);
+  --unresolved-link: var(--lavendar-pink);
+  --link-unresolved-color: var(--lavendar-pink);
+  --link-unresolved-decoration-color: var(--lavendar-pink);
   --internal-link-color: var(--text-accent);
   --external-link-color: var(--internal-link-color);
 
@@ -4030,7 +3960,7 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-formatting-quote {
 }
 
 /* highlight */
-:is(.markdown-preview-view,.markdown-rendered) mark {
+:is(.markdown-preview-view,.markdown-rendered) :not(.cloze) mark {
   background-color: var(--text-highlight-bg);
   padding: 1px 3px;
   color: var(--text-highlight);
@@ -4086,6 +4016,12 @@ body :is(.markdown-preview-view,.markdown-rendered) mark > del,
   background-color: var(--cloze-bg-color);
   color: var(--cloze-bg-color);
   text-decoration: underline var(--cloze-decoration) var(--cloze-decoration-color);
+}
+
+body :is(.markdown-preview-view,.markdown-rendered) mark,
+:is(.markdown-preview-view,
+.markdown-rendered).cloze mark {
+  background-color: transparent !important;
 }
 
 body .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em),
@@ -4583,8 +4519,9 @@ li[data-task="-"]>p>input:checked {
   to {-webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1);}
 }
 
-body.circular-checkbox input[type=checkbox] {
-  border-radius: 50%;
+body input[type=checkbox] {
+  border-radius: 50% !important;
+  border: 2px solid var(--background-modifier-border-checkbox);
 }
 
 /* headers */
@@ -6380,7 +6317,7 @@ body.remove-external-link-icon a.external-link {
 }
 body.remove-external-link-icon span.external-link
 {
-  background-image:none;
+  background-image: none;
 }
 /*link format [[]]*/
 .cm-formatting-link.cm-strong.cm-em {
@@ -6811,27 +6748,6 @@ div[class*="-backlinks"].markdown-preview-view .markdown-preview-sizer.markdown-
   color: var(--text-normal);
 }
 
-.theme-light .cm-s-obsidian span.cm-formatting-highlight,
-.theme-light .cm-s-obsidian span.cm-highlight:not([class*="code"]),
-.theme-light :is(.markdown-preview-view,.markdown-rendered) mark,
-.theme-light .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight,
-.theme-light .popover mark,
-.theme-light span.cm-strong.cm-em.cm-highlight {
-  background-color: hsla(var(--text-highlight-bg-h-light), var(--text-highlight-bg-s-light), var(--text-highlight-bg-l-light), var(--text-highlight-bg-a-light));
-}
-.theme-dark .cm-s-obsidian span.cm-formatting-highlight,
-.theme-dark .cm-s-obsidian span.cm-highlight:not([class*="code"]),
-.theme-dark :is(.markdown-preview-view,.markdown-rendered) mark,
-.theme-dark .cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight,
-.theme-dark .popover mark,
-.theme-dark span.cm-strong.cm-em.cm-highlight {
-  background-color: hsla(var(--text-highlight-bg-h-dark), var(--text-highlight-bg-s-dark), var(--text-highlight-bg-l-dark), var(--text-highlight-bg-a-dark));
-}
-
-.theme-light :is(.markdown-preview-view,.markdown-rendered) :not(font)>strong>em>mark {
-  background-color: hsla(var(--text-highlight-bg-h-light), calc(var(--text-highlight-bg-s-light)*1.5), calc(var(--text-highlight-bg-l-light)*0.6), calc(var(--text-highlight-bg-a-light)*0.28));
-}
-
 .theme-dark :is(.markdown-preview-view,.markdown-rendered) :not(font)>strong>em>mark {
   background-color: hsla(var(--text-highlight-bg-h-dark), calc(var(--text-highlight-bg-s-dark)*1.5), calc(var(--text-highlight-bg-l-dark)*1.1), calc(var(--text-highlight-bg-a-dark)*0.55));
 }
@@ -6988,27 +6904,28 @@ body:not(.folder-style-change-options-colorful) .nav-file-title.is-active[data-p
   font-family: var(--font-family-strong) !important;
 }
 
-body:not(.default-unresolved-link) :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved>*,
-body:not(.default-unresolved-link) *>.internal-link.is-unresolved,
-body:not(.default-unresolved-link) .markdown-source-view.mod-cm6 .cm-hmd-internal-link .is-unresolved {
-  color: var(--unresolved-link) !important;
+body :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved>*,
+body *>.internal-link.is-unresolved,
+body .markdown-source-view.mod-cm6 .cm-hmd-internal-link .is-unresolved {
+  color: var(--lavendar-pink) !important;
 }
 
-body:not(.default-unresolved-link) .markdown-source-view.mod-cm6 .is-unresolved,
-body:not(.default-unresolved-link) :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved {
-  opacity: 0.7;
+body .markdown-source-view.mod-cm6 .is-unresolved,
+body :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved {
+  opacity: 1;
 }
 
-body.link-underline-unresolved :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved>*,
-body.link-underline-unresolved *>.internal-link.is-unresolved,
-body.link-underline-unresolved .markdown-source-view.mod-cm6 .cm-hmd-internal-link .is-unresolved,
-body.link-underline-unresolved .markdown-source-view.mod-cm6 .is-unresolved,
-body.link-underline-unresolved :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved,
-body.link-underline-unresolved .cm-hmd-internal-link .is-unresolved .cm-underline {
+body :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved>*,
+body *>.internal-link.is-unresolved,
+body .markdown-source-view.mod-cm6 .cm-hmd-internal-link .is-unresolved,
+body .markdown-source-view.mod-cm6 .is-unresolved,
+body :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved,
+body .cm-hmd-internal-link .is-unresolved .cm-underline {
+  color: var(--lavendar-pink) !important;
   text-decoration: none !important;
 }
 
-body:not(.default-unresolved-link) :is(.markdown-preview-view,.markdown-rendered) mark .internal-link.is-unresolved {
+body :is(.markdown-preview-view,.markdown-rendered) mark .internal-link.is-unresolved {
   opacity: 0.9;
 }
 
@@ -7037,6 +6954,7 @@ a.internal-link,
 }
 
 body.colorful-link-animation :is(.markdown-preview-view,.markdown-rendered) a:hover {
+  color: var(--fairy-tale);
   animation: 2s colorful-link infinite;
 }
 
@@ -7050,10 +6968,9 @@ a.external-link {
   color: var(--external-link-color);
 }
 
-
-body.link-underline-external .markdown-source-view.mod-cm6 .cm-link .cm-underline,
+body:not(.link-underline-external) .markdown-source-view.mod-cm6 .cm-link .cm-underline,
 body.link-underline-externa .markdown-source-view.mod-cm6 .cm-url .cm-underline,
-body.link-underline-external  a.external-link,
+body:not(.link-underline-external)  a.external-link,
 body:not(.link-underline-internal) .markdown-source-view.mod-cm6 .cm-hmd-internal-link >*:not(.is-unresolved).cm-underline,
 body:not(.link-underline-internal) :is(.markdown-preview-view,.markdown-rendered) .internal-link:not(.is-unresolved) {
   text-decoration-line:none;
@@ -8255,7 +8172,7 @@ pre.language-note-imp::before {
 
  :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 code.language-note-cloze.is-loaded:hover {
@@ -17432,10 +17349,6 @@ div.callout[data-callout="stickies3"] >.callout-content ul {
   -o-transform: rotate(-1deg);
   -ms-transform: rotate(-1deg);
   transform: rotate(-1deg);
-}
-/*禁用点击超链接跳转 需要跳转 按ctrl+超链接即可*/
-body.link-click .is-live-preview .cm-s-obsidian span.cm-link {
-  pointer-events: none;
 }
 
 /*禁用实时预览点击标签跳转 需要跳转 点击#号即可*/
