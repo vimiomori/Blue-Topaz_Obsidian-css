@@ -314,41 +314,6 @@ settings:
     type: class-toggle
     default: true
   -
-    id: icons-style-folder-1
-    title: Intro to Basic Image Position
-    title.zh: 基本图片位置简介
-    description: You can add 🔸|Left (can also use `left`, `LEFT` or `L` to replace the `Left` before), 🔸|Right (right/RIGHT/R) and 🔸|Inline (inline/INLINE/inl/INL/Inl) 🔸|Centre/Center (CENTRE/CENTER/centre/center/C) (the “centre” one is for the “Obsidian Default Image Position above only, because Topaz's default image position is in the centre) into a image format to adjust the image position, e.g. ![[*.jpg|L]], ![[*.png|Right|200]] and ![|inl](...*.jpg)
-    description.zh: 在图片格式里添加 🔸|Left (can also use `left`, `LEFT` or `L` to replace the `Left` before), 🔸|Right (right/RIGHT/R) and 🔸|Inline (inline/INLINE/inl/INL/Inl) 🔸|Centre/Center (CENTRE/CENTER/centre/center/C) (这个选项只在开启 “Obsidian默认图片位置” 后生效，因为Topaz默认图片位置就是居中) 来改变图片位置, e.g. ![[*.jpg|L]], ![[*.png|Right|200]] and ![|inl](...*.jpg)
-    type: heading
-    level: 4
-    collapsed: true
-  -
-    id: icons-style-folder-2
-    title: Intro to Image Caption
-    title.zh: 图片标题介绍
-    description: You can add 🔸#Left|your captions (can also use `left`, `LEFT` or `L` to replace the `Left`), 🔸#Right (or right/RIGHT/R)|your captions, 🔸#center/centre (CENTRE/CENTER/Center/Centre/C) |your captions and 🔸#inl (Inline/INLINE/inline/INL/Inl) |your captions into a image format to adjust the image position with a image caption, e.g. ![[*.jpg#left|Figure 1]], ![[*.png#right|Figure 2|200]], ![[*.jpg#centre|Figure 3]] and ![[*.jpg#inl|Figure 4|100]]
-    description.zh: 在图片格式里添加 🔸#left (can also use `left`, `LEFT` or `L` to replace the `Left`) |your captions, 🔸#right (or right/RIGHT/R) |your captions, 🔸#center/centre (CENTRE/CENTER/Center/Centre/C) |your captions and 🔸#inl (Inline/INLINE/inline/INL/Inl) |your captions 来改变图片位置，并添加图片标题, e.g. ![[*.jpg#left|Figure 1]], ![[*.png#right|Figure 2|200]], ![[*.jpg#C|Figure 3]] and ![[*.jpg#inl|Figure 4|100]]
-    type: heading
-    level: 4
-    collapsed: true
-  -
-    id: icons-style-folder-3
-    title: Intro to Image Grid
-    title.zh: 图片横排介绍
-    description: You can add 🔸|+grid into some images to grid these images in a line, e.g. ![[*.jpg|+grid]] Or type ❗cssclass：img-grid❗ in YAML to make images arrange in a grid in the preview mode. require Contextual Typography plugin
-    description.zh: 在图片格式里添加 🔸|+grid 使复数的图片排成一行, e.g. ![[*.jpg|+grid]] 。或者在YAML种输入 ❗cssclass：img-grid❗最好安装 Contextual Typography 插件实现更好的并排效果
-    type: heading
-    level: 4
-    collapsed: false
-  -
-    id: img-grid
-    title:  Enable Global Image Grid
-    title.zh: 开启全局图片横排显示
-    description: Enable the Contextual Typography plugin to control side-by-side images via blank lines
-    description.zh:  开启后，不需要在笔记上方声明cssclass：img-grid，通过图片空行控制是否并排
-    type: class-toggle
-    default: false
-  -
     id: loading-page-style-folder
     title: 2.3.16 Loading Page
     title.zh: 2.3.16 加载页面
