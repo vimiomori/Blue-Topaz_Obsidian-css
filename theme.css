@@ -284,127 +284,6 @@ settings:
         label: No Background
         value: table-style-three
   -
-    id: codeblock-folder
-    title: 2.3.9 Codebox and Inline Code
-    title.zh: 2.3.9 代码框和行内代码
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: code-box-option-folder
-    title: 2.3.9.1 Codebox
-    title.zh: 2.3.9.1 代码框
-    type: heading
-    level: 4
-    collapsed: true
-  -
-    id: code-box-option-folder
-    title: Jump  to Blue Topaz Codebox Setting
-    title.zh: 相关设置已转移到顶级目录
-    type: heading
-    level: 5
-    collapsed: true
-  -
-    id: style-options-for-other-plugins
-    title: 2.3.9.2 Inline Code
-    title.zh: 2.3.9.2 行内代码
-    type: heading
-    level: 4
-    collapsed: true
-  -
-    id: background-code-2
-    title: Inline Code Background Color
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: text-color-code
-    title: Inline Code Color
-    title.zh: 行内代码颜色
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: font-weight-inline-code
-    title: Font Weight of Inline Code
-    title.zh: 行内代码字重
-    type: variable-text
-    default: bold
-  -
-    id: cloze-style
-    title: 2.3.10 Cloze Style
-    title.zh: 2.3.10 挖空涂黑
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: remove-cloze-style
-    title: Cancel Cloze Style
-    title.zh: 取消挖空涂黑功能
-    description: In this theme, you can use ==~~your words~~==, *==~~your words~~==* and *~~your words~~* to obtain a cloze-style, active this option to cancel it
-    description.zh: 当前主题下，使用以下格式可以对文本进行涂黑或挖空 ==~~your words~~==, *==~~your words~~==* 或 *~~your words~~*，激活该选项以取消
-    type: class-toggle
-    default: false
-  -
-    id: cloze-bg-color
-    title: Cloze background color
-    title.zh: 涂黑背景颜色
-    description: Cloze Style One, i.e. ==~~your words~~==, hovering to find "your words", should declare "cssclass：cloze" in the YAML area if you want to use them in the Live Preview mode
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: cloze-decoration
-    title: Underline decoration style
-    description: Can type 'solid', 'dotted', 'dashed', 'wavy' or 'double' for Cloze Style One, i.e. ==~~your words~~==, hovering to find "your words", should declare "cssclass：cloze" in the YAML area if you want to use them in the Live Preview mode
-    type: variable-text
-    default: none
-  -
-    id: cloze-decoration-color
-    title: Underline decoration color
-    description: For Cloze Style One, i.e. ==~~your words~~==, hovering to find "your words", should declare 'cssclass：cloze' in the YAML area if you want to use them in the Live Preview mode
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: cloze-decoration-2
-    title: Underline decoration style for Cloze style TWO
-    description: Can type 'solid', 'dotted', 'dashed', 'wavy', 'double' or 'none' for Cloze Style TWO, i.e. *==~~your words~~==*, pressing down the primary mouse button to find "your words", should declare 'cssclass：cloze' in the YAML area if you want to use them in the Live Preview mode
-    type: variable-text
-    default: dashed
-  -
-    id: cloze-decoration-color-2
-    title: Underline decoration color for Cloze style TWO
-    description: For Cloze Style TWO, i.e. *==~~your words~~==*, pressing down the primary mouse button to find "your words", should declare 'cssclass：cloze' in the YAML area if you want to use them in the Live Preview mode
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: cloze-decoration-3
-    title: Underline decoration style for Cloze style THREE (*~~your words~~*)
-    description: Can type 'solid', 'dotted', 'dashed', 'wavy', 'double' or 'none' for Cloze Style THREE, i.e. *~~your words~~*, pressing down the primary mouse button to find "your words", should declare 'cssclass：cloze' in the YAML area if you want to use them in the Live Preview mode
-    type: variable-text
-    default: dashed
-  -
-    id: cloze-decoration-color-3
-    title: Underline decoration color for Cloze style THREE
-    description: For Cloze Style THREE, i.e. *~~your words~~*, pressing down the primary mouse button to find "your words", should declare 'cssclass：cloze' in the YAML area if you want to use them in the Live Preview mode
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
     id: link-style
     title: 2.3.11 Links
     title.zh: 2.3.11 链接
@@ -2309,13 +2188,13 @@ body {
   --font-weight-h5: bold;
   --font-weight-h6: bold;
 
-  --cloze-bg-color: var(--accent-strong);
-  --cloze-decoration: none;
-  --cloze-decoration-color: red;
-  --cloze-decoration-2: dashed;
+  --cloze-bg-color: var(--rich-black-2);
+  --cloze-decoration: wavy;
+  --cloze-decoration-color: var(--pale-dogwood);
+  --cloze-decoration-2: double;
   --cloze-decoration-color-2: var(--theme-color);
   --cloze-bg-color-3: transparent;
-  --cloze-decoration-3: dashed;
+  --cloze-decoration-3: dotted;
   --cloze-decoration-color-3: var(--theme-color);
 
   --custom-titlebar-bg: var(--background-secondary-alt);
@@ -2461,23 +2340,23 @@ body.theme-dark {
   --background-transparent-blue: #003e759a;
   --scrollbar-thumb: #00fbffc4;
   --scrollbar-thumb-active: var(--electric-blue);
-  --gray-1: #5C6370;
-  --gray-2: #abb2bf;
-  --red: #db7c84;
-  --red-1: #d05a63;
-  --orange: #d1945b;
-  --orange-1: #da904b;
-  --green: #abd58e;
-  --darkgreen: #568060;
-  --aqua: #35bed0;
-  --purple: #c594d4;
-  --blue: #a0c7e9;
-  --darkblue: #478fee;
-  --yellow: #d6b87f;
-  --light-yellow: #cac685;
-  --white: #ffffff;
-  --variable-2: #0072d0;
-  --variable-3: #5a96f7;
+  --gray-1: #38677c;
+  --gray-2: #64b9cc;
+  --red: var(--melon);
+  --red-1: #ff939c;
+  --orange: var(--apricot);
+  --orange-1: var(--atomic-tangerine);
+  --green: var(--aquamarine);
+  --darkgreen: var(--spring-green);
+  --aqua: var(--electric-blue-3);
+  --purple: var(--mauve);
+  --blue: var(--vivid-sky-blue);
+  --darkblue: var(--blue-munsell);
+  --yellow: var(--jasmine);
+  --light-yellow: var(--yellow-chiffon);
+  --white: var(--celeste);
+  --variable-2: var(--robin-egg);
+  --variable-3: var(--pacific-blue);
 
   --interactive-accent-hsl: 199, 100%, 7%;
 
@@ -2494,13 +2373,13 @@ body.theme-dark {
   --color-specification: #3ce252;
 
   --background-blockquote: #00779b39;
-  --background-code: #1111118c;
-  --background-code-2: #4c4c4cb0;
-  --text-color-code: #d58000;
-  --code-normal: #d0d0d0;
+  --background-code: var(--rich-black-2);
+  --background-code-2: var(--rich-black-2);
+  --text-color-code: var(--aquamarine-2);
+  --code-normal: var(--non-photo-blue);
   --list-ul-block-color: #e19742a9;
   --list-ul-disc-color: #eb9563;
-  --green-1: #79c142;
+  --green-1: var(--spring-green-2);
   --list-ul-hover: #e28915de;
   --list-ol-block-color: #2685bbb4;
   --list-ol-hover: #2c7bd6;
@@ -2748,8 +2627,6 @@ body.theme-dark {
   --tag3: var(--nord7-transparent);
   --tag4: var(--nord7-transparent);
   --tag5: var(--nord7-transparent);
-
-  --text-color-code: var(--nord8);
 
   --strong-em-color-1: var(--aquamarine);
   --strong-em-color-2: var(--accent-strong);
@@ -3168,21 +3045,21 @@ body.markdown-source-view.is-live-preview *:not([class*="cm-formatting-highlight
 
 /* cssclass: cloze */
 .markdown-source-view.is-live-preview.cloze .cm-highlight.cm-strikethrough:not([class*="formatting"]),
-body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-highlight.cm-strikethrough:not([class*="formatting"]) {
+body .markdown-source-view.is-live-preview .cm-highlight.cm-strikethrough:not([class*="formatting"]) {
   background-color: var(--cloze-bg-color) !important;
   color: var(--cloze-bg-color);
   text-decoration: underline var(--cloze-decoration) var(--cloze-decoration-color);
 }
 
 .markdown-source-view.is-live-preview.cloze .cm-highlight.cm-strikethrough:hover,
-body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-highlight.cm-strikethrough:hover {
+body .markdown-source-view.is-live-preview .cm-highlight.cm-strikethrough:hover {
   background-color: transparent !important;
   color: var(--text-normal) !important;
   transition: all 400ms ease-in-out;
 }
 
 .markdown-source-view.is-live-preview.cloze .cm-em.cm-highlight.cm-strikethrough:not([class*="formatting"]),
-body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-em.cm-highlight.cm-strikethrough:not([class*="formatting"]) {
+body .markdown-source-view.is-live-preview .cm-em.cm-highlight.cm-strikethrough:not([class*="formatting"]) {
   color: transparent !important;
   background-color: transparent !important;
   padding: 0 2px;
@@ -4203,7 +4080,7 @@ span.cm-highlight.cm-inline-code {
 }
 
 /*cloze*/
-body:not(.remove-cloze-style) :is(.markdown-preview-view,.markdown-rendered) mark > del,
+body :is(.markdown-preview-view,.markdown-rendered) mark > del,
 :is(.markdown-preview-view,
 .markdown-rendered).cloze mark > del {
   background-color: var(--cloze-bg-color);
@@ -4211,22 +4088,22 @@ body:not(.remove-cloze-style) :is(.markdown-preview-view,.markdown-rendered) mar
   text-decoration: underline var(--cloze-decoration) var(--cloze-decoration-color);
 }
 
-body:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em),
-body:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough,
+body .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em),
+body .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough,
 .markdown-source-view.cloze .cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em),
 .markdown-source-view.cloze *:not([class*="cm-formatting-em"]).cm-formatting.cm-formatting-highlight.cm-highlight~span.cm-formatting-strikethrough.cm-highlight.cm-strikethrough {
   text-decoration: underline var(--cloze-decoration) var(--cloze-decoration-color);
   background-color: transparent !important;
 }
 
-body:not(.remove-cloze-style) .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~.cm-formatting.cm-formatting-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em):hover,
+body .cm-s-obsidian .cm-formatting.cm-formatting-highlight.cm-highlight~.cm-formatting.cm-formatting-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em):hover,
 .markdown-source-view.cloze .cm-formatting.cm-formatting-highlight.cm-highlight~.cm-formatting.cm-formatting-strikethrough~span.cm-highlight.cm-strikethrough:not(.cm-em):hover {
   background-color: var(--text-highlight-bg);
   color: var(--text-normal);
   transition: all 400ms ease-in-out;
 }
 
-body:not(.remove-cloze-style) :is(.markdown-preview-view,
+body :is(.markdown-preview-view,
 .markdown-rendered) mark > del:hover,
 :is(.markdown-preview-view,
 .markdown-rendered).cloze mark > del:hover {
@@ -4235,7 +4112,7 @@ body:not(.remove-cloze-style) :is(.markdown-preview-view,
   transition: all 400ms ease-in-out;
 }
 
-body:not(.remove-cloze-style) :is(.markdown-preview-view,
+body :is(.markdown-preview-view,
 .markdown-rendered) em > mark > del,
 :is(.markdown-preview-view,
 .markdown-rendered).cloze em > mark > del {
@@ -4245,7 +4122,7 @@ body:not(.remove-cloze-style) :is(.markdown-preview-view,
   text-decoration: underline var(--cloze-decoration-2) var(--cloze-decoration-color-2) !important;
 }
 
-body:not(.remove-cloze-style) :is(.markdown-preview-view,
+body :is(.markdown-preview-view,
 .markdown-rendered) em > mark > del:hover,
 :is(.markdown-preview-view,
 .markdown-rendered).cloze em > mark > del:hover {
@@ -4253,7 +4130,7 @@ body:not(.remove-cloze-style) :is(.markdown-preview-view,
   color: transparent;
 }
 
-body:not(.remove-cloze-style) :is(.markdown-preview-view,
+body :is(.markdown-preview-view,
 .markdown-rendered) em > mark > del:active,
 :is(.markdown-preview-view,
 .markdown-rendered).cloze em > mark > del:active {
@@ -4262,25 +4139,25 @@ body:not(.remove-cloze-style) :is(.markdown-preview-view,
   transition: all 400ms ease-in-out;
 }
 
-body:not(.remove-cloze-style) .cm-s-obsidian .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-em.cm-highlight.cm-strikethrough:not([class*="formatting"]),
-body:not(.remove-cloze-style) .cm-s-obsidian .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough:not([class*="formatting"]),
+body .cm-s-obsidian .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-em.cm-highlight.cm-strikethrough:not([class*="formatting"]),
+body .cm-s-obsidian .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough:not([class*="formatting"]),
 .markdown-source-view.cloze .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-em.cm-highlight.cm-strikethrough,
 .markdown-source-view.cloze .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough {
   color: var(--accent-strong) !important;
   text-decoration: underline var(--cloze-decoration-2) var(--cloze-decoration-color-2) !important;
 }
-body:not(.remove-cloze-style) .cm-s-obsidian .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-em.cm-highlight.cm-strikethrough,
-body:not(.remove-cloze-style) .cm-s-obsidian .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough{
+body .cm-s-obsidian .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-em.cm-highlight.cm-strikethrough,
+body .cm-s-obsidian .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough{
   background-color: transparent !important;
 }
-body:not(.remove-cloze-style) .markdown-source-view:not([class*="cm5"]) .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-em.cm-highlight.cm-strikethrough~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight,
+body .markdown-source-view:not([class*="cm5"]) .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-em.cm-highlight.cm-strikethrough~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight,
 .markdown-source-view:not([class*="cm5"]).cloze .cm-em.cm-formatting.cm-formatting-em.cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-highlight.cm-strikethrough~span.cm-em.cm-highlight.cm-strikethrough~.cm-em.cm-formatting.cm-formatting-highlight.cm-highlight {
   background-color: var(--bg-color-highlight-1) !important;
   color: var(--color-highlight-1);
   font-style: normal;
 }
 
-body:not(.remove-cloze-style) :is(.markdown-preview-view,
+body :is(.markdown-preview-view,
 .markdown-rendered) em > del,
 :is(.markdown-preview-view,
 .markdown-rendered).cloze em > del {
@@ -4290,7 +4167,7 @@ body:not(.remove-cloze-style) :is(.markdown-preview-view,
   text-decoration: underline var(--cloze-decoration-3) var(--cloze-decoration-color-3);
 }
 
-body:not(.remove-cloze-style) :is(.markdown-preview-view,
+body :is(.markdown-preview-view,
 .markdown-rendered) em > del:hover,
 :is(.markdown-preview-view,
 .markdown-rendered).cloze em > del:hover {
@@ -4299,7 +4176,7 @@ body:not(.remove-cloze-style) :is(.markdown-preview-view,
   transition: all 400ms ease-in-out;
 }
 
-body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-em.cm-strikethrough,
+body .markdown-source-view.is-live-preview .cm-em.cm-strikethrough,
 .markdown-source-view.is-live-preview.cloze .cm-em.cm-strikethrough {
   background-color: var(--cloze-bg-color-3);
   color: var(--cloze-bg-color-3);
@@ -4307,19 +4184,19 @@ body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-em.cm-st
   text-decoration: underline var(--cloze-decoration-3) var(--cloze-decoration-color-3);
 }
 
-body:not(.remove-cloze-style) .markdown-source-view.is-live-preview .cm-em.cm-strikethrough:hover,
+body .markdown-source-view.is-live-preview .cm-em.cm-strikethrough:hover,
 .markdown-source-view.is-live-preview.cloze .cm-em.cm-strikethrough:hover {
   background-color: transparent !important;
   color: var(--text-normal) !important;
   transition: all 400ms ease-in-out;
 }
 
-body:not(.remove-cloze-style) .cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-strikethrough,
+body .cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-strikethrough,
 .markdown-source-view.cloze .cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-strikethrough {
   color: var(--accent-strong);
   text-decoration: none;
 }
-body:not(.remove-cloze-style) .cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-strikethrough~span.cm-em.cm-strikethrough:not([class*="formatting"]),
+body .cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-strikethrough~span.cm-em.cm-strikethrough:not([class*="formatting"]),
 .markdown-source-view.cloze .cm-em.cm-formatting.cm-formatting-em~.cm-em.cm-formatting.cm-formatting-strikethrough.cm-strikethrough~span.cm-em.cm-strikethrough:not([class*="formatting"]) {
   font-style: normal;
   color: var(--accent-strong);
