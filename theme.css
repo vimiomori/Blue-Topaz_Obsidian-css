@@ -309,18 +309,10 @@ settings:
     type: class-toggle
     default: false
   -
-    id: unmute-checkbox-animation
-    title: Deactivate Checkbox Animation
-    title.zh: 取消勾选框摇摆动画
+    id: checkbox-animation
+    title: Enable checkbox animation
     type: class-toggle
-    default: false
-  -
-    id: icons-style-folder
-    title: 2.3.14 Icons
-    title.zh: 2.3.14 图标
-    type: heading
-    level: 3
-    collapsed: true
+    default: true
   -
     id: remove-custom-svg-icons
     title: Toggle Default Icons
@@ -4434,8 +4426,8 @@ input[type=checkbox]:checked {
   background-color: var(--checkbox-color-0);
 }
 
-body:not(.unmute-checkbox-animation) .is-flashing input.task-list-item-checkbox[type=checkbox]:checked:hover,
-body:not(.unmute-checkbox-animation) input.task-list-item-checkbox[type=checkbox]:checked:hover {
+body.checkbox-animation .is-flashing input.task-list-item-checkbox[type=checkbox]:checked:hover,
+body.checkbox-animation input.task-list-item-checkbox[type=checkbox]:checked:hover {
   animation: tada 1s;
   filter: saturate(200%) opacity(110%);
 }
