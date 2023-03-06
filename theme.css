@@ -388,118 +388,10 @@ settings:
         label: Safari Style
         value: safari-tab-style
   -
-    id: metadata-styles
-    title: 2.3.24 Metadata(Yaml)
-    type: heading
-    level: 3
-    collapsed: true
-  -
     id: show-full-metadata
     title: Show full metadata in Reading mode
-    title.zh: 阅读模式下显示完整的metadata信息
-    description.zh: 需要先在设置中开启显示front-matter，笔记cssclass中声明show-full-metadata 可单独控制是否显示yaml
     type: class-toggle
     default: false
-  -
-    id: canvas-styles
-    title: 2.3.25 Canvas
-    title.zh: 2.3.25 白板Canvas
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: canvas-card-focus-mode
-    title: canvas card focus mode
-    title.zh: 开启Canvas聚焦模式
-    description: clicking on a card will highlight all cards and lines of the same color on the canvas When turned on
-    description.zh: 开启后 点击卡片会突出显示画布上所有相同颜色的卡片和线条
-    type: class-toggle
-    default: false
-  -
-    id: canvas-card-text-middle
-    title: canvas card text center align
-    title.zh: 卡片文字默认居中
-    type: class-toggle
-    default: false
-  -
-    id: canvas-card-opacity
-    title: Canvas Card Opacity
-    title.zh: 卡片透明度
-    type: variable-number-slider
-    default: 0.1
-    min: 0
-    max: 1
-    step: 0.05
-  -
-    id: canvas-workplace-background-heading
-    title: canvas workplace background settings
-    title.zh: canvas页面背景设置
-    type: heading
-    level: 4
-    collapsed: true
-  -
-    id: toggle-canvas-grid
-    title: Toggle canvas grid
-    title.zh: 关闭Canvas网格显示
-    type: class-toggle
-    default: false
-  -
-    id: canvas-workplace-background
-    title: Toggle canvas workplace  background
-    title.zh: 关闭Canvas工作区背景
-    description.zh: 如果开启了1.2.1工作页面背景，编辑画板也会带有背景，这里可以关闭画板背景
-    type: class-toggle
-    default: false
-  -
-    id: canvas-background-image
-    title: Canvas Background image
-    title.zh: canvas背景图案
-    type: class-select
-    allowEmpty: false
-    default: default-canvas-background
-    options:
-      -
-        label: Default
-        value: default-canvas-background
-      -
-        label: Stardust
-        value: stardust-canvas-background
-      -
-        label: Dark Mosaic
-        value: mosaic-canvas-background-dark
-      -
-        label: Woven (Dark)
-        value: woven-canvas-background-dark
-      -
-        label: Woven (light)
-        value: woven-canvas-background
-      -
-        label: Wood
-        value: wood-canvas-background
-      -
-        label: Retina Wood
-        value: retina-wood-canvas-background
-      -
-        label: Matrix grid
-        value: matrix-grid-canvas-background
-      -
-        label: Notebook
-        value: notebook-canvas-background
-      -
-        label: Project Paper
-        value: paper-canvas-background
-      -
-        label: Blackboard
-        value: blackboard-canvas-background
-  -
-    id: custom-canvas-bg
-    title: Custom Canvas Background Color
-    title.zh: 自定义canvas背景色
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#fef9ee'
-    default-dark: '#05172e'
   -
     id: style-options-for-other-plugins
     title: 3. For Plugins
@@ -1356,6 +1248,7 @@ settings:
 :root {
   /* black */
   --rich-black: #001722;
+  --rich-black-1: #002638;
   --rich-black-2: #002a3e;
   /* blues */
   --prussian-blue: #002b3fff;
@@ -1422,6 +1315,7 @@ settings:
   --china-rose-2: #aa5a6cff;
   --amethyst: #8b62b5ff;
   --transparent-blue: #019DA31F;
+  --transparent-blue: #00283cce;
   --loading-animation-background: hsl(224,34,30);
   --prussian-blue-2-hsl: hsl(198,100,15);
 }
@@ -17023,14 +16917,12 @@ body.theme-light .canvas-wrapper .canvas-menu{
   filter: blur(4px) !important;
 }
 
-body.canvas-workplace-background .workspace-leaf-content[data-type="canvas"],
-body.canvas-workplace-background .canvas-wrapper {
-   --background-primary:var(--color-base-00);
-}
- /* hide convas export  grid */
-body.toggle-canvas-grid .canvas-wrapper .canvas-background rect,
-.canvas-wrapper.is-screenshotting .canvas-background rect {
-  opacity: 0;
+body .workspace-leaf-content[data-type="canvas"],
+body .canvas-wrapper {
+   /* --background-primary:var(--color-base-00); */
+   /* --background-primary: #00283cce; */
+   --background-primary: var(--rich-black-1);
+   --color: white;
 }
 
 .workspace-leaf-content[data-type="canvas"] .view-header::before,
@@ -17042,141 +16934,12 @@ body.toggle-canvas-grid .canvas-wrapper .canvas-background rect,
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--custom-canvas-bg,var(--canvas-background-color)) ;
-  background-image: var(--canvas-background) ;
-
-}
-
-
-body.default-canvas-background {
-  --canvas-background-color:var(--custom-canvas-bg);
-}
-
-body.stardust-canvas-background {
-  --canvas-background-color:#000000;
-  --canvas-background:url("https://www.transparenttextures.com/patterns/stardust.png")
-}
-
-
-body.mosaic-canvas-background-dark{
-  --canvas-background-color: #000000;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
-}
-
-
-body.woven-canvas-background-dark{
-  --canvas-background-color: #000000;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/woven.png");
-}
-
-
-body.woven-canvas-background{
-  --canvas-background-color: #131401;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/woven-light.png");
-}
-
-body.wood-canvas-background{
-  --canvas-background-color: #000000;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/dark-wood.png");
-}
-
-body.retina-wood-canvas-background{
-  --canvas-background-color: #070f00;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/retina-wood.png");
-}
-
-body.matrix-grid-canvas-background{
-  --canvas-background-color: #050f2e;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/old-mathematics.png");
-}
-
-body.notebook-canvas-background{
-  --canvas-background-color: #9c9e7e;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/notebook.png");
-}
-
-body.notebook-canvas-background{
-  --canvas-background-color: #9c9e7e;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/notebook.png");
-}
-body.paper-canvas-background{
-  --canvas-background-color: #000000;
-  --canvas-background: url("https://www.transparenttextures.com/patterns/project-paper.png");
-}
-body.blackboard-canvas-background{
-  --canvas-background: url("http://thepatternlibrary.com/img/h.jpg");
-}
-
-/*=======canvas-card-focus-mode========
-=====Modified by Cuman from boninall=====*/
-
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-1) .canvas-edges>:not(.mod-canvas-color-1),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-2) .canvas-edges>:not(.mod-canvas-color-2),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-3) .canvas-edges>:not(.mod-canvas-color-3),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-4) .canvas-edges>:not(.mod-canvas-color-4),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-5) .canvas-edges>:not(.mod-canvas-color-5),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-6) .canvas-edges>:not(.mod-canvas-color-6),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-custom) .canvas-edges>:not(.mod-canvas-color-custom),
-/* .canvas:has(.is-focused:not(.mod-canvas-color-1, .mod-canvas-color-2, .mod-canvas-color-3, .mod-canvas-color-4, .mod-canvas-color-5, .mod-canvas-color-6, .mod-canvas-color-custom)) .canvas-node:not(.is-focused):is(.mod-canvas-color-1, .mod-canvas-color-2, .mod-canvas-color-3, .mod-canvas-color-4, .mod-canvas-color-5, .mod-canvas-color-6, .mod-canvas-color-custom),  */
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-1) .canvas-node.is-themed:not(:is(.mod-canvas-color-1)),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-2) .canvas-node.is-themed:not(:is(.mod-canvas-color-2)),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-3) .canvas-node.is-themed:not(:is(.mod-canvas-color-3)),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-4) .canvas-node.is-themed:not(:is(.mod-canvas-color-4)),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-5) .canvas-node.is-themed:not(:is(.mod-canvas-color-5)),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-6) .canvas-node.is-themed:not(:is(.mod-canvas-color-6)),
-body.theme-dark.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-custom) .canvas-node.is-themed:not(.mod-canvas-color-custom)  {
-  filter: brightness(0.8) grayscale(0.9);
-}
-
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-1) .canvas-edges>:not(.mod-canvas-color-1),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-2) .canvas-edges>:not(.mod-canvas-color-2),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-3) .canvas-edges>:not(.mod-canvas-color-3),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-4) .canvas-edges>:not(.mod-canvas-color-4),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-5) .canvas-edges>:not(.mod-canvas-color-5),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-6) .canvas-edges>:not(.mod-canvas-color-6),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-custom) .canvas-edges>:not(.mod-canvas-color-custom),
-/* .canvas:has(.is-focused:not(.mod-canvas-color-1, .mod-canvas-color-2, .mod-canvas-color-3, .mod-canvas-color-4, .mod-canvas-color-5, .mod-canvas-color-6, .mod-canvas-color-custom)) .canvas-node:not(.is-focused):is(.mod-canvas-color-1, .mod-canvas-color-2, .mod-canvas-color-3, .mod-canvas-color-4, .mod-canvas-color-5, .mod-canvas-color-6, .mod-canvas-color-custom),  */
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-1) .canvas-node.is-themed:not(:is(.mod-canvas-color-1)),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-2) .canvas-node.is-themed:not(:is(.mod-canvas-color-2)),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-3) .canvas-node.is-themed:not(:is(.mod-canvas-color-3)),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-4) .canvas-node.is-themed:not(:is(.mod-canvas-color-4)),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-5) .canvas-node.is-themed:not(:is(.mod-canvas-color-5)),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-6) .canvas-node.is-themed:not(:is(.mod-canvas-color-6)),
-body.theme-light.canvas-card-focus-mode  .canvas:has(.is-focused.mod-canvas-color-custom) .canvas-node.is-themed:not(.mod-canvas-color-custom)  {
-  filter:grayscale(0.9);
-}
-
-/* .canvas:has(.is-focused:not(.mod-canvas-color-1, .mod-canvas-color-2, .mod-canvas-color-3, .mod-canvas-color-4, .mod-canvas-color-5, .mod-canvas-color-6, .mod-canvas-color-custom)) .canvas-node:not(.is-focused):is(.mod-canvas-color-1, .mod-canvas-color-2, .mod-canvas-color-3, .mod-canvas-color-4, .mod-canvas-color-5, .mod-canvas-color-6, .mod-canvas-color-custom),  */
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-1) .canvas-node.is-themed:is(.mod-canvas-color-1),
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-3) .canvas-node.is-themed:is(.mod-canvas-color-3),
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-2) .canvas-node.is-themed:is(.mod-canvas-color-2),
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-4) .canvas-node.is-themed:is(.mod-canvas-color-4),
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-5) .canvas-node.is-themed:is(.mod-canvas-color-5),
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-6) .canvas-node.is-themed:is(.mod-canvas-color-6),
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-custom) .canvas-node.is-themed.mod-canvas-color-custom {
-  box-shadow:
-           0 0px 8px -7px rgba(var(--canvas-color), 0.8),
-           0 0px 8px -7px rgba(var(--canvas-color), 0.8),
-           0px 0 8px -1px   rgba(var(--canvas-color), 0.4),
-           0px 0 8px -1px   rgba(var(--canvas-color), 0.4);
-}
-
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-1) .canvas-edges>.mod-canvas-color-1 path.canvas-interaction-path,
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-2) .canvas-edges>.mod-canvas-color-2 path.canvas-interaction-path,
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-3) .canvas-edges>.mod-canvas-color-3 path.canvas-interaction-path,
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-4) .canvas-edges>.mod-canvas-color-4 path.canvas-interaction-path,
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-5) .canvas-edges>.mod-canvas-color-5 path.canvas-interaction-path,
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-6) .canvas-edges>.mod-canvas-color-6 path.canvas-interaction-path,
-body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-custom) .canvas-edges>.mod-canvas-color-custom path.canvas-interaction-path {
-  stroke: rgba(var(--canvas-color), 0.1);
-  stroke-width: calc(12 * var(--zoom-multiplier));
 }
 
 .canvas-node-content.markdown-embed table {
   text-align: start;
 }
 
-/* ================================== */
 .show-full-metadata  .frontmatter-container:not(.is-collapsed) .frontmatter-section {
   display: flex!important;
 }
@@ -17191,11 +16954,9 @@ body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-custom) .ca
   display: none;
 }
 
-
 .markdown-preview-view.show-full-metadata .frontmatter-container {
   display: block !important;
 }
-
 
 .workspace-split.mod-horizontal:is(.mod-left-split,.mod-right-split) .workspace-tab-container .frontmatter-container {
   display: none;
@@ -17215,10 +16976,6 @@ body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-custom) .ca
 }
 .canvas-icon-placeholder svg {
   opacity: 0.5;
-}
-body.canvas-card-text-middle .canvas-node-container .canvas-node-content.markdown-embed:not(.is-loaded)
-{
-text-align: center;
 }
 
 div#popup-search {
