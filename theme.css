@@ -1553,6 +1553,7 @@ body {
   --tab-outline-width: 1.5px;
   --tab-divider-color: var(--celeste-translucent);
   --background-modifier-border-checkbox: var(--electric-blue-2);
+
 }
 
 body.theme-dark {
@@ -1914,6 +1915,15 @@ body.theme-dark {
   --checkbox-color-0: var(--interactive-accent);
 
   --text-search-highlight-bg: var(--nord9-1);
+
+  --canvas-color: var(--rainbow-rgb-1);
+  --canvas-color-1: var(--rainbow-rgb-2);
+  --canvas-color-2: var(--rainbow-rgb-3);
+  --canvas-color-3: var(--rainbow-rgb-4);
+  --canvas-color-4: var(--rainbow-rgb-6);
+  --canvas-color-5: var(--rainbow-rgb-7);
+  --canvas-color-6: var(--rainbow-rgb-8);
+  --canvas-card-opacity: 0.2;
 }
 
 body.color-scheme-options-topaz-nord.theme-dark .titlebar-text {
