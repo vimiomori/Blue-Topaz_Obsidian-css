@@ -332,79 +332,6 @@ settings:
         label: Obsidian default
         value: tag-default
   -
-    id: customised-colorful-tag
-    title: 2.3.17.1 Customised colorful tag
-    type: heading
-    level: 4
-    collapsed: true
-  -
-    id: tag1
-    title: Tag-1
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: tag2
-    title: Tag-2
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: tag3
-    title: Tag-3
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: tag4
-    title: Tag-4
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: tag5
-    title: Tag-5
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: tag-text
-    title: Tag Text
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#f8f8f8'
-    default-dark: '#e4e4e4'
-  -
-    id: outlined-style
-    title: 2.3.17.2 Outlined
-    type: heading
-    level: 4
-    collapsed: true
-  -
-    id: tag-border-width
-    title: Tag border width
-    title.zh: 标签边框宽度
-    type: variable-text
-    default: 1px
-  -
-    id: tag-color-settings
-    title: 2.3.18 Setting, Menu, Option panes
-    title.zh: 2.3.18 设置、菜单、选项面板
-    type: heading
-    level: 3
-    collapsed: true
-  -
     id: setting-etc-pane-style
     title: Pane Style
     type: class-select
@@ -1852,7 +1779,6 @@ body {
 
   --cursor-color-temp: var(--electric-blue-3);
 
-  --tag-border-width: 1px;
   --paragraph-spacing: 1;
   --blur-codebox-frosted-glass: 2;
   --blur-p-kanban-frosted-glass: 5;
@@ -2063,7 +1989,7 @@ body.theme-dark {
   --graph-attach: var(--mauve);
   --graph-circle: var(--pacific-blue);
   --graph-line: var(--aquamarine-2);
-  --graph-unresolved: var(--lavendar-pink);
+  --graph-unresolved: var(--lavender-pink);
   --graph-arrow: var(--jasmine);
   --graph-control-bg: var(--prussian-blue-3);
   --graph-circle-outline: var(--electric-blue-3);
@@ -2071,9 +1997,9 @@ body.theme-dark {
   --graph-circle-fill-highlight: var(--electric-blue-3);
   --graph-line-fill-highlight: var(--aquamarine);
 
-  --unresolved-link: var(--lavendar-pink);
-  --link-unresolved-color: var(--lavendar-pink);
-  --link-unresolved-decoration-color: var(--lavendar-pink);
+  --unresolved-link: var(--lavender-pink);
+  --link-unresolved-color: var(--lavender-pink);
+  --link-unresolved-decoration-color: var(--lavender-pink);
   --internal-link-color: var(--text-accent);
   --external-link-color: var(--internal-link-color);
 
@@ -2929,30 +2855,30 @@ body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsi
 /*rainbow tag*/
 body.rainbow-tag .tag:not(.token):nth-child(5n+1) {
   background-color: var(--theme-color-translucent-01);
-  color: var(--theme-color);
+  color: var(--lavender-pink);
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n+2) {
   background-color: var(--theme-color-translucent-01);
-  color: var(--theme-color);
+  color: var(--lavender-pink);
   filter: hue-rotate(70deg);
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n+3) {
   background-color: var(--theme-color-translucent-01);
-  color: var(--theme-color);
+  color: var(--lavender-pink);
   filter: hue-rotate(140deg);
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n+4) {
   background-color: var(--theme-color-translucent-01);
-  color: var(--theme-color);
+  color: var(--lavender-pink);
   filter: hue-rotate(210deg);
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n) {
   background-color: var(--theme-color-translucent-01);
-  color: var(--theme-color);
+  color: var(--lavender-pink);
   filter: hue-rotate(280deg);
 }
 
@@ -2977,7 +2903,7 @@ body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+1)+span.cm-ha
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+1)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-hashtag-end,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+1)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error {
   background-color: var(--theme-color-translucent-01) !important;
-  color: var(--theme-color) !important;
+  color: var(--lavender-pink) !important;
 }
 
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+2),
@@ -3001,7 +2927,7 @@ body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+2)+span.cm-ha
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+2)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-hashtag-end,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+2)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error {
   background-color: var(--theme-color-translucent-01) !important;
-  color: var(--theme-color) !important;
+  color: var(--lavender-pink) !important;
   filter: hue-rotate(210deg);
 }
 
@@ -3026,7 +2952,7 @@ body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+3)+span.cm-ha
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+3)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-hashtag-end,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+3)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error {
   background-color: var(--theme-color-translucent-01) !important;
-  color: var(--theme-color) !important;
+  color: var(--lavender-pink) !important;
   filter: hue-rotate(70deg);
 }
 
@@ -3051,7 +2977,7 @@ body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+4)+span.cm-ha
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+4)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-hashtag-end,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+4)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error {
   background-color: var(--theme-color-translucent-01) !important;
-  color: var(--theme-color) !important;
+  color: var(--lavender-pink) !important;
   filter: hue-rotate(280deg);
 }
 
@@ -3076,10 +3002,9 @@ body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n)+span.cm-hash
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-hashtag-end,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error+span.cm-hashtag.cm-meta:not([class*="cm-hashtag-begin"])+span.cm-hashtag.cm-meta.cm-overlay.cm-spell-error {
   background-color: var(--theme-color-translucent-01) !important;
-  color: var(--theme-color) !important;
-  filter: hue-rotate(140deg);
+  color: var(--fairy-tale) !important;
+  /* filter: hue-rotate(140deg); */
 }
-
 
 /*tag font size and font family*/
 body:not(.tag-default) .tag:not(.token):hover {
@@ -3114,7 +3039,7 @@ body:not(.tag-default) .cm-s-obsidian span.cm-hashtag-begin+.cm-hashtag.cm-meta 
 }
 
 body:is(.rainbow-tag) .cm-s-obsidian span:is(.cm-hashtag,.cm-hashtag-begin,.cm-hashtag-end,.cm-hashtag-begin+.cm-hashtag.cm-meta,.cm-hashtag-begin+.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-hashtag-end) {
-  color: var(--tag-text) ;
+  color: var(--tag-text);
 }
 
 body:not(.tag-default) .cm-s-obsidian span.cm-hashtag-begin+.cm-hashtag.cm-meta+span.cm-hashtag.cm-meta.cm-hashtag-end {
@@ -6254,7 +6179,7 @@ body:not(.folder-style-change-options-colorful) .nav-file-title.is-active[data-p
 body :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved>*,
 body *>.internal-link.is-unresolved,
 body .markdown-source-view.mod-cm6 .cm-hmd-internal-link .is-unresolved {
-  color: var(--lavendar-pink) !important;
+  color: var(--lavender-pink) !important;
 }
 
 body .markdown-source-view.mod-cm6 .is-unresolved,
@@ -6268,7 +6193,7 @@ body .markdown-source-view.mod-cm6 .cm-hmd-internal-link .is-unresolved,
 body .markdown-source-view.mod-cm6 .is-unresolved,
 body :is(.markdown-preview-view,.markdown-rendered) .internal-link.is-unresolved,
 body .cm-hmd-internal-link .is-unresolved .cm-underline {
-  color: var(--lavendar-pink) !important;
+  color: var(--lavender-pink) !important;
   text-decoration: none !important;
 }
 
