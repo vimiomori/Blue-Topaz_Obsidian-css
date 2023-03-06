@@ -388,18 +388,6 @@ settings:
         label: Safari Style
         value: safari-tab-style
   -
-    id: mermaid-styles
-    title: 2.3.23 Mermaid
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: resizable-mermaid
-    title: Resizable mermaid in Reading mode
-    title.zh: 阅读模式可调整mermaid大小
-    type: class-toggle
-    default: false
-  -
     id: metadata-styles
     title: 2.3.24 Metadata(Yaml)
     type: heading
@@ -7286,12 +7274,6 @@ pre.language-note-cloze::before {
 /*======== optionnal mermaid style below ========*/
 .markdown-source-view.mod-cm6 .cm-content > [contenteditable=false] {
   overflow: auto;
-}
-
-body.resizable-mermaid .mermaid {
-  resize: both;
-  overflow: auto;
-  position: relative;
 }
 
 :is(.markdown-preview-section,.markdown-rendered) .mermaid,
