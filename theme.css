@@ -393,19 +393,6 @@ settings:
     type: class-toggle
     default: false
   -
-    id: style-options-for-other-plugins
-    title: 3. For Plugins
-    title.zh: 3. 插件样式
-    type: heading
-    level: 1
-    collapsed: true
-  -
-    id: style-options-for-admonition-plugin-header
-    title: 3.1 Admonition&Callout Style
-    type: heading
-    level: 2
-    collapsed: true
-  -
     id: admonition-bg-color
     title: Admontion codebock and Callout background
     title.zh: Admonition 和 Callout背景色
@@ -1798,7 +1785,7 @@ body.theme-dark {
   --bg-sliding-pane-leaf: #0f0f0f36;
 
   /*admonition*/
-  --admonition-bg-color: #11111100;
+  --admonition-bg-color: var(--pacific-cyan);
 
   /*checklist*/
   --checklist-bg: #1d1d1d96;
