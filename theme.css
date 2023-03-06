@@ -375,30 +375,18 @@ settings:
     default-light: '#'
     default-dark: '#'
   -
-    id: tabs-settings
-    title: 2.3.23  tabs
-    type: heading
-    level: 3
-    collapsed: true
-  -
     id: tab-head-style
     title: Tab style
     type: class-select
     allowEmpty: false
-    default: default-tab
+    default: safari-tab-style
     options:
       -
-        label: Default
+        label: Obsidian Default
         value: default-tab
       -
-        label: Underline
-        value: underline-tab-style
-      -
-        label: Safari-style
+        label: Safari Style
         value: safari-tab-style
-      -
-        label: Transparent-style
-        value: transparent-tab-style
   -
     id: mermaid-styles
     title: 2.3.23 Mermaid
@@ -1701,7 +1689,6 @@ body.theme-dark {
   --indentation-guide-color: var(--indigo-blue);
   --indentation-guide-width: 2px;
 
-  --text-muted: var(--non-photo-blue);
   --text-fainted: var(--celeste);
   --text-folder-file: var(--celeste);
   --accent-strong: var(--electric-blue);
@@ -2018,7 +2005,7 @@ body.theme-dark {
   --background-black-or-white-1: var(--nord2);
 
   --text-normal: var(--non-photo-blue);
-  --text-muted: var(--blue-munsell);
+  --text-muted: var(--robin-egg);
   --text-faint: var(--celeste);
   --accent-em: var(--nord14);
 
@@ -15711,8 +15698,9 @@ body.markdown-source-view.mod-cm6 .cm-editor .cm-selectionBackground {
 {
   z-index: 29;
 }
+
 .is-focused .workspace-tab-header {
-  color: var(--text-muted);
+  color: var(--vivid-sky-blue);
 }
 
 .workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header {
@@ -16848,34 +16836,6 @@ body.theme-dark .workspace-split.mod-horizontal:is(.mod-left-split,.mod-right-sp
 }
 /**emoji toolbar*****/
 
-
-body.underline-tab-style .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header {
-  background-color: transparent;
-  box-shadow: none;
-}
-body.underline-tab-style .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header::before,
-body.underline-tab-style .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header::after {
-  display: none;
-}
-body.underline-tab-style .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header.is-active {
-  border-radius: 0;
-  border-bottom: 2px solid var(--text-accent);
-  margin-bottom: 0px;
-  padding-bottom: 0px;
-}
-body.underline-tab-style .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header.is-active .workspace-tab-header-inner {
-  border-radius: var(--tab-radius) var(--tab-radius) 0px 0px;
-  margin-top: 0.5px;
-  padding-bottom: 4px;
-}
-body.underline-tab-style .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header ::after {
-  display: none;
-}
-body.underline-tab-style .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header:hover .workspace-tab-header-inner {
-  background-color: var(--background-modifier-hover);
-}
-
-
 body.safari-tab-style .workspace-tabs:not(.mod-stacked) .workspace-tab-header::before,
 body.safari-tab-style .workspace-tabs:not(.mod-stacked) .workspace-tab-header::after,
 body.safari-tab-style .workspace .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner::after {
@@ -16894,11 +16854,10 @@ body.safari-tab-style .mod-horizontal:not(.mod-left-split):not(.mod-right-split)
   border-radius: 6px;
   box-shadow: none;
   height:  calc(var(--header-height)*0.7);
-  margin-left: 12px;
+  margin-left: 5px;
   padding: 0 !important;
   transition: 400ms, background-color 150ms ease-in-out;
 }
-
 
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
   transition: 400ms;
@@ -16907,7 +16866,6 @@ body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab
 body.safari-tab-style .workspace-tabs:not(.mod-stacked) .workspace-tab-header:first-child {
   margin-left: 0;
 }
-
 
 body.safari-tab-style .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner {
   padding: 0 4px 0 8px;
@@ -16926,45 +16884,28 @@ body.safari-tab-style .workspace .mod-root .workspace-tab-header-inner::after {
 body.safari-tab-style .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
   flex-grow: 1.67 ;
   max-width: 300px ;
-  background-color: hsla(var(--color-accent-hsl), 0.08)
+  background-color: var(--cerulean);
 }
 
-
-body.theme-light.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner:hover {
-  background-color: rgba(188, 192, 205, 0.4);
-}
 body.theme-dark.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner:hover {
-  background-color: rgba(81, 86, 109, 0.4);
+  background-color: var(--cerulean);
 }
 
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked).mod-active .workspace-tab-header.is-active .workspace-tab-header-inner,
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked).mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-title,
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked).mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-close-button,
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked).mod-active .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
-  color: var(--text-noraml) ;
-  font-weight:bold;
+  color: var(--electric-blue-2);
 }
 
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active:hover {
   background-color: var(--background-modifier-border);
 }
 
-
-body.safari-tab-style.theme-light .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
-  border: 1px solid  var(--tab-outline-color);
-}
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
-  border: 1px solid  rgba(var(--mono-rgb-0), .25) ;
+  border: 2px solid  var(--pacific-blue);
 }
 
-body.transparent-tab-style .workspace-split:not(.mod-left-split):not(.mod-right-split) .workspace-tab-header-container-inner .workspace-tab-header {
-  --tab-background-active: transparent;
-  --tab-outline-width: transparent;
-}
-
-body.transparent-tab-style.theme-dark .workspace-split.mod-root .workspace-tab-header.is-active.mod-active {
-  background-color: var(--tab-background-active);
-}
 .sidebar-toggle-button.mod-left,
 .sidebar-toggle-button.mod-right {
   align-items: center;
