@@ -2,6 +2,8 @@
 TODO: Update the credits on the top of this file
 TODO: Convert to sass and modularize
 TODO: Fix height for first file/folder
+TODO: check title bar on windows
+TODO: add credits to README
 */
 
 /*蓝色托帕石，适合Obsidian v1.0.3。uid [20230102] flying fly flies制作。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
@@ -332,13 +334,6 @@ settings:
         label: Obsidian default
         value: tag-default
   -
-    id: titlebar-settings
-    title: 2.3.19 Titlebar style Setting
-    title.zh: 2.3.19 标题栏样式
-    type: heading
-    level: 3
-    collapsed: true
-  -
     id: simple-titlebar
     title:  Simple title bar
     title.zh: 简单的Title bar
@@ -347,52 +342,10 @@ settings:
     type: class-toggle
     default: false
   -
-    id: custom-titlebar-bg
-    title: Title bar background color
-    title.zh: 自定义标题栏背景色
-    description: custom-titlebar-bg
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: titlebar-blur-depth
-    title: Title bar Blur Radius
-    title.zh: Title bar 模糊程度
-    description: To adjust the radius of blur
-    description.zh: 调整Title bar 背景模糊程度
-    type: variable-number-slider
-    default: 8
-    format: px
-    min: 0
-    max: 30
-    step: 1
-  -
-    id: titlebar-brightness
-    title: Title bar Brightness of Image
-    title.zh: Title bar 背景亮度
-    description: To adjust the brightness
-    description.zh: 调整Title bar 背景亮度
-    type: variable-number-slider
-    default: 1
-    min: 0.1
-    max: 1.5
-    step: 0.1
-  -
-    id: titlebar-close-button
-    title: Titlebar close button
-    title.zh: Ob标题栏关闭按钮
-    type: class-select
-    allowEmpty: false
-    default: default-titlebar
-    options:
-      -
-        label: Default
-        value: default-titlebar
-      -
-        label: Reversal
-        value: reversal-titlebar
+    id: reversal-titlebar
+    title: Reverse title bar close button
+    type: class-toggle
+    default: false
   -
     id: hide-titlebar-text
     title: Hide text in Title Bar
@@ -421,33 +374,6 @@ settings:
     format: hex
     default-light: '#'
     default-dark: '#'
-  -
-    id: outline-settings
-    title: 2.3.20 Outline
-    title.zh: 2.3.20 侧边栏大纲
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: outline-style
-    title: outline style
-    title.zh: 大纲样式
-    type: class-select
-    allowEmpty: false
-    default: default-outline-style
-    options:
-      -
-        label: Default
-        value: default-outline-style
-      -
-        label: Logseq
-        value: logseq-outline-style
-  -
-    id: nowrap-outline
-    title: Nowrap
-    title.zh: 不换行
-    type: class-toggle
-    default: false
   -
     id: prompt-settings
     title: 2.3.21 Prompt (ctrl p)
@@ -1536,6 +1462,7 @@ settings:
   --indigo-blue: #01435eff;
   --midnight-green: #004f6b;
   --cerulean: #016986ff;
+  --sky-blue: #2596be;
   --teal: #007989;
   --blue-munsell: #018eb1;
   --blue-green: #00A0C1;
@@ -1593,6 +1520,8 @@ settings:
   --china-rose-2: #aa5a6cff;
   --amethyst: #8b62b5ff;
   --transparent-blue: #019DA31F;
+  --loading-animation-background: hsl(224,34,30);
+  --prussian-blue-2-hsl: hsl(198,100,15);
 }
 
 body {
@@ -1655,8 +1584,6 @@ body {
   --radius-m: 7px;
   --radius-l: 15px;
 
-  --titlebar-brightness: 1;
-  --titlebar-blur-depth: 8px;
   --stack-tabs-background-blur-depth:40px;
 
   --fancy-dolphin-hr: '🐬';
@@ -1747,7 +1674,7 @@ body {
   --cloze-decoration-3: dotted;
   --cloze-decoration-color-3: var(--theme-color);
 
-  --custom-titlebar-bg: var(--background-secondary-alt);
+  --titlebar-bg: var(--background-secondary-alt);
 
   --text-highlight-bg-h-dark: 57;
   --text-highlight-bg-s-dark: 40%;
@@ -6908,34 +6835,31 @@ body .outline .tree-item.is-collapsed .collapse-icon::before {
   height: 1.45rem;
 }
 
-body.nowrap-outline .outline .tree-item-inner {
-  white-space: nowrap;
-}
 /*****from https://www.yuque.com/fanmofeng/obsidian/ioifq0 *******/
 
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .collapse-icon {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .collapse-icon {
   padding-inline-end: var(--size-2-3);
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .collapse-icon::before {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .collapse-icon::before {
   content: "" !important;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item {
   position: relative;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self {
   position: relative;
   margin-bottom: 0;
   white-space: nowrap;
   margin-top: -1px; /* fix item gap */
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self .tree-item-inner {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self .tree-item-inner {
   padding-left: 16px;
   overflow: hidden;
   text-overflow: ellipsis;
   height: calc(var(--nav-item-size) * 1.8);
   line-height: calc(var(--nav-item-size) * 1.8);
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self .tree-item-inner::before {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self .tree-item-inner::before {
   content: "";
   width: var(--size-4-1);
   height: var(--size-4-1);
@@ -6946,16 +6870,16 @@ body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-conte
   top: 50%;
   transform: translateY(-50%);
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self .tree-item-icon ~ .tree-item-inner {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self .tree-item-icon ~ .tree-item-inner {
   padding-left: 4px;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self .tree-item-icon ~ .tree-item-inner::before {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-self .tree-item-icon ~ .tree-item-inner::before {
   content: none;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item.is-collapsed .tree-item-icon::before {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item.is-collapsed .tree-item-icon::before {
   box-shadow: 0 0 0 4px var(--background-modifier-hover);
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item::after {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item::after {
   content: "";
   width: 1.5px;
   position: absolute;
@@ -6964,10 +6888,10 @@ body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-conte
   left: -10px;
   height: calc(100% - calc(var(--nav-item-size) * 1.8) + var(--size-4-8));
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-icon {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-icon {
   cursor: pointer;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-icon::before {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-icon::before {
   width: var(--size-4-2);
   height: var(--size-4-2);
   background-color: hsla(var(--color-accent-hsl), 0.9);
@@ -6977,22 +6901,22 @@ body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-conte
   top: 50%;
   transform: translateY(-50%);
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-icon svg {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-icon svg {
   display: block;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-icon svg path {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item-icon svg path {
   display: none;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-children > .tree-item::after {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-children > .tree-item::after {
   background-color: hsla(var(--color-accent-hsl), 0.9);
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-self:hover + .tree-item-children .tree-item::after {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-self:hover + .tree-item-children .tree-item::after {
   background-color: transparent;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-children > .tree-item:hover::after, body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-children > .tree-item:hover ~ .tree-item::after {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-children > .tree-item:hover::after, body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-children > .tree-item:hover ~ .tree-item::after {
   background-color: transparent;
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-children > .tree-item:hover::before {
+body .workspace-leaf-content[data-type=outline] .view-content .outline .tree-item:hover > .tree-item-children > .tree-item:hover::before {
   content: "";
   position: absolute;
   top: calc(calc(var(--nav-item-size) * 1.8) / 2 * -1);
@@ -7003,7 +6927,7 @@ body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-conte
   border-bottom: 1.5px solid hsla(var(--color-accent-hsl), 0.9);
   border-left: 2px solid hsla(var(--color-accent-hsl), 0.9);
 }
-body.logseq-outline-style .workspace-leaf-content[data-type=outline] .view-content .outline :is(.tree-item-children, .tree-item-self .tree-item-self) {
+body .workspace-leaf-content[data-type=outline] .view-content .outline :is(.tree-item-children, .tree-item-self .tree-item-self) {
   padding-left: 0;
   margin-left: var(--size-4-5);
   border-left: none;
@@ -10824,11 +10748,6 @@ body .setting-item[data-id="outlined-style"] {
   display: none;
 }
 
-
-body.is-hidden-frameless .setting-item:is([data-id="simple-titlebar"],[data-id="custom-titlebar-bg"],[data-id="titlebar-blur-depth"],[data-id="titlebar-brightness"],[data-id="hide-titlebar-text"]) {
-  display: none;
-}
-
 body:not(.is-hidden-frameless) .setting-item:is([data-id="hide-titlebar-close-btn"]) {
   display: none;
 }
@@ -13769,13 +13688,13 @@ body .titlebar,
 }
 
 body.simple-titlebar .titlebar {
-  background-color: var(--custom-titlebar-bg);
+  background-color: var(--titlebar-bg);
   border: none;
 }
 
 body.simple-titlebar .titlebar::before {
   content: '';
-  background-color: var(--custom-titlebar-bg);
+  background-color: var(--titlebar-bg);
 }
 
 
@@ -13926,23 +13845,18 @@ body.theme-dark .progress-bar {
   100% {background-color: transparent; transform: translate(-50px, -50px); border-radius: 50%;}
 }
 
-/* the gif animation was created by @Sebastian Kamph https://dribbble.com/shots/1800702-The-Transforming-Dolphin */
+/* the gif animation was created by @Gal Shir https://dribbblepopular.tumblr.com/image/111943752174 */
 body .progress-bar-message::before {
   content: "";
   display: block;
-  background: no-repeat center/cover url(https://cdn.dribbble.com/users/388677/screenshots/1800702/media/9990ce9983a29cc6cb97b659193192a8.gif);
-  width: 1000px;
-  height: 800px;
+  background: no-repeat center/cover url(https://i.pinimg.com/originals/2e/92/64/2e92641ccb97d3acba414f0eddc0fd5b.gif);
+  width: 1100px;
+  height: 700px;
   margin-top: -20px;
   font-size: initial;
-  color: var(--text-muted);
-  filter: hue-rotate(-55deg) saturate(120%);
+  filter: sepia(88%) saturate(1028%) hue-rotate(150.7deg) brightness(85%) contrast(160%);
   position: initial;
   animation: unset;
-}
-
-body.theme-dark .progress-bar-message::before {
-  filter: invert(100%) hue-rotate(153deg) saturate(250%);
 }
 
 body.theme-dark .progress-bar {
@@ -17047,6 +16961,7 @@ body.hide-titlebar-close-btn.is-hidden-frameless.mod-windows .titlebar-button {
   padding: 0 0 0 22px;
   border: none;
 }
+
 .theme-dark .view-header-title-container:is(.web-browser-header-bar,.wb-header-bar)  input:is(.web-browser-search-bar,.wb-search-bar) {
   background-image:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'  viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='svg-icon lucide-search'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cline x1='21' y1='21' x2='16.65' y2='16.65'%3E%3C/line%3E%3C/svg%3E");
   background-repeat: no-repeat;
