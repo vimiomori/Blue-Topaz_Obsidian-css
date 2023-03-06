@@ -375,32 +375,6 @@ settings:
     default-light: '#'
     default-dark: '#'
   -
-    id: stack-tabs-text-ori-options
-    title: Text orientation styles
-    title.zh: stack 模式汉字竖排
-    type: class-select
-    allowEmpty: false
-    default: stack-tab-text-ori-mixed
-    options:
-      -
-        label: Default
-        value: default-stack-text-ori-style
-      -
-        label: Mixed orientation
-        value: stack-tab-text-ori-mixed
-  -
-    id: stack-tabs-background-blur-depth
-    title: stack tabs background Blur Radius
-    title.zh: 堆叠模式下笔记背景模糊程度
-    description: To adjust the radius of blur
-    description.zh: 调整背景模糊程度
-    type: variable-number-slider
-    default: 40
-    format: px
-    min: 0
-    max: 200
-    step: 10
-  -
     id: tabs-settings
     title: 2.3.23  tabs
     type: heading
@@ -1535,8 +1509,6 @@ body {
   --radius-s: 5px;
   --radius-m: 7px;
   --radius-l: 15px;
-
-  --stack-tabs-background-blur-depth:40px;
 
   --fancy-dolphin-hr: '🐬';
   --fancy-hr-rotate: 0deg;
@@ -15743,14 +15715,6 @@ body.markdown-source-view.mod-cm6 .cm-editor .cm-selectionBackground {
   color: var(--text-muted);
 }
 
-/*
-.workspace-tabs.mod-stacked .view-header,
-.is-focused .workspace .mod-root .workspace-tabs.mod-stacked .workspace-leaf.mod-active .view-header {
-  background-color: var(--color-base-10);
-}*/
-.workspace-split.mod-root .workspace-tabs.mod-stacked .view-content {
-  backdrop-filter: blur(var(--stack-tabs-background-blur-depth));
-}
 .workspace .mod-root .workspace-tabs.mod-stacked .workspace-tab-container .workspace-tab-header {
   background-color: var(--background-primary);
   border-right: 1px solid var(--page-border-bottom);
@@ -16733,10 +16697,6 @@ input[type='number']:focus-visible {
 
 .prompt {
   border: 1px solid var(--midnight-green);
-}
-
-body.stack-tab-text-ori-mixed .workspace-tab-header-inner-title {
-  text-orientation: mixed;
 }
 
 body.mod-windows.hide-titlebar-close-btn.is-hidden-frameless .titlebar-button.mod-logo {
