@@ -1580,8 +1580,8 @@ body.theme-dark {
   --text-error-hover: var(--misty-rose);
   --text-selection: var(--cerulean);
   --text-on-accent: var(--prussian-blue-3);
-  --interactive-normal: #2b2b2b;
-  --interactive-hover: #373737;
+  --interactive-normal: var(--indigo-blue);
+  --interactive-hover: var(--midnight-green);
   --accent-h: 186;
   --accent-s: 100%;
   --accent-l: 50%;
@@ -15560,7 +15560,8 @@ body.markdown-source-view.mod-cm6 .cm-editor .cm-selectionBackground {
 .clickable-icon.has-active-menu,
 .clickable-icon:active,
 .clickable-icon:hover {
-  background-color: var(--pacific-blue);
+  background-color: var(--cerulean);
+  color: var(--electric-blue-2);
 }
 
 .workspace.is-left-sidedock-open .workspace-ribbon.side-dock-ribbon.mod-left .sidebar-toggle-button .clickable-icon,
@@ -16901,7 +16902,7 @@ body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab
   background-color: rgba(var(--canvas-color), var(--canvas-card-opacity));
 }
 body.theme-dark .canvas-wrapper .canvas-menu{
-  background-color: rgba(10, 10, 10,0.8);
+  background-color: var(--indigo-blue);
 }
 
 body.theme-light .canvas-wrapper .canvas-menu{
