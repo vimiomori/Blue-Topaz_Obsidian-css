@@ -4,7 +4,6 @@ TODO: Convert to sass and modularize
 TODO: Fix height for first file/folder
 TODO: check title bar on windows
 TODO: add credits to README
-TODO: fix scrollbar by hr
 TODO: fix link colors (pink?) need to check graph view too
 TODO: fix vim caret color
 */
@@ -7166,7 +7165,7 @@ pre.language-note-cloze::before {
 
 
 /*======== optionnal mermaid style below ========*/
-.markdown-source-view.mod-cm6 .cm-content > [contenteditable=false] {
+.markdown-source-view.mod-cm6 .cm-content > [contenteditable=false] .mermaid {
   overflow: auto;
 }
 
