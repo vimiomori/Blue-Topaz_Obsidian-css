@@ -16981,3 +16981,11 @@ body .canvas-wrapper {
 div#popup-search {
   background-color: var(--color-base-10);
 }
+
+/* ======== vim settings ========= */
+body.caret-style-underline .cm-editor:not(.cm-focused) .cm-fat-cursor {
+  outline-color: transparent;
+  border-bottom: 2px solid var(--electric-blue-3);
+  margin-top: 3px;
+}
+/* =============================== */
