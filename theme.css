@@ -4,6 +4,9 @@ TODO: Convert to sass and modularize
 TODO: Fix height for first file/folder
 TODO: check title bar on windows
 TODO: add credits to README
+TODO: fix scrollbar by hr
+TODO: fix link colors (pink?) need to check graph view too
+TODO: fix vim caret color
 */
 
 /*蓝色托帕石，适合Obsidian v1.0.3。uid [20230102] flying fly flies制作。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
@@ -18,7 +21,7 @@ TODO: add choice to put status bar in the middle (floating)
 */
 
 /* @settings
-name: 🥑Blue Topaz Theme
+name: 🐬 Blue Dolphin Theme
 id: blue-topaz-theme
 settings:
   -
