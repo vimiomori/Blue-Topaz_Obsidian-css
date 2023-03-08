@@ -5,6 +5,9 @@ TODO: Fix height for first file/folder
 TODO: check title bar on windows
 TODO: add credits to README
 TODO: fix link colors (pink?) need to check graph view too
+TODO: fix tab dragging
+TODO: fix normal pages being automatically left-aligned
+TODO: fix plugin modals
 */
 
 /*蓝色托帕石，适合Obsidian v1.0.3。uid [20230102] flying fly flies制作。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
@@ -1240,10 +1243,12 @@ settings:
   --rich-black-2: #002a3e;
   /* blues */
   --prussian-blue: #002b3fff;
+  --prussian-blue-1: #002d42;
   --prussian-blue-2: #00354B;
   --prussian-blue-3: #003950ff;
   --indigo-blue: #01435eff;
   --midnight-green: #004f6b;
+  --midnight-green-2: #006082;
   --cerulean: #016986ff;
   --sky-blue: #2596be;
   --teal: #007989;
@@ -1304,8 +1309,6 @@ settings:
   --amethyst: #8b62b5ff;
   --transparent-blue: #019DA31F;
   --transparent-blue: #00283cce;
-  --loading-animation-background: hsl(224,34,30);
-  --prussian-blue-2-hsl: hsl(198,100,15);
 }
 
 body {
@@ -1541,8 +1544,9 @@ body {
   --background-modifier-hover: var(--cerulean);
   --tab-outline-width: 1.5px;
   --tab-divider-color: var(--celeste-translucent);
+  --tab-width: 150px;
+  --tab-max-width: 150px;
   --background-modifier-border-checkbox: var(--electric-blue-2);
-
 }
 
 body.theme-dark {
@@ -6398,13 +6402,18 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
   font-size: 0.85em;
 }
 
+/* TODO: use own monospace theme */
 .cm-gutter.cm-lineNumbers {
   font-family: var(--font-monospace-theme);
 }
 
 .cm-lineNumbers .cm-active.cm-gutterElement {
   color: var(--electric-blue-3);
-  /* background: var(--activeline-background); */
+}
+
+/* relative line numbers plugin */
+.markdown-source-view.mod-cm6 .cm-gutters .cm-active {
+  color: var(--vanilla) !important;
 }
 
 /*----file explorer smaller fonts & line height----*/
@@ -10541,11 +10550,6 @@ body:not(.fancy-hr-number) .setting-item[data-id="fancy-hr-folder-with-number"] 
   display: none;
 }
 
-body:not(.loading-custom-text) .setting-item[data-id="loading-custom-text-folder"],
-body:not(.loading-animation-custom) .setting-item[data-id="loading-animation-custom-folder"] {
-  display: none;
-}
-
 body .setting-item[data-id="customised-colorful-tag"],
 body .setting-item[data-id="outlined-style"] {
   display: none;
@@ -12499,6 +12503,7 @@ body.dialogue-style-chat .dialogue-plugin-message-title {
 
 .markdown-source-view.mod-cm6 .cm-gutters {
   background-color: transparent !important;
+  color: #9dfcff73 !important;
 }
 
 .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote {
@@ -13657,13 +13662,15 @@ body .progress-bar-message::before {
   margin-top: -20px;
   font-size: initial;
   /* filter: sepia(88%) saturate(1028%) hue-rotate(150.7deg) brightness(85%) contrast(160%); */
-  filter: sepia(88%) saturate(580%) hue-rotate(149.8deg) brightness(73%) contrast(130%);
+  /* filter: sepia(88%) saturate(580%) hue-rotate(149.8deg) brightness(73%) contrast(130%); */
+  filter: sepia(88%) saturate(1343%) hue-rotate(156.4deg) brightness(72.8%) contrast(155%);
   position: initial;
   animation: unset;
 }
 
+/* TODO: change prussian-blue-1 value */
 body.theme-dark .progress-bar {
-  background-color: var(--prussian-blue-2);
+  background-color: var(--prussian-blue);
 }
 
 body.theme-dark .progress-bar-message {
@@ -16768,7 +16775,7 @@ body.safari-tab-style .mod-root:not(.mod-left-split):not(.mod-right-split) .work
 body.safari-tab-style .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner,
 body.safari-tab-style .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-close-button,
 body.safari-tab-style .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header-inner-icon {
-  color: var(--text-muted);
+  color: var(--electric-blue);
 }
 
 body.safari-tab-style .workspace .mod-root .workspace-tab-header-inner::after {
@@ -16797,8 +16804,13 @@ body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab
   background-color: var(--background-modifier-border);
 }
 
-body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
-  border: 1.5px solid  var(--pacific-blue);
+body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
+  border: 1px solid  var(--pacific-blue);
+}
+body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header:not(.is-active) {
+  background-color: var(--indigo-blue);
+  border: 1px solid var(--midnight-green-2);
+  color: var(--non-photo-blue) !important;
 }
 
 .sidebar-toggle-button.mod-left,
@@ -17007,4 +17019,9 @@ div#popup-search {
   border-bottom: 2px solid var(--electric-blue-3);
   margin-top: 3px;
 }
+
 /* =============================== */
+
+.obsidian-icon-folder-icon {
+  display: none;
+}
