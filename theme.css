@@ -5,7 +5,6 @@ TODO: Fix height for first file/folder
 TODO: check title bar on windows
 TODO: add credits to README
 TODO: fix link colors (pink?) need to check graph view too
-TODO: fix vim caret color
 */
 
 /*蓝色托帕石，适合Obsidian v1.0.3。uid [20230102] flying fly flies制作。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
@@ -1533,10 +1532,11 @@ body {
   --canvas-card-opacity: 0.1;
 
   --interactive-accent: var(--robin-egg);
-  --background-primary-bg-4-bt: var(--prussian-blue-2);
+  --background-primary-bg-4-bt: var(--prussian-blue-3);
   --background-primary-alt-bg-4-bt: var(--teal);
-  --background-secondary-bg-4-bt: var(--midnight-green);
-  --background-secondary-alt-bg-4-bt: var(--blue-munsell);
+  /* --background-secondary-bg-4-bt: var(--midnight-green); */
+  --background-secondary-bg-4-bt: var(--prussian-blue);
+  --background-secondary-alt-bg-4-bt: var(--prussian-blue);
   --color-accent: var(--vivid-sky-blue);
   --background-modifier-hover: var(--cerulean);
   --tab-outline-width: 1.5px;
@@ -1561,9 +1561,9 @@ body.theme-dark {
   --indentation-guide-color: var(--indigo-blue);
   --indentation-guide-width: 2px;
 
-  --text-fainted: var(--celeste);
-  --text-folder-file: var(--celeste);
-  --accent-strong: var(--electric-blue);
+  --text-faint: var(--blue-munsell);
+  --text-folder-file: var(--vivid-sky-blue);
+  --accent-strong: var(--electric-blue-2);
   --accent-em: var(--aquamarine);
   --text-error: var(--melon);
   --text-error-hover: var(--misty-rose);
@@ -1609,7 +1609,7 @@ body.theme-dark {
   --red: var(--melon);
   --red-1: #ff939c;
   --orange: var(--apricot);
-  --orange-1: var(--atomic-tangerine);
+  --orange-1: var(--pale-dogwood);
   --green: var(--aquamarine);
   --darkgreen: var(--spring-green);
   --aqua: var(--electric-blue-3);
@@ -1640,7 +1640,7 @@ body.theme-dark {
   --background-code: var(--rich-black-2);
   --background-code-2: var(--rich-black-2);
   --text-color-code: var(--aquamarine-2);
-  --code-normal: var(--non-photo-blue);
+  --code-normal: var(--aquamarine-2);
   --list-ul-block-color: #e19742a9;
   --list-ul-disc-color: #eb9563;
   --green-1: var(--spring-green-2);
@@ -1704,6 +1704,7 @@ body.theme-dark {
   --external-link-color: var(--internal-link-color);
 
   --nav-item-color-active: var(--electric-blue-3);
+  --nav-item-color-hover: var(--electric-blue-3);
 
   /*mermaid*/
   --mermaid-active-task-color: #187ef1;
@@ -1839,7 +1840,7 @@ body.theme-dark {
   --mjx-inline-math-color: var(--electric-blue);
   --mjx-math-color: var(--electric-blue);
   --background-leaf-resize-handle: var(--background-secondary-alt-bg-4-bt);
-  --text-folder-file-icon: var(--theme-color);
+  --text-folder-file-icon: var(--electric-blue-3);
 
   --color-highlight-1: var(--text-normal);
   --color-highlight-2: var(--text-normal);
@@ -1861,7 +1862,7 @@ body.theme-dark {
   --bg-color-settings-1: #7c7c7c6d;
   --bg-color-settings-2: #1f1f1f52;
   --bg-color-settings-3: #141414be;
-  --bg-color-settings-4: #2e2e2e9d;
+  --bg-color-settings-4: var(--rich-black-2);
   --bg-color-settings-5: #424242aa;
   --bg-color-settings-6: #191919c7;
 
@@ -1878,8 +1879,6 @@ body.theme-dark {
 
   --text-normal: var(--non-photo-blue);
   --text-muted: var(--robin-egg);
-  --text-faint: var(--celeste);
-  --accent-em: var(--nord14);
 
   --interactive-accent-rgb: 129, 161, 193;
 
@@ -2810,7 +2809,11 @@ div[class="markdown-source-view cm-s-obsidian mod-cm6"] span.cm-hashtag-begin+.c
 /*thanks to Klaas from Obsidian Members Group on discord*/
 /* Selection highlight */
 .suggestion-item.is-selected {
-  background-color: var(--theme-color-translucent-015);
+  background-color: var(--prussian-blue);
+}
+
+.suggestion-item.mod-complex .suggestion-title {
+  color: var(--vivid-sky-blue);
 }
 
 :is(.markdown-preview-view,.markdown-rendered):not([class*="kanban-plugin"]) {
@@ -5351,6 +5354,14 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting-link.cm-strong.cm-
   background: var(--background-primary);
 }
 
+.view-header {
+  background-color: var(--background-secondary-alt);
+}
+
+.is-focused .workspace-leaf.mod-active .view-header {
+  background-color: var(--background-secondary-alt);
+}
+
 /*smaller header title*/
 .view-header-title {
   font-size: var(--font-size-file-header-title);
@@ -5844,12 +5855,12 @@ body:not(.is-grabbing) .nav-folder-title:hover {
 
 .nav-file-title.is-active {
   color: var(--vanilla);
-  background-color: var(--blue-munsell);
+  background-color: var(--midnight-green);
 }
 
 body:not(.is-grabbing) .nav-folder-title:hover {
-  background-color: var(--background-secondary-alt);
-  color: var(--text-normal);
+  background-color: var(--indigo-blue);
+  color: var(--electric-blue-2);
   font-weight: bold;
 }
 
@@ -5879,11 +5890,6 @@ body.is-grabbing .nav-file-title:hover {
 .workspace-leaf.mod-active .nav-folder.has-focus > .nav-folder-title,
 .workspace-leaf.mod-active .nav-file.has-focus > .nav-file-title {
   background-color: var(--theme-color-translucent-015);
-}
-
-body.is-grabbing:not(.folder-style-change-options-colorful) .nav-file-title.is-active[data-path$=".md"]>.nav-file-title-content::before,
-body:not(.folder-style-change-options-colorful) .nav-file-title.is-active[data-path$=".md"]:hover>.nav-file-title-content::before {
-  filter: brightness(200%);
 }
 
 .side-dock-plugin-panel-inner {
@@ -6397,7 +6403,7 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 }
 
 .cm-lineNumbers .cm-active.cm-gutterElement {
-  color: var(--text-accent);
+  color: var(--electric-blue-3);
   /* background: var(--activeline-background); */
 }
 
@@ -6425,7 +6431,7 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 .nav-folder-title {
   font-weight: 600;
   padding: 2px 5px 2px 23px;
-  color: var(--text-normal);
+  color: var(--vivid-sky-blue-2);
 }
 
 /*rename*/
@@ -7857,6 +7863,18 @@ body.plugin-sliding-panes.transparent-panes .workspace-split.mod-root .workspace
 
 body.plugin-sliding-panes.transparent-panes .workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
   width: 0;
+}
+
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle, .workspace-split.mod-left-split > .workspace-leaf-resize-handle {
+  border-right-width: 2px;
+}
+
+.workspace-split.mod-right-split > .workspace-leaf-resize-handle {
+  border-left-width: 2px;
+}
+
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle, .workspace-split.mod-left-split > .workspace-leaf-resize-handle, .workspace-split.mod-right-split > .workspace-leaf-resize-handle {
+  width: 2px;
 }
 
 body.plugin-sliding-panes.plugin-sliding-panes.transparent-panes.theme-light .workspace-split.mod-vertical>.workspace-leaf {
@@ -12597,7 +12615,7 @@ body:not(.enable-divider-lines) {
 }
 
 body:not(.enable-divider-lines) .workspace-ribbon.mod-left:before {
-  border-bottom: var(--tab-outline-width) transparent;
+  border-bottom: var(--tab-outline-width) transparent !important;
 }
 body:not(.enable-divider-lines) .workspace-tab-header-container{
   border-bottom: var(--tab-outline-width) transparent;
@@ -13493,8 +13511,7 @@ body.background-settings-workplace-style-high-transparency .side-dock-ribbon-act
   width: 90%;
 }
 
-textarea, input[type='text'], input[type='search'], input[type='email'], input[type='password'], input[type='number']
-{
+textarea, input[type='text'], input[type='search'], input[type='email'], input[type='password'], input[type='number'] {
   background: var(--bg-color-settings-4);
 }
 
@@ -13639,7 +13656,8 @@ body .progress-bar-message::before {
   height: 700px;
   margin-top: -20px;
   font-size: initial;
-  filter: sepia(88%) saturate(1028%) hue-rotate(150.7deg) brightness(85%) contrast(160%);
+  /* filter: sepia(88%) saturate(1028%) hue-rotate(150.7deg) brightness(85%) contrast(160%); */
+  filter: sepia(88%) saturate(580%) hue-rotate(149.8deg) brightness(73%) contrast(130%);
   position: initial;
   animation: unset;
 }
@@ -16760,11 +16778,12 @@ body.safari-tab-style .workspace .mod-root .workspace-tab-header-inner::after {
 body.safari-tab-style .mod-root:not(.mod-left-split):not(.mod-right-split) .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active {
   flex-grow: 1.67 ;
   max-width: 300px ;
-  background-color: var(--cerulean);
+  background-color: var(--midnight-green);
 }
 
 body.theme-dark.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header.is-active .workspace-tab-header-inner:hover {
   background-color: var(--cerulean);
+  color: var(--electric-blue-3);
 }
 
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked).mod-active .workspace-tab-header.is-active .workspace-tab-header-inner,
@@ -16779,7 +16798,7 @@ body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab
 }
 
 body.safari-tab-style .mod-root .workspace-tabs:not(.mod-stacked) .workspace-tab-header {
-  border: 2px solid  var(--pacific-blue);
+  border: 1.5px solid  var(--pacific-blue);
 }
 
 .sidebar-toggle-button.mod-left,
@@ -16983,7 +17002,7 @@ div#popup-search {
 }
 
 /* ======== vim settings ========= */
-body.caret-style-underline .cm-editor:not(.cm-focused) .cm-fat-cursor {
+.cm-editor:not(.cm-focused) .cm-fat-cursor {
   outline-color: transparent;
   border-bottom: 2px solid var(--electric-blue-3);
   margin-top: 3px;
