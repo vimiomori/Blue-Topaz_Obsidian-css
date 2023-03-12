@@ -28,18 +28,18 @@ settings:
   -
     id: hide-vault-name
     title: Hide vault name
-    type: class-toggle
-    default: false
-  -
-    id: enable-divider-lines
-    title: Enable Divider Lines
-    title.zh: 切换无分割线样式
+    description: Hide vault name. When turned off, the vault name is displayed at the bottom left.
     type: class-toggle
     default: true
   -
+    id: enable-divider-lines
+    title: Enable Divider Lines
+    type: class-toggle
+    default: false
+  -
     id: vim-monospace
-    title: Enable monospace font in when in Vim normal mode.
-    description: Only works with Vim keybinding turned on and in normal mode.
+    title: Enable monospace font in editing mode.
+    description: Recommended for vim keybindings.
     type: class-toggle
     default: true
   -
@@ -1302,6 +1302,7 @@ settings:
 :root {
   /* black */
   --rich-black: #001722;
+  --rich-black-0: #001f2e;
   --rich-black-1: #002638;
   --rich-black-2: #002a3e;
   /* blues */
@@ -1625,6 +1626,18 @@ body {
 }
 
 body.theme-dark {
+  --color-base-00: #001722;
+  --color-base-10: #002a3e;
+  --color-base-20: #002b3fff;
+  --color-base-25: #002d42;
+  --color-base-30: #00354B;
+  --color-base-35: #003950ff;
+  --color-base-40: #004f6b;
+  --color-base-50: #016986ff;
+  --color-base-60: #018eb1;
+  --color-base-70: #2CC6DB;
+  --color-base-100: #87ecff;
+
   --color-cyan-rgb: 0, 255, 255;   /* electric blue 3 */
   --color-cyan: var(--electric-blue-3);
   --color-green-rgb: 0, 255, 174; /* aquamarine */
@@ -1678,13 +1691,13 @@ body.theme-dark {
   --text-error-hover: var(--misty-rose);
   --text-selection: var(--cerulean);
   --text-on-accent: var(--prussian-blue-3);
-  --interactive-normal: var(--indigo-blue);
-  --interactive-hover: var(--midnight-green);
+  --interactive-normal: var(--midnight-green);
+  --interactive-hover: var(--cerulean);
   --accent-h: 186;
   --accent-s: 100%;
   --accent-l: 50%;
   --interactive-accent-rgb: 45, 130, 204;
-  --interactive-accent-hover: var(--color-accent-2);
+  --interactive-accent-hover: var(--sky-blue);
   --panel-border-color: var(--robin-egg-translucent);
   --search-text: var(--electric-blue-2);
   --folder-title: #ffffff;
@@ -1731,7 +1744,7 @@ body.theme-dark {
   --variable-2: var(--robin-egg);
   --variable-3: var(--pacific-blue);
 
-  --interactive-accent-hsl: 199, 100%, 7%;
+  --interactive-accent-hsl: 195.69, 67.4%, 44.51%;
 
   --embed-color: 'hsl'a(calc(var(--accent-h)*1),calc(var(--accent-s)*1.2),calc(var(--accent-l)*2),0.055);
   --search-result-file-title-color: var(--text-normal);
@@ -1900,6 +1913,7 @@ body.theme-dark {
   /*checklist*/
   --checklist-bg: #1d1d1d96;
   --checklist-bg-hover: #08080896;
+  --checklist-iconFill-accent: var(--text-faint);
 
   --checkbox-color-0: #3187d3;
   --checkbox-color-1: #a9a608;
@@ -1933,13 +1947,13 @@ body.theme-dark {
   --background-secondary-translucent-1: #2c2c2c26;
 
   /*rainbow-checklist*/
-  --checklist-color-1: #005aa486;
-  --checklist-color-2: #00798986;
-  --checklist-color-3: #12781586;
-  --checklist-color-4: #897b0086;
-  --checklist-color-5: #a4620086;
-  --checklist-color-6: #ab100586;
-  --checklist-color-7: #7f1f9086;
+  --checklist-color-1: rgba(var(--color-blue-rgb), 0.2);
+  --checklist-color-2: rgba(var(--color-cyan-rgb), 0.3);
+  --checklist-color-3: rgba(var(--color-green-rgb), 0.3);
+  --checklist-color-4: rgba(var(--color-yellow-rgb), 0.3);
+  --checklist-color-5: rgba(var(--color-orange-rgb), 0.3);
+  --checklist-color-6: rgba(var(--color-pink-rgb), 0.3);
+  --checklist-color-7: rgba(var(--color-purple-rgb), 0.2);
 
   --table-color-calendar-2: rgb(0, 91, 144);
   --table-color-rgb: 0, 91, 144;
@@ -3421,16 +3435,16 @@ body:not(.is-focused) .titlebar-text {
 
 .tag-container .tree-item-self.tag-pane-tag.is-clickable:hover {
   background-color: var(--theme-color-translucent-015);
-  color: var(--text-normal);
+  color: var(--electric-blue-3);
 }
 
 .outline .tree-item-self.is-clickable:hover {
   background-color: var(--theme-color-translucent-015);
-  color: var(--text-normal);
+  color: var(--electric-blue-3);
 }
 
 .search-result-file-match:hover {
-  background-color: var(--background-secondary-alt);
+  background-color: var(--cerulean);
   color: var(--text-normal);
 }
 
@@ -5258,19 +5272,19 @@ body.rainbow-checkbox .mod-cm6 .HyperMD-list-line-8 .task-list-item-checkbox {
 
 /*预览模式
 /*无序列表 任务框*/
-body.colorful-indentation-lines ul li .task-list-item-checkbox {
+/* body.rainbow-checkbox ul li .task-list-item-checkbox {
   border-color: rgba(var(--rainbow-rgb-1),0.5);
 }
-body.colorful-indentation-lines ul ul li .task-list-item-checkbox {
+body.rainbow-checkbox ul ul li .task-list-item-checkbox {
   border-color: rgba(var(--rainbow-rgb-2),0.5);
 }
-body.colorful-indentation-lines ul ul ul li .task-list-item-checkbox {
+body.rainbow-checkbox ul ul ul li .task-list-item-checkbox {
   border-color: rgba(var(--rainbow-rgb-3),0.5);
 }
-body.colorful-indentation-lines ul ul ul ul li .task-list-item-checkbox {
+body.rainbow-checkbox ul ul ul ul li .task-list-item-checkbox {
   border-color: rgba(var(--rainbow-rgb-4),0.5);
 }
-body.colorful-indentation-lines ul ul ul ul ul  li .task-list-item-checkbox {
+body.rainbow-checkbox ul ul ul ul ul  li .task-list-item-checkbox {
   border-color: rgba(var(--rainbow-rgb-5),0.5);
 }
 body.rainbow-checkbox  ul ul ul ul ul ul li .task-list-item-checkbox {
@@ -5281,7 +5295,7 @@ body.rainbow-checkbox  ul ul ul ul ul ul ul li .task-list-item-checkbox {
 }
 body.rainbow-checkbox  ul ul ul ul ul ul ul ul li .task-list-item-checkbox {
   border-color: rgba(var(--rainbow-rgb-8),0.5);
-}
+} */
 
 /*无序列表 大纲线*/
 body.colorful-indentation-lines ul ul::before {
@@ -5369,28 +5383,28 @@ body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li li li
 
 /*任务有序列表 选择框未选择*/
 body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li .task-list-item-checkbox {
-  border-color: rgba(var(--rainbow-rgb-1),0.7) !important;
+  border-color: rgba(var(--rainbow-rgb-1)) !important;
 }
 body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li .task-list-item-checkbox {
-  border-color: rgba(var(--rainbow-rgb-2),0.7) !important;
+  border-color: rgba(var(--rainbow-rgb-2)) !important;
 }
 body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li li .task-list-item-checkbox {
-  border-color: rgba(var(--rainbow-rgb-3),0.7) !important;
+  border-color: rgba(var(--rainbow-rgb-3)) !important;
 }
 body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li li li .task-list-item-checkbox {
-  border-color: rgba(var(--rainbow-rgb-4),0.7) !important;
+  border-color: rgba(var(--rainbow-rgb-4)) !important;
 }
 body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li li li li .task-list-item-checkbox {
-  border-color: rgba(var(--rainbow-rgb-5),0.7) !important;
+  border-color: rgba(var(--rainbow-rgb-5)) !important;
 }
 body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li li li li li .task-list-item-checkbox {
-  border-color: rgba(var(--rainbow-rgb-6),0.7) !important;
+  border-color: rgba(var(--rainbow-rgb-6)) !important;
 }
 body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li li li li li li .task-list-item-checkbox {
-  border-color: rgba(var(--rainbow-rgb-7),0.7) !important;
+  border-color: rgba(var(--rainbow-rgb-7)) !important;
 }
 body.rainbow-checkbox :is(.markdown-preview-view,.markdown-rendered) li li li li li li li li .task-list-item-checkbox {
-  border-color: rgba(var(--rainbow-rgb-8),0.7) !important;
+  border-color: rgba(var(--rainbow-rgb-8)) !important;
 }
 
 body.colorful-indentation-lines :is(.markdown-preview-view,.markdown-rendered) li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
@@ -6634,6 +6648,10 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
   font-weight: 600;
   padding: 2px 5px 2px 23px;
   color: var(--electric-blue-2);
+}
+
+.nav-folder:not(.is-collapsed) > .nav-folder-title > .nav-folder-title-content {
+  font-weight: 900;
 }
 
 /*rename*/
@@ -10245,6 +10263,7 @@ body.style-options-for-admonition-plugin .admonition-hibox .admonition-title {
 /* ================================== */
 /* ============ checklist =========== */
 /* ================================== */
+
 .checklist-plugin-main button {
   box-shadow: none;
 }
@@ -10413,6 +10432,10 @@ body.dolphin-dataview-list ul.dataview.list-view-ul>li:not(.task-list-item):nth-
 
 body.dolphin-dataview-list ul.dataview.list-view-ul {
   list-style: none;
+}
+
+div.dataview-error-box {
+  border: 2px dashed var(--midnight-green);
 }
 
 ul.dataview.dataview-ul.dataview-result-list-root-ul>li.dataview-result-list-li {
@@ -14346,7 +14369,14 @@ body.admonition-bg-color-same .callout {
 body.shade-callout-style .callout {
   border:none;
   background-color: rgba(var(--callout-color), 0.2);
+}
+
+body.shade-callout-style div:not([data-callout="multi-column"], [data-callout*=blank]).callout {
   box-shadow: inset 0 0 0 2px rgba(var(--callout-color), 0.25), 0px 0.5px 1px 0.5px rgba(0, 0, 0, 0.1) !important;
+}
+
+div.el-div[data-callout="multi-column"] {
+  margin-bottom: 1em;
 }
 
 body.shade-callout-style  .callout .callout-title {
@@ -14725,6 +14755,10 @@ body.admonition-bg-color-same .callout-title {
   color: var(--electric-blue-2);
 }
 
+div[data-callout*=blank].callout > .callout-title {
+  display: flex !important;
+}
+
 .callout.callout[data-callout*=blank] .callout-title .callout-icon .svg-icon {
   color: var(--electric-blue-2);
 }
@@ -14732,7 +14766,7 @@ body.admonition-bg-color-same .callout-title {
 .callout.callout[data-callout*=blank] .callout-content {
   overflow: visible;
   margin: 0;
-  padding: 0;
+  padding-left: 5px;
   border: none;
 }
 
@@ -14779,10 +14813,12 @@ body.admonition-bg-color-same .callout-title {
   display: none;
 }
 
+/* 
 .callout.callout:is([data-callout-metadata^="noicon"],
 [data-callout*=noicon]) .callout-title {
-  padding: 0px;
+  padding-left: 0px;
 }
+*/
 
 /* ===隐藏边框============ */
 .callout.callout:is([data-callout-metadata*="noborder"],
