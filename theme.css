@@ -266,59 +266,6 @@ settings:
         label: Border
         value: border-callout-style
   -
-    id: style-options-for-admonition-plugin
-    title: Admonition special style support
-    title.zh: 是否开启Admonition特别样式支持
-    type: class-toggle
-    default: true
-    description : 目前支持ad类型：blank 全透明框🔸def definition🔸thm theorem🔸lem lemma🔸cor corollary🔸pro proposition 🔸hibox  自动隐藏框🔸col2 col3 col4内容分多栏🔸kanban 伪看板🔸table 表格单行全部显示❗使用方法❗下面以thm类型为例，在admonition插件的设置页面中，类型填 thm，标题填 定理，图标选择hand-point-right，颜色自己选比如浅绿色，添加成功后，在正文中使用代码块```ad-thm 即可激活。其他类型以此类推。
-  -
-    id: style-options-for-calendar-plugin-header
-    title: 3.2 Calendar
-    type: heading
-    level: 2
-    collapsed: true
-  -
-    id: toggle-calendar-shadow
-    title: Toggle Shadow of Current Date
-    title.zh: 开启日历中当前日期的阴影
-    type: class-toggle
-    default: false
-  -
-    id: toggle-calendar-transparent
-    title:  Transparent calendar background
-    title.zh: 日历背景透明
-    type: class-toggle
-    default: false
-  -
-    id: style-options-for-calendar-plugin
-    title: Calendar
-    type: class-select
-    allowEmpty: false
-    default: style-options-for-calendar-plugin-default
-    options:
-      -
-        label: Default
-        value: style-options-for-calendar-plugin-default
-      -
-        label: Style 1
-        value: style-options-for-calendar-plugin-style-one
-      -
-        label: Style 2
-        value: style-options-for-calendar-plugin-style-two
-  -
-    id: rainbow-checklist-folder
-    title: 3.3 Checklist Plugin
-    type: heading
-    level: 2
-    collapsed: true
-  -
-    id: rainbow-checklist
-    title: Rainbow Checklist
-    title.zh: 彩虹色条目
-    type: class-toggle
-    default: false
-  -
     id: style-options-for-kanban-plugin-header
     title: 3.4 Kanban
     type: heading
@@ -331,21 +278,6 @@ settings:
     allowEmpty: false
     default: style-options-for-kanban-plugin-static-default
     options:
-      -
-        label: Default
-        value: style-options-for-kanban-plugin-static-default
-      -
-        label: All color (instead of images in light mode)
-        value: style-options-for-kanban-plugin-static-all-color
-      -
-        label: All image-1
-        value: style-options-for-kanban-plugin-static-all-image-one
-      -
-        label: All image-2 abstract
-        value: style-options-for-kanban-plugin-static-all-image-two
-      -
-        label: Plain
-        value: style-options-for-kanban-plugin-static-plain
       -
         label: Little color
         value: style-options-for-kanban-plugin-static-little-color
@@ -1522,15 +1454,13 @@ body.theme-dark {
   --background-asymm-split-left: var(--background-secondary-alt);
   --background-mobile-drawer-1: #1b1b1b;
   --background-mobile-drawer-2: #1b1b1b69;
-  --background-modifier-border-hr: #3f3f3f;
-  --background-modifier-border-asymm: #343434;
+  --background-modifier-border-hr: var(--theme-color);
   --background-transparent-black-or-white-1: #1b1b1b9a;
   --background-transparent-black-or-white-2: #1e1e1ebd;
   --background-transparent-black-or-white-3: #2f2f2f6c;
   --background-transparent-black-or-white-4: #7e7e7e65;
   --background-transparent-black-or-white-5: #0f0f0f6c;
   --background-black-or-white-1: #353535;
-  --background-modifier-border-1: #000000;
   --background-transparent-blue: #003e759a;
   --scrollbar-thumb: #00fbffc4;
   --scrollbar-thumb-active: var(--electric-blue);
@@ -1651,10 +1581,10 @@ body.theme-dark {
   --table-header-color: var(--vivid-sky-blue);
 
   /*calendar*/
-  --calendar-week-color: #a2df94;
-  --calendar-week-hover: #61815c;
-  --calendar-week-background-color: #4a5842;
-  --calendar-today-background-color: #8c4545;
+  --calendar-week-color: var(--apricot);
+  --calendar-week-hover: var(--cerulean);
+  --calendar-week-background-color: var(--vanilla);
+  --calendar-today-background-color: var(--midnight-green);
 
   /*day planner*/
   --day-planner-pie: #f19c1c;
@@ -8195,7 +8125,7 @@ body.plugin-sliding-panes.plugin-sliding-panes.transparent-panes.theme-light .wo
 }
 
 #calendar-container .day:not(:empty):hover {
-  background-color: var(--table-hover-color);
+  background-color: var(--cerulean);
 }
 
 #calendar-container .day:active,
@@ -8210,14 +8140,6 @@ body.plugin-sliding-panes.plugin-sliding-panes.transparent-panes.theme-light .wo
 #calendar-container .day.has-note.active {
   color: var(--text-accent) !important;
   font-weight: 700;
-}
-
-body.toggle-calendar-shadow #calendar-container .active.today {
-  box-shadow: 0 0 1px 2px var(--text-accent);
-}
-
-body.toggle-calendar-shadow #calendar-container .today {
-  box-shadow: 0 0 5px var(--text-accent);
 }
 
 #calendar-container .today {
@@ -8289,91 +8211,6 @@ body.toggle-calendar-shadow #calendar-container .today {
 /*星期数悬停 week hover*/
 #calendar-container .week-num:hover {
   background-color: var(--calendar-week-hover) !important;
-}
-
-/* calendar-1 translucent, v0.2, for Blue Topaz*/
-body.style-options-for-calendar-plugin-style-one.theme-dark {
-  --color-calendar-weekends: #cc8484;
-  --color-calendar-weekends-2: #ff9f9f21;
-  --calendar-today-background-color: #00b3005e;
-  --theme-color-translucent-3: #217cc769;
-}
-
-body.style-options-for-calendar-plugin-style-one.theme-light {
-  --color-calendar-weekends: #c74a4a;
-  --color-calendar-weekends-2: #fdadad21;
-  --theme-color-translucent-3: #91c2eb80;
-}
-
-body.style-options-for-calendar-plugin-style-one.theme-dark #calendar-container {
-  --color-tr: #11111183;
-}
-
-body.style-options-for-calendar-plugin-style-one.theme-light #calendar-container {
-  --color-tr: #ffffffa9;
-}
-
-body.style-options-for-calendar-plugin-style-one #calendar-container th {
-  padding: 10px 0;
-  border-radius: 0 !important;
-}
-
-body.style-options-for-calendar-plugin-style-one #calendar-container th:nth-last-child(1),
-body.style-options-for-calendar-plugin-style-one #calendar-container th:nth-last-child(2) {
-  color: var(--color-calendar-weekends) !important;
-}
-
-body.style-options-for-calendar-plugin-style-one #calendar-container td:nth-last-child(1),
-body.style-options-for-calendar-plugin-style-one #calendar-container td:nth-last-child(2) {
-  background-color: var(--color-calendar-weekends-2) !important;
-}
-
-body.style-options-for-calendar-plugin-style-one #calendar-container .day {
-  border-radius: 50% !important;
-}
-
-body.style-options-for-calendar-plugin-style-one #calendar-container .today {
-  color: var(--text-accent) !important;
-  font-weight: 700 !important;
-  background-image: unset;
-}
-
-body.style-options-for-calendar-plugin-style-one #calendar-container .day:active,
-body.style-options-for-calendar-plugin-style-one #calendar-container .active,
-body.style-options-for-calendar-plugin-style-one #calendar-container .active.today {
-  background-color: var(--theme-color-translucent-3) !important;
-}
-
-body.style-options-for-calendar-plugin-style-two #calendar-container .day {
-  border-radius: 0 !important;
-}
-
-body.style-options-for-calendar-plugin-style-two .day.adjacent-month {
-  background-color: var(--background-transparent-black-or-white-3) !important;
-}
-
-body.style-options-for-calendar-plugin-style-two #calendar-container tbody tr:first-child {
-  background-color: rgba(var(--table-color-rgb), 0.1) !important;
-}
-
-body.style-options-for-calendar-plugin-style-two #calendar-container tbody tr:nth-child(2) {
-  background-color: rgba(var(--table-color-rgb), 0.2) !important;
-}
-
-body.style-options-for-calendar-plugin-style-two #calendar-container tbody tr:nth-child(3) {
-  background-color: rgba(var(--table-color-rgb), 0.3) !important;
-}
-
-body.style-options-for-calendar-plugin-style-two #calendar-container tbody tr:nth-child(4) {
-  background-color: rgba(var(--table-color-rgb), 0.4) !important;
-}
-
-body.style-options-for-calendar-plugin-style-two #calendar-container tbody tr:nth-child(5) {
-  background-color: rgba(var(--table-color-rgb), 0.5) !important;
-}
-
-body.style-options-for-calendar-plugin-style-two #calendar-container tbody tr:nth-child(6) {
-  background-color: rgba(var(--table-color-rgb), 0.6) !important;
 }
 
 /*===========================*/
@@ -8488,7 +8325,7 @@ button.copy-code-button:hover {
 .kanban-plugin__markdown-preview-view {
   font-family: var(--font-text) !important;
 }
-/*body:not(.style-options-for-kanban-plugin-static-default)*/
+
 .workspace-leaf .kanban-plugin__lane {
   border-radius: 8px;
   box-shadow: 0 2px 6px 1px rgba(0, 0, 0, 0.1);
@@ -8641,162 +8478,6 @@ button.kanban-plugin__new-item-button:hover {
   background: linear-gradient(to bottom, var(--kanban-color-7) 60%, transparent);
 }
 
-body.style-options-for-kanban-plugin-static-all-color.theme-light {
-  --kanban-color-1: #63a1e970;
-  --kanban-color-2: #63e6e970;
-  --kanban-color-3: #63e98270;
-  --kanban-color-4: #dee96370;
-  --kanban-color-5: #e8c89170;
-  --kanban-color-6: #e8919170;
-  --kanban-color-7: #bd91e870;
-}
-
-body.style-options-for-kanban-plugin-static-all-color.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+1) {
-  background: linear-gradient(to bottom, var(--kanban-color-1) 30%,  transparent) !important;
-}
-body.style-options-for-kanban-plugin-static-all-color.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+2) {
-  background: linear-gradient(to bottom, var(--kanban-color-2) 30%,  transparent) !important;
-}
-body.style-options-for-kanban-plugin-static-all-color.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+3) {
-  background: linear-gradient(to bottom, var(--kanban-color-3) 30%,  transparent) !important;
-}
-body.style-options-for-kanban-plugin-static-all-color.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+4) {
-  background: linear-gradient(to bottom, var(--kanban-color-4) 30%,  transparent) !important;
-}
-body.style-options-for-kanban-plugin-static-all-color.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+5) {
-  background: linear-gradient(to bottom, var(--kanban-color-5) 30%,  transparent) !important;
-}
-body.style-options-for-kanban-plugin-static-all-color.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+6) {
-  background: linear-gradient(to bottom, var(--kanban-color-6) 30%,  transparent) !important;
-}
-body.style-options-for-kanban-plugin-static-all-color.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+0) {
-  background: linear-gradient(to bottom, var(--kanban-color-7) 30%,  transparent) !important;
-}
-body.style-options-for-kanban-plugin-static-all-color .kanban-plugin__item-title-wrapper {
-  background: transparent !important;
-}
-
-body.style-options-for-kanban-plugin-static-all-image-one.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+1) {
-  background-image: url("https://images.unsplash.com/photo-1486520299386-6d106b22014b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+2) {
-  background-image: url("https://images.unsplash.com/photo-1528919699453-27d2dcfbdf06?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+3) {
-  background-image: url("https://images.unsplash.com/photo-1528919880398-4af90c12ac1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=894&q=80");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+4) {
-  background-image: url("https://images.unsplash.com/photo-1538947151057-dfe933d688d1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+5) {
-  background-image: url("https://images.unsplash.com/photo-1565942443747-031188e6e56c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+6) {
-  background-image: url("https://images.unsplash.com/photo-1549279866-41b2b21a0de4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=747&q=80");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+0) {
-  background-image: url("https://images.unsplash.com/photo-1536147116438-62679a5e01f2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80");
-}
-
-body.style-options-for-kanban-plugin-static-all-image-one.theme-dark .kanban-plugin__lane-wrapper {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+1) {
-  background-image: url("https://images.unsplash.com/photo-1595520519880-a86c48ea536c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8ZGFyayUyMGJsdWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+2) {
-  background-image: url("https://images.unsplash.com/photo-1593959734793-6e92d102da1e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZGFyayUyMGJsdWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+3) {
-  background-image: url("https://images.unsplash.com/photo-1593270573246-2dca2f2c1c43?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZGFyayUyMGJsdWV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+4) {
-  background-image: url("https://images.unsplash.com/photo-1604838656896-171d9d737cbe?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODd8fGRhcmslMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+5) {
-  background-image: url("https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?ixid=MnwxMjA3fDB8MHxzZWFyY2h8ODZ8fGRhcmslMjBibHVlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+6) {
-  background-image: url("https://images.unsplash.com/photo-1516249181155-bbf89a130f77?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTExfHxkYXJrJTIwYmx1ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-one.theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+0) {
-  background-image: url("https://images.unsplash.com/photo-1578089789664-f256b7c4e07f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTM2fHxkYXJrJTIwYmx1ZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-
-/* Kanban background images v0.2, special edition abstract, @Solen Feyissa https://unsplash.com/@solenfeyissa and @Pawel Czerwinski https://unsplash.com/@pawel_czerwinski, for Blue Topaz */
-body.style-options-for-kanban-plugin-static-all-image-two.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+1) {
-  background-image: url("https://images.unsplash.com/photo-1601682633973-a76aa17a7844?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+2) {
-  background-image: url("https://images.unsplash.com/photo-1601436155225-2633c7f3818b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+3) {
-  background-image: url("https://images.unsplash.com/photo-1564951434112-64d74cc2a2d7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE4fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+4) {
-  background-image: url("https://images.unsplash.com/photo-1601436155223-9b6f9c287cd1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDd8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+5) {
-  background-image: url("https://images.unsplash.com/photo-1600456011949-d2fc441999b4?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTAyfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+6) {
-  background-image: url("https://images.unsplash.com/photo-1600226082873-02b7eb2b7c23?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTA2fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-light .kanban-plugin__lane-wrapper:nth-child(7n+0) {
-  background-image: url("https://images.unsplash.com/photo-1600538622150-d5a24464bc47?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8NTAwfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper {
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper:nth-child(8n+1) {
-  background-image: url("https://images.unsplash.com/photo-1628432436663-9e588806592a?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjR8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper:nth-child(8n+2) {
-  background-image: url("https://images.unsplash.com/photo-1621791554791-cb212a4a55a6?ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper:nth-child(8n+3) {
-  background-image: url("https://images.unsplash.com/photo-1630182044473-34dd20c6dd8c?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8OHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper:nth-child(8n+4) {
-  background-image: url("https://images.unsplash.com/photo-1622405538251-e8c48fdc40db?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTA2fHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper:nth-child(8n+5) {
-  background-image: url("https://images.unsplash.com/photo-1628432337777-bdc12ebda14e?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Mjh8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper:nth-child(8n+6) {
-  background-image: url("https://images.unsplash.com/photo-1620503266076-5fd971fdd572?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MTQxfHx8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper:nth-child(8n+7) {
-  background-image: url("https://images.unsplash.com/photo-1625425325558-d83335f635d8?ixid=MnwxMjA3fDB8MHxwcm9maWxlLXBhZ2V8Njd8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-body.style-options-for-kanban-plugin-static-all-image-two.theme-dark .kanban-plugin__lane-wrapper:nth-child(8n+0) {
-  background-image: url("https://images.unsplash.com/photo-1620503395484-07e2a7ea3f8b?ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDZ8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
-}
-
-body.style-options-for-kanban-plugin-static-plain .kanban-plugin__lane-wrapper {
-  background: unset !important;
-}
-
-body.style-options-for-kanban-plugin-static-plain .kanban-plugin__lane {
-  border: 2px solid var(--background-modifier-border) !important;
-}
-
-body.style-options-for-kanban-plugin-static-plain .kanban-plugin__lane-header-wrapper {
-  background: var(--background-transparent-black-or-white-2) !important;
-}
-
-body.style-options-for-kanban-plugin-static-plain.theme-dark .kanban-plugin__lane-header-wrapper,
-body.style-options-for-kanban-plugin-static-little-color.theme-dark .kanban-plugin__lane-header-wrapper {
-  padding: 10px 11px !important;
-}
-
-body.style-options-for-kanban-plugin-static-plain .kanban-plugin__item-button-wrapper {
-  background: transparent !important;
-}
-
 body.style-options-for-kanban-plugin-static-little-color.theme-light {
   --kanban-color-1: #91bae870;
   --kanban-color-2: #91e8e070;
@@ -8808,11 +8489,8 @@ body.style-options-for-kanban-plugin-static-little-color.theme-light {
 }
 
 body.style-options-for-kanban-plugin-static-little-color.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane,
-body.style-options-for-kanban-plugin-static-plain.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane,
 body.style-options-for-kanban-plugin-static-little-color.style-options-for-kanban-plugin-dynamic-neon-one .kanban-plugin__lane,
-body.style-options-for-kanban-plugin-static-plain.style-options-for-kanban-plugin-dynamic-neon-one .kanban-plugin__lane,
-body.style-options-for-kanban-plugin-static-little-color.style-options-for-kanban-plugin-dynamic-neon-two .kanban-plugin__lane,
-body.style-options-for-kanban-plugin-static-plain.style-options-for-kanban-plugin-dynamic-neon-two .kanban-plugin__lane {
+body.style-options-for-kanban-plugin-static-little-color.style-options-for-kanban-plugin-dynamic-neon-two .kanban-plugin__lane {
   border: none !important;
 }
 
@@ -11660,15 +11338,6 @@ body.is-mobile .nav-folder-collapse-indicator::after {
 }
 /*小屏幕特别优化*/
 @media screen and(min-width: 480px) and (max-width: 767px) {
-  body.style-options-for-admonition-plugin .admonition-flex .admonition-content {
-    gap:24px;
-  }
-  body.style-options-for-admonition-plugin .admonition-kanban ul > li.task-list-item {
-    flex: 1 1 40%;
-  }
-  body.style-options-for-admonition-plugin .admonition-kanban ul>li:not(.task-list-item) {
-    flex: 1 1 40%;
-  }
   .kanban ul>li:not(.task-list-item) {
     flex: 1 1 40%;
   }
@@ -11678,20 +11347,6 @@ body.is-mobile .nav-folder-collapse-indicator::after {
 }
 
 @media screen and (max-width: 479px) {
-  body.style-options-for-admonition-plugin .admonition-flex .admonition-content {
-    gap:15px;
-  }
-  body.style-options-for-admonition-plugin .admonition-flex .admonition-content div {
-    flex: 1 1 60%;
-    margin: 0;
-  }
-  body.style-options-for-admonition-plugin .admonition-kanban ul > li.task-list-item {
-    flex: 1 1 60%;
-  }
-  body.style-options-for-admonition-plugin .admonition-kanban ul>li:not(.task-list-item) {
-    flex: 1 1 40%;
-  }
-
   /*伪看板优化显示*/
   .kanban ul>li:not(.task-list-item) {
     flex: 1 1 auto;
