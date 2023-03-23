@@ -4,7 +4,6 @@ TODO: Update the credits on the top of this file
 TODO: Convert to sass and modularize
 TODO: Fix height for first file/folder
 TODO: check title bar on windows
-TODO: fix drop down select styles
 TODO: add credits to README
 */
 
@@ -183,6 +182,12 @@ settings:
     title: Superscript tags in headings
     type: class-toggle
     default: true
+  -
+    id: colorful-graph
+    title: Colorful graph
+    description: Enable for a more colorful graph
+    type: class-toggle
+    default: false
   -
     id: tag-style-option
     title: Tag Style
@@ -1083,16 +1088,20 @@ settings:
   --midnight-green: #004f6b;
   --midnight-green-2: #006082;
   --cerulean: #016986ff;
+  --cerulean-2: #00739d;
   --sky-blue: #2596be;
   --teal: #007989;
+  --teal-translucent: #0079898d;
   --blue-munsell: #018eb1;
   --blue-green: #00A0C1;
   --pacific-blue: #03b3d6;
+  --pacific-blue-1: #32d9ff;
   --pacific-cyan: #11B4D5;
   --moonstone: #00bcd4ff;
   --robin-egg: #2CC6DB;
   --robin-egg-translucent: #2cc7dba6;
   --vivid-sky-blue: #47d2eaff;
+  --vivid-sky-blue-1: #47d2eaff;
   --vivid-sky-blue-2: #00D4FF;
   --non-photo-blue: #87ecff;
   --celeste: #aef8ffff;
@@ -1101,12 +1110,15 @@ settings:
   --electric-blue-2: #00f2ff;
   --electric-blue-3: #00ffff;
   --doger: #279AFF;
+  --doger-0: #018dc4;
   --doger-1: rgba(0, 24, 63, 0.54);
+  --doger-2: #005cad;
   --bleu-de-france: #0089DF;
   --bleu-de-france-1: #1bbeff;
   --bleu-de-france-2: #129ed5;
   /* greens */
   --aquamarine: #00ffaeff;
+  --aquamarine-1: #30ffc8;
   --aquamarine-2: #5fffc4ff;
   --aquamarine-3: #a3ffddff;
   --spring-green: #06ff87ff;
@@ -1185,6 +1197,9 @@ body {
   --radius-s: 5px;
   --radius-m: 7px;
   --radius-l: 15px;
+
+  --toggle-radius: var(--radius-m);
+  --toggle-thumb-radius: var(--radius-s);
 
   --fancy-dolphin-hr: '🐬';
   --three-dolphins-hr: '\e168 \0020\0020\0020\0020 \e168 \0020\0020\0020\0020 \e168';
@@ -1462,8 +1477,8 @@ body.theme-dark {
   --background-transparent-black-or-white-5: #0f0f0f6c;
   --background-black-or-white-1: #353535;
   --background-transparent-blue: #003e759a;
-  --scrollbar-thumb: #00fbffc4;
-  --scrollbar-thumb-active: var(--electric-blue);
+  --scrollbar-thumb: var(--cerulean);
+  --scrollbar-thumb-active: var(--cerulean);
   --gray-1: #38677c;
   --gray-2: #64b9cc;
   --red: var(--melon);
@@ -1481,6 +1496,11 @@ body.theme-dark {
   --white: var(--celeste);
   --variable-2: var(--robin-egg);
   --variable-3: var(--pacific-blue);
+  --dark-teal: #008499;
+  --dark-green: #00803af7;
+  --dark-orange: #ac7600;
+  --dark-red: #e33100;
+  --dark-pink: #e91fe6;
 
   --interactive-accent-hsl: 195.69, 67.4%, 44.51%;
 
@@ -1509,30 +1529,37 @@ body.theme-dark {
   --list-ol-hover: #2c7bd6;
 
   --tag-text: #e4e4e4;
-  --stag1: #f08383;
-  --stag1-bg: #bd1919;
+  --stag1: var(--red-1);
+  --stag1-bg: var(--red);
   --stag2: #e7b263;
-  --stag2-bg: #ac6700;
+  --stag2-bg: var(--rainbow-tag-3);
   --stag3: #77df89;
-  --stag3-bg: #058c1c;
+  --stag3-bg: var(--rainbow-tag-2);
   --tag1: #3674bb;
   --tag2: #3685ad;
   --tag3: #2a8f91;
   --tag4: #43804f;
   --tag5: #5f932e;
 
-  --tag-dailynote: #98c8ff;
-  --tag-dailynote-bg: #0f60bd;
-  --tag-weeklynote: #d1e6ff;
-  --tag-weeklynote-bg: #3971b1;
-  --tag-questions: #d4bdff;
-  --tag-questions-bg: #6640ae;
-  --tag-ideas: #fcfcc0;
-  --tag-ideas-bg: #565656d8;
+  --tag-background: #0027389f;
+  --tag-dailynote: var(--electric-blue-3);
+  --tag-dailynote-bg: var(--cerulean);
+  --tag-weeklynote: var(--vanilla);
+  --tag-weeklynote-bg: var(--bleu-de-france);
+  --tag-monthlynote: var(--vivid-sky-blue-2);
+  --tag-monthlynote-bg: var(--doger-2);
+  --tag-quarterlynote: var(--vivid-sky-blue-2);
+  --tag-quarterlynote-bg: var(--rich-black-2);
+  --tag-yearlynote: var(--papaya-whip);
+  --tag-yearlynote-bg: var(--blue-munsell);
+  --tag-question: #fcbdff;
+  --tag-question-bg: #27003a;
+  --tag-idea: #ffffc0;
+  --tag-idea-bg: #005e98;
 
   --h1-color: var(--electric-blue-3);
   --h2-color: var(--vivid-sky-blue-2);
-  --h3-color: var(--aquamarine);
+  --h3-color: var(--aquamarine-1);
   --h4-color: var(--aquamarine-2);
   --h5-color: var(--pacific-blue);
   --h6-color: var(--moonstone);
@@ -1544,18 +1571,18 @@ body.theme-dark {
   --h5-bg-color: hsl(from var(--h5-color) / .15);
   --h6-bg-color: hsl(from var(--h6-color) / .15);
 
-  --graph-text-color: var(--vivid-sky-blue);
-  --graph-tag: var(--peach);
-  --graph-attach: var(--mauve);
-  --graph-circle: var(--pacific-blue);
-  --graph-line: var(--aquamarine-2);
-  --graph-unresolved: var(--lavender-pink);
-  --graph-arrow: var(--jasmine);
+  --graph-text-color: var(--vivid-sky-blue-2);
+  --graph-tag: var(--vivid-sky-blue-2);
+  --graph-attach: var(--aquamarine-1);
+  --graph-circle: var(--electric-blue-3);
+  --graph-line: var(--teal-translucent);
+  --graph-unresolved: var(--doger);
+  --graph-arrow: var(--electric-blue-3);
   --graph-control-bg: var(--prussian-blue-3);
-  --graph-circle-outline: var(--electric-blue-3);
-  --graph-canvas-bg: var(--prussian-blue);
+  --graph-circle-outline: var(--celeste);
+  --graph-canvas-bg: var(--rich-black-1);
   --graph-circle-fill-highlight: var(--electric-blue-3);
-  --graph-line-fill-highlight: var(--aquamarine);
+  --graph-line-fill-highlight: var(--doger);
 
   --unresolved-link: var(--doger);
   --link-unresolved-color: var(--doger);
@@ -2208,212 +2235,290 @@ div.markdown-source-view ul.floating-toc{
 /*special tags*/
 
 body:not(.tag-default) .tag[href ^="#important"]:not(.token) {
-  background-color: var(--stag1-bg) !important;
+  background-color: var(--rainbow-tag-4) !important;
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;
-  color: var(--white) !important;
+  color: var(--dark-red) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-important:not(.cm-formatting-hashtag) {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-important:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
   background-color: var(--stag1-bg) !important;
-  color: var(--white) !important;
+  color: var(--white);
   font-size: calc(var(--font-size-tag) - 0.3em);
   filter: hue-rotate(0) !important;
 }
 
 body:not(.tag-default) .tag[href^="#重要"]:not(.token) {
-  background-color: var(--stag1-bg) !important;
+  background-color: var(--rainbow-tag-4) !important;
   font-weight: 600;
   font-family: Webdings, 'Microsoft YaHei';
-  color: var(--white) !important;
+  color: var(--dark-red) !important;
   filter: hue-rotate(0) !important;
 }
 
 body:not(.tag-default) .tag[href^="#complete"]:not(.token) {
-  background-color: var(--stag3-bg) !important;
+  background-color: var(--rainbow-tag-2) !important;
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;
-  color: var(--white) !important;
+  color: var(--dark-green) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-complete:not(.cm-formatting-hashtag) {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-complete:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--stag3-bg) !important;
-  color: var(--white) !important;
+  background-color: var(--rainbow-tag-2) !important;
+  color: var(--dark-green) !important;
   font-size: 0.95em;
   filter: hue-rotate(0) !important;
 }
 
 body:not(.tag-default) .tag[href^="#完成"]:not(.token) {
-  background-color: var(--stag3-bg) !important;
+  background-color: var(--rainbow-tag-2) !important;
   font-family: Origin, 'Microsoft YaHei';
   font-weight: 600;
-  color: var(--white) !important;
+  color: var(--dark-green) !important;
   filter: hue-rotate(0) !important;
 }
 
 body:not(.tag-default) .tag[href ^="#inprogress"]:not(.token) {
-  background-color: var(--stag2-bg) !important;
+  background-color: var(--rainbow-tag-3) !important;
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;
-  color: var(--white) !important;
+  color: var(--dark-orange) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-inprogress:not(.cm-formatting-hashtag) {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-inprogress:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--stag2-bg) !important;
-  color: var(--white) !important;
+  background-color: var(--rainbow-tag-3) !important;
+  color: var(--dark-orange) !important;
   font-size: 0.95em;
   filter: hue-rotate(0) !important;
 }
 
 body:not(.tag-default) .tag[href ^="#进行中"]:not(.token) {
-  background-color: var(--stag2-bg) !important;
+  background-color: var(--rainbow-tag-3) !important;
   font-weight: 600;
   font-family: Wingdings, 'Microsoft YaHei';
-  color: var(--white) !important;
+  color: var(--dark-orange) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .tag[href ^="#dailynote"]:not(.token) {
+body:not(.tag-default) .tag[href ^="#daily"]:not(.token) {
   background-color: var(--tag-dailynote-bg) !important;
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;
-  color: var(--white) !important;
+  color: var(--tag-dailynote) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .tag[href ^="#dailynote"]::after {
-  content: ' 🐈';
+body:not(.tag-default) .tag[href ^="#daily"]::after {
+  content: ' 🐬';
   font-size: var(--font-size-emoji-after-tag);
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-tag-dailynote:not(.cm-formatting-hashtag)::after {
-  content: ' 🐈';
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-tag-daily:not(.cm-formatting-hashtag)::after {
+  content: ' 🐬';
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-dailynote:not(.cm-formatting-hashtag) {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-daily:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
   background-color: var(--tag-dailynote-bg) !important;
-  color: var(--white) !important;
+  color: var(--tag-dailynote) !important;
   font-size: 0.95em;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .tag[href ^="#weeklynote"]:not(.token) {
+body:not(.tag-default) .tag[href ^="#weekly"]:not(.token) {
   background-color: var(--tag-weeklynote-bg) !important;
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;
-  color: var(--white) !important;
+  color: var(--tag-weeklynote) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .tag[href^="#weeklynote"]::after {
-  content: ' 🥑';
+body:not(.tag-default) .tag[href^="#weekly"]::after {
+  content: ' 🦭';
   font-size: var(--font-size-emoji-after-tag);
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-tag-weeklynote:not(.cm-formatting-hashtag)::after {
-  content: ' 🥑';
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-tag-weekly:not(.cm-formatting-hashtag)::after {
+  content: ' 🦭';
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-weeklynote:not(.cm-formatting-hashtag) {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-weekly:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
   background-color: var(--tag-weeklynote-bg) !important;
-  color: var(--white) !important;
+  color: var(--tag-weeklynote) !important;
   font-size: 0.95em;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .tag[href ^="#questions"]:not(.token) {
-  background-color: var(--tag-questions-bg) !important;
+body:not(.tag-default) .tag[href ^="#monthly"]:not(.token) {
+  background-color: var(--tag-monthlynote-bg) !important;
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;
-  color: var(--white) !important;
+  color: var(--tag-monthlynote) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .tag[href^="#questions"]::after {
-  content: ' ❓';
+body:not(.tag-default) .tag[href^="#monthly"]::after {
+  content: ' 🐳';
   font-size: var(--font-size-emoji-after-tag);
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-tag-questions:not(.cm-formatting-hashtag)::after {
-  content: ' ❓';
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-tag-monthly:not(.cm-formatting-hashtag)::after {
+  content: ' 🐳';
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-questions:not(.cm-formatting-hashtag) {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-monthly:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--tag-questions-bg) !important;
-  color: var(--white) !important;
+  background-color: var(--tag-monthlynote-bg) !important;
+  color: var(--tag-monthlynote) !important;
   font-size: 0.95em;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .tag[href ^="#ideas"]:not(.token) {
-  background-color: var(--tag-ideas-bg) !important;
+body:not(.tag-default) .tag[href ^="#quarterly"]:not(.token) {
+  background-color: var(--tag-quarterlynote-bg) !important;
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;
-  color: var(--white) !important;
+  color: var(--tag-quarterlynote) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .tag[href^="#ideas"]::after {
+body:not(.tag-default) .tag[href^="#quarterly"]::after {
+  content: ' 🦋';
+  font-size: var(--font-size-emoji-after-tag);
+}
+
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-tag-quarterly:not(.cm-formatting-hashtag)::after {
+  content: ' 🦋';
+}
+
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-quarterly:not(.cm-formatting-hashtag) {
+  font-family: var(--font-family-special-tag) !important;
+  font-weight: 600;
+  background-color: var(--tag-quarterlynote-bg) !important;
+  color: var(--tag-quarterlynote) !important;
+  font-size: 0.95em;
+  filter: hue-rotate(0) !important;
+}
+
+body:not(.tag-default) .tag[href ^="#yearly"]:not(.token) {
+  background-color: var(--tag-yearlynote-bg) !important;
+  font-weight: 600;
+  font-family: var(--font-family-special-tag) !important;
+  color: var(--tag-yearlynote) !important;
+  filter: hue-rotate(0) !important;
+}
+
+body:not(.tag-default) .tag[href^="#yearly"]::after {
+  content: ' 🐹';
+  font-size: var(--font-size-emoji-after-tag);
+}
+
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-tag-yearly:not(.cm-formatting-hashtag)::after {
+  content: ' 🐹';
+}
+
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-yearly:not(.cm-formatting-hashtag) {
+  font-family: var(--font-family-special-tag) !important;
+  font-weight: 600;
+  background-color: var(--tag-yearlynote-bg) !important;
+  color: var(--tag-yearlynote) !important;
+  font-size: 0.95em;
+  filter: hue-rotate(0) !important;
+}
+
+body:not(.tag-default) .tag[href ^="#question"]:not(.token) {
+  background-color: var(--tag-question-bg) !important;
+  font-weight: 600;
+  font-family: var(--font-family-special-tag) !important;
+  color: var(--tag-question) !important;
+  filter: hue-rotate(0) !important;
+}
+
+body:not(.tag-default) .tag[href^="#question"]::after {
+  content: ' 🤔';
+  font-size: var(--font-size-emoji-after-tag);
+}
+
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-tag-question:not(.cm-formatting-hashtag)::after {
+  content: ' 🤔';
+}
+
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-question:not(.cm-formatting-hashtag) {
+  font-family: var(--font-family-special-tag) !important;
+  font-weight: 600;
+  background-color: var(--tag-question-bg) !important;
+  color: var(--tag-question) !important;
+  font-size: 0.95em;
+  filter: hue-rotate(0) !important;
+}
+
+body:not(.tag-default) .tag[href ^="#idea"]:not(.token) {
+  background-color: var(--tag-idea-bg) !important;
+  font-weight: 600;
+  font-family: var(--font-family-special-tag) !important;
+  color: var(--tag-idea) !important;
+  filter: hue-rotate(0) !important;
+}
+
+body:not(.tag-default) .tag[href^="#idea"]::after {
   content: ' 💡';
   font-size: var(--font-size-emoji-after-tag);
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-tag-ideas:not(.cm-formatting-hashtag)::after {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-tag-idea:not(.cm-formatting-hashtag)::after {
   content: ' 💡';
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-ideas:not(.cm-formatting-hashtag) {
-  background-color: var(--tag-ideas-bg) !important;
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-idea:not(.cm-formatting-hashtag) {
+  background-color: var(--tag-idea-bg) !important;
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  color: var(--white) !important;
+  color: var(--tag-idea) !important;
   font-size: 0.95em;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-important {
-  background-color: var(--stag1-bg) !important;
-  filter: hue-rotate(0) !important;
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-important {
+  background-color: var(--rainbow-tag-4) !important;
+  color: var(--dark-red) !important;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-weeklynote {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-weeklynote {
   background-color: var(--tag-weeklynote-bg) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-dailynote {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-dailynote {
   background-color: var(--tag-dailynote-bg) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-ideas {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-ideas {
   background-color: var(--tag-ideas-bg) !important;
   filter: hue-rotate(0) !important;
 }
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-inprogress {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-inprogress {
   background-color: var(--stag2-bg) !important;
   filter: hue-rotate(0) !important;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-questions {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-questions {
   background-color: var(--tag-questions-bg) !important;
   filter: hue-rotate(0) !important;
 }
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-complete {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-complete {
   background-color: var(--stag3-bg) !important;
   filter: hue-rotate(0) !important;
 }
@@ -2469,6 +2574,7 @@ body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+1)+span.cm-ha
 }
 
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+2),
+body.rainbow-tag .cm-s-obsidian span.cm-tag-complete,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+2)+span.cm-hashtag,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+2)+.cm-hashtag.cm-meta,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+2)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-hashtag-end,
@@ -2517,6 +2623,7 @@ body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+3)+span.cm-ha
 }
 
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+4),
+body.rainbow-tag .cm-s-obsidian span.cm-tag-important,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+4)+span.cm-hashtag,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+4)+.cm-hashtag.cm-meta,
 body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n+4)+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-hashtag-end,
@@ -2565,27 +2672,27 @@ body.rainbow-tag .cm-s-obsidian span.cm-hashtag-begin:nth-child(5n)+span.cm-hash
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n+1):hover {
-  color: #008499;
+  color: var(--dark-teal);
   background-color: var(--rainbow-tag-1);
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n+2):hover {
-  color: #00803af7;
+  color: var(--dark-green);
   background-color: var(--rainbow-tag-2);
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n+3):hover {
-  color: #fb9f00;
+  color: var(--dark-orange);
   background-color: var(--rainbow-tag-3);
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n+4):hover {
-  color: #f87000;
+  color: var(--dark-red);
   background-color: var(--rainbow-tag-4);
 }
 
 body.rainbow-tag .tag:not(.token):nth-child(5n):hover {
-  color: #e91fe6;
+  color: var(--dark-pink);
   background-color: var(--rainbow-tag-5);
 }
 
@@ -2641,13 +2748,13 @@ a.tag,
   line-height: 1.8;
 }
 
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-dailynote,
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-weeklynote,
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-ideas,
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-inprogress,
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-important,
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-questions,
-body:not(.tag-default) .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-complete {
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-dailynote,
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-weeklynote,
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-ideas,
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-inprogress,
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-important,
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-questions,
+body:not(.tag-default) .cm-s-obsidian:not(.markdown-source-view, .cm-s-obsidian, .mod-cm6) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-complete {
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;
   display: inline;
@@ -2668,10 +2775,11 @@ div[class="markdown-source-view cm-s-obsidian mod-cm6"] span.cm-hashtag-begin+.c
   padding: 0 !important;
 }
 
-/*thanks to Klaas from Obsidian Members Group on discord*/
-/* Selection highlight */
 .suggestion-item.is-selected {
-  background-color: var(--prussian-blue);
+  background-color: var(--prussian-blue-2) !important;
+  color: var(--electric-blue-3) !important;
+  margin-right: 1em;
+  font-weight: bold;
 }
 
 .suggestion-item.mod-complex .suggestion-title {
@@ -3918,8 +4026,8 @@ body.fancy-dolphin-hr .markdown-rendered hr {
 
 body.three-dolphins-hr .markdown-rendered hr {
   overflow: initial;
-  margin-block-start: 3em;
-  margin-block-end: 3em;
+  margin-block-start: 2.5em;
+  margin-block-end: 2.5em;
   border: none;
   height: 0;
   min-height: 0.7em;
@@ -3981,8 +4089,8 @@ body.three-dolphins-hr div:not(.CodeMirror-activeline) > .CodeMirror-line.HyperM
 
 body.three-dolphins-hr .cm-s-obsidian hr {
   overflow: initial;
-  margin-block-start: 3em;
-  margin-block-end: 3em;
+  margin-block-start: 2.5em;
+  margin-block-end: 2.5em;
   border: none;
   height: 0;
   min-height: 0.7em;
@@ -4074,7 +4182,7 @@ body:not(.font-family-change-to-default) {
   --font-family-inline-code: var(--font-monospace-theme);
   --font-family-tag: 'nunito','Inter', "Segoe UI", "Microsoft YaHei", STzhongsong, STSong, "Segoe UI Emoji", Serif;
   --font-family-vault: 'Shantell';
-  --font-family-special-tag: "nunito", "Segoe UI Emoji";
+  --font-family-special-tag: quicksand, "nunito", "Segoe UI Emoji";
   --font-family-YAML: "nunito";
 
   --mermaid-font-family: nunito, Segoe UI, "Microsoft YaHei", "Segoe UI Emoji", "trebuchet ms", verdana, Arial, cursive;
@@ -6875,6 +6983,12 @@ body .workspace-leaf-content[data-type=outline] .view-content .outline :is(.tree
   background-color: var(--graph-canvas-bg);
 }
 
+body.colorful-graph {
+  --graph-tag: var(--peach);
+  --graph-attach: var(--aquamarine-1);
+  --graph-unresolved: var(--fairy-tale);
+}
+
 .graph-view.color-fill {
   color: var(--graph-circle);
 }
@@ -7337,11 +7451,11 @@ pre.language-note-cloze::before {
 
 .mermaid .label {
   font-family: var(--mermaid-font-family) !important;
-  color: var(--text-normal) !important;
+  color: var(--teal) !important;
 }
 
 .mermaid .label text {
-  fill: var(--background-primary-alt) !important;
+  fill: var(--doger-2) !important;
 }
 
 .mermaid .node:not([class*="id"]) rect:not([style*="fill"]):not([style*="stroke"]),
@@ -7919,20 +8033,9 @@ g.stateGroup line,
   fill: var(--text-muted) !important;
 }
 
-/*emoji🙂*/
-.mermaid g>g>circle,
-.mermaid g>circle {
-  stroke: #000000 !important;
-}
-
-.mermaid line.task-line {
-  stroke: #6e6e6e !important;
-}
-
 /* scrollbar*/
 body ::-webkit-scrollbar-thumb {
   background-clip: padding-box;
-  border: 3px solid transparent;
   border-width: 3px 2px 3px 3px;
   border-radius: var(--radius-m);
   min-height: 65px;
@@ -8196,7 +8299,7 @@ body.plugin-sliding-panes.plugin-sliding-panes.transparent-panes.theme-light .wo
 
 /*星期数 week*/
 #calendar-container .week-num {
-  border-right: 2px solid var(--calendar-week-background-color) !important;
+  border-right: 1px solid var(--calendar-week-background-color) !important;
   background-color: transparent;
   font-weight: 600;
   border-radius: 0;
@@ -11005,6 +11108,44 @@ button:not(.clickable-icon) {
   box-shadow: none;
 }
 
+button.mod-cta {
+  background-color: var(--cerulean-2);
+  border: 2px solid var(--vivid-sky-blue-2);
+  color: var(--pacific-blue-1);
+}
+
+button.mod-cta:hover {
+  background-color: var(--doger-0);
+  color: var(--electric-blue-3);
+}
+
+.horizontal-tab-nav-item.is-active, .vertical-tab-nav-item.is-active {
+  background-color: var(--cerulean-2);
+  border: 2px solid var(--vivid-sky-blue-2);
+  color: var(--pacific-blue-1);
+}
+
+.checkbox-container {
+  background-color: var(--rich-black-2);
+  border: 1px solid var(--cerulean);
+}
+
+.checkbox-container.is-enabled {
+  border-color: var(--electric-blue);
+}
+
+.checkbox-container:after {
+  margin: 1px 0 0 -1px;
+}
+
+input[type=range] {
+  width: 125px;
+  height: 0.7em;
+  background-color: var(--background-secondary);
+  border: 1px solid var(--cerulean);
+  border-radius: var(--radius-s);
+}
+
 .markdown-rendered button.copy-code-button:hover {
   background-color: var(--indigo-blue);
 }
@@ -12443,7 +12584,7 @@ body.theme-dark .progress-bar {
 }
 
 /* the gif animation was created by @Gal Shir https://dribbblepopular.tumblr.com/image/111943752174 */
-body .progress-bar-message::before {
+.progress-bar-message::before {
   content: "";
   display: block;
   background: no-repeat center/cover url(https://i.pinimg.com/originals/2e/92/64/2e92641ccb97d3acba414f0eddc0fd5b.gif);
@@ -12453,7 +12594,7 @@ body .progress-bar-message::before {
   font-size: initial;
   /* filter: sepia(88%) saturate(1028%) hue-rotate(150.7deg) brightness(85%) contrast(160%); */
   /* filter: sepia(88%) saturate(580%) hue-rotate(149.8deg) brightness(73%) contrast(130%); */
-  filter: sepia(88%) saturate(1343%) hue-rotate(156.4deg) brightness(72.8%) contrast(155%);
+  filter: sepia(88%) saturate(1300%) hue-rotate(158.4deg) brightness(65.4%) contrast(155%);
   position: initial;
   animation: unset;
 }
