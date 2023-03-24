@@ -22,6 +22,11 @@ TODO: add choice to put status bar in the middle (floating)
 name: 🐬 Blue Dolphin Theme
 id: blue-topaz-theme
 settings:
+  - id: vault-settings
+    title: Vault Settings
+    type: heading
+    level: 2
+    collapsed: true  
   -
     id: hide-vault-name
     title: Hide vault name
@@ -30,15 +35,9 @@ settings:
     default: true
   -
     id: enable-divider-lines
-    title: Enable Divider Lines
+    title: Enable interface borders
     type: class-toggle
     default: false
-  -
-    id: vim-monospace
-    title: Enable monospace font in editing mode
-    description: Recommended for vim keybindings.
-    type: class-toggle
-    default: true
   -
     id: font-family-change-to-default
     title: Use Obsidian fonts instead of theme fonts
@@ -46,161 +45,30 @@ settings:
     type: class-toggle
     default: false
   -
-    id: clutter-free-headings
-    title: Display H1 instead of # In Preview
-    description: Adapted from https://github.com/deathau/obsidian-snippets/blob/main/clutter-free-headings.css
-    type: class-toggle
-    default: true
-  -
-    id: justify-align
-    title: Justify align note content
-    description: Enable global effect, local effect only need to  declare "cssclass：justify" in the YAML area. Requires the Contextual Typography plugin.
-    type: class-toggle
-    default: false
-  -
-    id: fancy-hr-folder
-    title: Style Dividing Line (Horizontal Ruler, hr, ---)
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: hr-options
-    title: Select hr style (---)
-    type: class-select
-    allowEmpty: false
-    default: fancy-dolphin-hr
-    options:
-      - 
-        label: Fancy Dolphin
-        value: fancy-dolphin-hr
-      -
-        label: Three Dolphins
-        value: three-dolphins-hr
-      -
-        label: Obsidian Default
-        value: obsidian-default-hr
-  -
-    id: colorful-unordered-list
-    title: Toggle colorful unordered list marker
-    type: class-toggle
-    default: true
-  -
-    id: colorful-ordered-list
-    title: Toggle colorful ordered list marker
-    type: class-toggle
-    default: true
-  -
-    id: colorful-indentation-lines
-    title: Enable colorful indentation lines (preview mode)
-    type: class-toggle
-    default: true
-  -
-    id: colorful-indentation-lines-source
-    title: Enable colorful indentation lines (editing mode)
-    type: class-toggle
-    default: true
-  -
-    id: rainbow-checkbox
-    title:  Enable rainbow checkbox
-    type: class-toggle
-    default: false
-  -
-    id: blockquote-style-change-options
-    title: Select Blockquote Style
-    type: class-select
-    allowEmpty: false
-    default: blockquote-style-dolphin
-    options:
-      - 
-        label: Dolphin
-        value: blockquote-style-dolphin
-      -
-        label: With quotation mark
-        value: blockquote-style-quotation-mark
-      -
-        label: Basic
-        value: blockquote-style-default
-      -
-        label: Border left
-        value: blockquote-style-border-left
-  -
-    id: enable-table-animation
-    title: Enable table row animation on hover
-    type: class-toggle
-    default: true
-  -
-    id: table-style-options
-    title: Table Style
-    type: class-select
-    allowEmpty: false
-    default: table-style-one
-    options:
-      -
-        label: Obsidian Default
-        value: table-style-default
-      -
-        label: Dark
-        value: table-style-one
-      -
-        label: Dark Accent
-        value: table-style-two
-      -
-        label: No Background
-        value: table-style-three
-  -
-    id: link-underline-internal
-    title: Underline Internal Links
-    type: class-toggle
-    default: false
-  -
-    id: link-underline-external
-    title: Underline external Links
-    type: class-toggle
-    default: true
-  -
-    id: link-underline-unresolved
-    title: Underline unresolved Links
-    type: class-toggle
-    default: false
-  -
-    id: colorful-link-animation
-    title: Enable colorful link on hover
-    type: class-toggle
-    default: false
-  -
-    id: remove-external-link-icon
-    title: Remove external link icon
-    type: class-toggle
-    default: false
-  -
-    id: checkbox-animation
-    title: Enable checkbox animation
-    type: class-toggle
-    default: true
-  -
-    id: head-tag-style
-    title: Superscript tags in headings
-    type: class-toggle
-    default: true
-  -
     id: colorful-graph
     title: Colorful graph
-    description: Enable for a more colorful graph
+    description: Enable for more colorful nodes in graph view.
     type: class-toggle
     default: false
   -
-    id: tag-style-option
-    title: Tag Style
+    id: tab-head-style
+    title: Tab style
     type: class-select
     allowEmpty: false
-    default: rainbow-tag
+    default: safari-tab-style
     options:
       -
-        label: Rainbow tag
-        value: rainbow-tag
+        label: Obsidian Default
+        value: default-tab
       -
-        label: Obsidian default
-        value: tag-default
+        label: Safari Style
+        value: safari-tab-style
+  - id: titlebar-settings
+    title: Titlebar settings for Windows
+    description: These settings have no effect on MacOS.
+    type: heading
+    level: 3
+    collapsed: true  
   -
     id: simple-titlebar
     title:  Simple title bar
@@ -235,25 +103,70 @@ settings:
     format: hex
     default-light: '#'
     default-dark: '#'
+  - id: editor-settings
+    title: Editor Settings
+    type: heading
+    level: 2
+    collapsed: true  
   -
-    id: tab-head-style
-    title: Tab style
-    type: class-select
-    allowEmpty: false
-    default: safari-tab-style
-    options:
-      -
-        label: Obsidian Default
-        value: default-tab
-      -
-        label: Safari Style
-        value: safari-tab-style
+    id: justify-align
+    title: Justify align note content
+    description: Enable global effect, local effect only need to  declare "cssclass：justify" in the YAML area. Requires the Contextual Typography plugin.
+    type: class-toggle
+    default: false
+  -
+    id: vim-monospace
+    title: Enable monospace font in editing mode
+    description: Recommended for vim keybindings.
+    type: class-toggle
+    default: true
+  - id: markdown-settings
+    title: Markdown Rendering Settings
+    type: heading
+    level: 2
+    collapsed: true  
   -
     id: dolphin-metadata
     title: Hide metadata in dolphin
     description: Enabled by default. Enable to hide metadata behind a dolphin in reading mode. The metadata will be displayed when hovering over the dolphin. Inspired by Bubble-Space-Theme. https://github.com/Emrie-Candera/Bubble-Space-Theme
     type: class-toggle
     default: true
+  -
+    id: hr-options
+    title: Select hr style (---)
+    description: Choose a thematic break (horizontal rule) style in preview mode.
+    type: class-select
+    allowEmpty: false
+    default: fancy-dolphin-hr
+    options:
+      - 
+        label: Fancy Dolphin
+        value: fancy-dolphin-hr
+      -
+        label: Three Dolphins
+        value: three-dolphins-hr
+      -
+        label: Obsidian Default
+        value: obsidian-default-hr
+  -
+    id: blockquote-style-change-options
+    title: Select Blockquote Style
+    type: class-select
+    allowEmpty: false
+    default: blockquote-style-dolphin
+    options:
+      - 
+        label: Dolphin
+        value: blockquote-style-dolphin
+      -
+        label: With quotation mark
+        value: blockquote-style-quotation-mark
+      -
+        label: Basic
+        value: blockquote-style-default
+      -
+        label: Border left
+        value: blockquote-style-border-left
   -
     id: callout-style-settings
     title: callout style settings
@@ -270,6 +183,136 @@ settings:
       -
         label: Border
         value: border-callout-style
+  - id: heading-settings
+    title: Headings
+    type: heading
+    level: 3
+    collapsed: true  
+  -
+    id: clutter-free-headings
+    title: Display H1 instead of # In Preview
+    description: Adapted from https://github.com/deathau/obsidian-snippets/blob/main/clutter-free-headings.css
+    type: class-toggle
+    default: true
+  -
+    id: head-tag-style
+    title: Superscript tags in headings
+    Description: Tags in headings will be superscripted.
+    type: class-toggle
+    default: true
+  - id: list-settings
+    title: Lists and Checkboxes
+    type: heading
+    level: 3
+    collapsed: true  
+  -
+    id: colorful-unordered-list
+    title: Toggle colorful unordered list marker
+    type: class-toggle
+    default: true
+  -
+    id: colorful-ordered-list
+    title: Toggle colorful ordered list marker
+    type: class-toggle
+    default: true
+  -
+    id: colorful-indentation-lines
+    title: Enable colorful indentation lines (preview mode)
+    type: class-toggle
+    default: true
+  -
+    id: colorful-indentation-lines-source
+    title: Enable colorful indentation lines (editing mode)
+    type: class-toggle
+    default: true
+  -
+    id: rainbow-checkbox
+    title:  Enable rainbow checkbox
+    type: class-toggle
+    default: false
+  -
+    id: checkbox-animation
+    title: Enable checkbox animation
+    type: class-toggle
+    default: true
+  - id: table-settings
+    title: Tables
+    type: heading
+    level: 3
+    collapsed: true  
+  -
+    id: enable-table-animation
+    title: Enable table row animation on hover
+    description: When enabled, table rows have a "zoom" effect on hover.
+    type: class-toggle
+    default: true
+  -
+    id: table-style-options
+    title: Table Style
+    type: class-select
+    allowEmpty: false
+    default: table-style-one
+    options:
+      -
+        label: Obsidian Default
+        value: table-style-default
+      -
+        label: Dark
+        value: table-style-one
+      -
+        label: Dark Accent
+        value: table-style-two
+      -
+        label: No Background
+        value: table-style-three
+  - id: link-settings
+    title: Links
+    type: heading
+    level: 3
+    collapsed: true  
+  -
+    id: link-underline-internal
+    title: Underline Internal Links
+    type: class-toggle
+    default: false
+  -
+    id: link-underline-external
+    title: Underline external Links
+    type: class-toggle
+    default: false
+  -
+    id: link-underline-unresolved
+    title: Underline unresolved Links
+    type: class-toggle
+    default: false
+  -
+    id: colorful-link-animation
+    title: Enable colorful link on hover
+    type: class-toggle
+    default: false
+  -
+    id: remove-external-link-icon
+    title: Remove external link icon
+    type: class-toggle
+    default: false
+  - id: tag-settings
+    title: Tags
+    type: heading
+    level: 3
+    collapsed: true  
+  -
+    id: tag-style-option
+    title: Tag Style
+    type: class-select
+    allowEmpty: false
+    default: rainbow-tag
+    options:
+      -
+        label: Rainbow tag
+        value: rainbow-tag
+      -
+        label: Obsidian default
+        value: tag-default
   -
     id: style-options-for-kanban-plugin-header
     title: 3.4 Kanban
@@ -1085,6 +1128,7 @@ settings:
   --prussian-blue-2: #00354B;
   --prussian-blue-3: #003950ff;
   --indigo-blue: #01435eff;
+  --indigo-blue-2: #003f58;
   --midnight-green: #004f6b;
   --midnight-green-2: #006082;
   --cerulean: #016986ff;
@@ -1599,13 +1643,13 @@ body.theme-dark {
 
   /*table*/
   --table-background-color: var(--indigo-blue);
-  --table-background-color-odd: var(--midnight-green);
+  --table-background-color-odd: var(--indigo-blue-2);
   --table-border-color: var(--celeste);
   --table-thead-background-color: var(--cerulean);
   --table-hover-raw-color: var(--prussian-blue);
   --table-hover-color: var(--rich-black-2);
   --table-hover-thead-color: var(--pacific-cyan);
-  --table-header-color: var(--vivid-sky-blue);
+  --table-header-color: var(--electric-blue-2);
 
   /*calendar*/
   --calendar-week-color: var(--apricot);
@@ -4169,7 +4213,7 @@ body:not(.font-family-change-to-default) {
   --font-family-list: ;
   --font-text-theme: nunito,'Inter', "Segoe UI","霞鹜文楷 GB", "LXGW WenKai", "Segoe UI Emoji";
   --font-heading: quicksand;
-  --font-interface: quicksand;
+  --font-interface: nunito;
   --inline-title-font: var(--font-default);
   --font-family-h1: var(--font-heading);
   --font-family-h2: var(--font-heading);
@@ -5666,7 +5710,7 @@ body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tb
 /*table hover*/
 :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) td:hover,
 :is(.markdown-preview-view,.markdown-rendered,.markdown-source-view) thead tr > th:nth-child(2n+2):hover {
-  color: var(--vivid-sky-blue-2);
+  color: var(--vivid-sky-blue);
 }
 
 /*table raw hover*/
